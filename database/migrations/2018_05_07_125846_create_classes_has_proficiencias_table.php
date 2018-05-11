@@ -13,7 +13,7 @@ class CreateClassesHasProficienciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('classe_has_proficiencias', function (Blueprint $table) {
+        Schema::create('classes_has_proficiencias', function (Blueprint $table) {
             $table->integer('classe_ID')->references('id_classe')->on('classes');
             $table->integer('proficiencia_ID')->references('id_proficiencia')->on('proficiencias');
             $table->timestamps();

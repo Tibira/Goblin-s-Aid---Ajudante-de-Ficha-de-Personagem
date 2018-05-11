@@ -16,8 +16,8 @@ class CreateTalentosTable extends Migration
         Schema::create('talentos', function (Blueprint $table) {
             $table->increments('id_talentos');
             $table->String('nome_tal');
-            $table->String('descricao_tal');
-            $table->String('pre_requisito_tal');
+            $table->String('descricao_tal',500);
+            $table->String('pre_requisito_tal')->nullable();
             $table->timestamps();
         });
     }

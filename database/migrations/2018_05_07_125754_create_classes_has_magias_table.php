@@ -13,9 +13,10 @@ class CreateClassesHasMagiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('magias_has_classes', function (Blueprint $table) {
+        Schema::create('classes_has_magias', function (Blueprint $table) {
             $table->integer('magia_ID')->references('id_magia')->on('magias');
             $table->integer('classe_ID')->references('id_classe')->on('classes');
+            $table->timestamps();
             });
     }
 

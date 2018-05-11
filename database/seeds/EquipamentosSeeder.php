@@ -11,6 +11,11 @@ class EquipamentosSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('equipamentos')->insert([
+            'ficha_ID' =>'1',
+            'created_at' => date('Y-m-d h:i:s'),
+            'updated_at' => date('Y-m-d h:i:s')
+        ]);
+            
     }
 }

@@ -31,6 +31,7 @@ class CreateFichaTable extends Migration
             $table->integer('peletron')->nullable();
             $table->integer('pouro')->nullable();
             $table->integer('pplatina')->nullable();
+            $table->integer('user_ID')->references('id')->on('users');
             $table->timestamps();
         });
     }

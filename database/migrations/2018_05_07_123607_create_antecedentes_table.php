@@ -20,7 +20,7 @@ class CreateAntecedentesTable extends Migration
             $table->String('itens_ant');
             $table->String('pericias_ant');
             $table->String('proficiencias_ant');
-            $table->String('idiomas_ant');
+            $table->String('idiomas_ant')->nullable();
             $table->String('carac_extras_ant');
             $table->timestamps();
         });

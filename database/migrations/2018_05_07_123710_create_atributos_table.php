@@ -14,7 +14,7 @@ class CreateAtributosTable extends Migration
     public function up()
     {
         Schema::create('atributos', function (Blueprint $table) {
-            $table->increments('id_raca');
+            $table->increments('id_atributo');
             $table->integer('forca');
             $table->integer('destreza');
             $table->integer('inteligencia');
@@ -22,6 +22,7 @@ class CreateAtributosTable extends Migration
             $table->integer('constituicao');
             $table->integer('carisma');
             $table->integer('sabedoria_passiva');
+            $table->integer('ficha_ID')->references('id_ficha')->on('ficha');
             $table->timestamps();
         });
     }

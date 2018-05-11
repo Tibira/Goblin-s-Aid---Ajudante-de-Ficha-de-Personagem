@@ -17,7 +17,6 @@ class CreateProficienciasTable extends Migration
             $table->increments('id_proficiencia');
             $table->String('nome_pro');
             $table->String('descricao_pro');
-            $table->String('tipo_pro');
             $table->timestamps();
         });
     }
