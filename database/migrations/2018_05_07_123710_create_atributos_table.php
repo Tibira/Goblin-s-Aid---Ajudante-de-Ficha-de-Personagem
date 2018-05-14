@@ -21,7 +21,6 @@ class CreateAtributosTable extends Migration
             $table->integer('sabedoria');
             $table->integer('constituicao');
             $table->integer('carisma');
-            $table->integer('sabedoria_passiva');
             $table->integer('ficha_ID')->references('id_ficha')->on('ficha');
             $table->timestamps();
         });
