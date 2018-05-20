@@ -14,7 +14,7 @@ class CreatePersonalizacaoTable extends Migration
     public function up()
     {
         Schema::create('personalizacao', function (Blueprint $table) {
-            $table->increments('id_person');
+            $table->increments('id');
                 $table->String('ligacoes')->nullable();
                 $table->String('tracos_personal')->nullable();
                 $table->String('ideal')->nullable();
@@ -27,6 +27,7 @@ class CreatePersonalizacaoTable extends Migration
                 $table->String('aliados')->nullable();
                 $table->String('historia')->nullable();
                 $table->timestamps();
+                $table->Boolean('vis');
             });
     }
 

@@ -14,9 +14,10 @@ class CreateEquipamentosTable extends Migration
     public function up()
     {
         Schema::create('equipamentos', function (Blueprint $table) {
-            $table->increments('id_equipamento');
-            $table->integer('ficha_ID')->references('id_ficha')->on('ficha');
+            $table->increments('id');
+            $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

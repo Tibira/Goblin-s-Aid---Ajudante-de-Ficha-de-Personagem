@@ -14,12 +14,13 @@ class CreateItensTable extends Migration
     public function up()
     {
         Schema::create('itens', function (Blueprint $table) {
-            $table->increments('id_item');
+            $table->increments('id');
             $table->String('nome_itm');
             $table->String('descricao_itm');
             $table->String('preco_itm');
             $table->double('peso_itm');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Itens;
+use App\Http\Controllers\Controller;
 
 class ItensController extends Controller
 {
@@ -13,7 +15,9 @@ class ItensController extends Controller
      */
     public function index()
     {
-        //
+        $itens = Itens::where('vis',1)->get();
+        
+        return view('admin.itens_list', compact('itens'));
     }
 
     /**
@@ -45,7 +49,9 @@ class ItensController extends Controller
      */
     public function show($id)
     {
-        //
+        $itens = Itens::find($id);
+
+        return view('admin.itens_view', compact('itens'));
     }
 
     /**

@@ -14,7 +14,7 @@ class CreateClassesTable extends Migration
     public function up()
     {
         Schema::create('classes', function (Blueprint $table) {
-            $table->increments('id_classe');
+            $table->increments('id');
             $table->String('nome_cla');
             $table->String('descricao_cla');
             $table->String('dado_vida');
@@ -29,6 +29,7 @@ class CreateClassesTable extends Migration
             $table->integer('nivel8')->nullable();
             $table->integer('nivel9')->nullable();
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

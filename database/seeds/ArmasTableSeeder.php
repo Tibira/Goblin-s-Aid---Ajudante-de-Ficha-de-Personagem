@@ -18,7 +18,8 @@ class ArmasTableSeeder extends Seeder
             'preco_arm' => '5PO',
             'peso_arm' => '2',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
             
         DB::table('armas')->insert([
@@ -30,7 +31,8 @@ class ArmasTableSeeder extends Seeder
             'propiedade' => 'Versatil(1D10)',
             'efeito_adicional' => '+5 Dano Congelante',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
     }
 }

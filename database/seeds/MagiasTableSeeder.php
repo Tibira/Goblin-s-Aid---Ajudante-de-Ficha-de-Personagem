@@ -22,7 +22,8 @@ class MagiasTableSeeder extends Seeder
             'alcance_mag' => 'Pessoal',
             'duracao_mag' => 'Concentração, dura até 1 minuto',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
             DB::table('magias')->insert([
                 'nome_mag' => 'Criar Comida e Água',
@@ -35,7 +36,8 @@ class MagiasTableSeeder extends Seeder
                 'alcance_mag' => '9 Metros(6 quadrados)',
                 'duracao_mag' => 'Instantânea',
                 'created_at' => date('Y-m-d h:i:s'),
-                'updated_at' => date('Y-m-d h:i:s')
+                'updated_at' => date('Y-m-d h:i:s'),
+                'vis'=>'1'
                 ]);
                 DB::table('magias')->insert([
                     'nome_mag' => 'Escudo Arcano',
@@ -49,7 +51,8 @@ class MagiasTableSeeder extends Seeder
                     'alcance_mag' => 'Pessoal',
                     'duracao_mag' => '1 Rodada',
                     'created_at' => date('Y-m-d h:i:s'),
-                    'updated_at' => date('Y-m-d h:i:s')
+                    'updated_at' => date('Y-m-d h:i:s'),
+                    'vis'=>'1'
                     ]);    
     }
 }

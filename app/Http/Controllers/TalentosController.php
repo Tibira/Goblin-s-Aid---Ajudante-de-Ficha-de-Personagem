@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Talentos;
+use App\Http\Controllers\Controller;
 
 class TalentosController extends Controller
 {
@@ -13,7 +15,10 @@ class TalentosController extends Controller
      */
     public function index()
     {
-        //
+        $talento = Talentos::where('vis',1)->get();
+        
+        return view('admin.talentos_list', compact('talento'));
+
     }
 
     /**
@@ -45,7 +50,10 @@ class TalentosController extends Controller
      */
     public function show($id)
     {
-        //
+        $talento = Talentos::find($id);
+
+        return view('admin.talentos_view', compact('talento'));
+    
     }
 
     /**

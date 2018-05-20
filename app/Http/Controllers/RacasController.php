@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Racas;
+use App\Http\Controllers\Controller;
 
 class RacasController extends Controller
 {
@@ -13,7 +15,10 @@ class RacasController extends Controller
      */
     public function index()
     {
-        //
+        $racas = Racas::where('vis',1)->get();
+        
+        return view('admin.racas_list', compact('racas'));
+
     }
 
     /**
@@ -45,7 +50,9 @@ class RacasController extends Controller
      */
     public function show($id)
     {
-        //
+        $raca = Racas::find($id);
+
+        return view('admin.racas_view', compact('raca'));
     }
 
     /**

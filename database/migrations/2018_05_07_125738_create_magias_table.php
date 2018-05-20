@@ -14,7 +14,7 @@ class CreateMagiasTable extends Migration
     public function up()
     {
         Schema::create('magias', function (Blueprint $table) {
-            $table->increments('id_magia');
+            $table->increments('id');
             $table->String('nome_mag');
             $table->String('descricao_mag');
             $table->String('conjuradores_mag');
@@ -25,6 +25,7 @@ class CreateMagiasTable extends Migration
             $table->String('alcance_mag');
             $table->String('duracao_mag');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

@@ -14,12 +14,13 @@ class CreateCaracteristicasTable extends Migration
     public function up()
     {
         Schema::create('caracteristicas', function (Blueprint $table) {
-            $table->increments('id_caracter');
+            $table->increments('id');
             $table->String('nome_car');
             $table->String('descricao_car');
             $table->integer('nivel');
-            $table->integer('classe_ID')->references('id_classe')->on('classes');
+            $table->integer('classe_id')->references('id')->on('classes');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

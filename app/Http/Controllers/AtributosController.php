@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Atributos;
+use App\Http\Controllers\Controller;
 
 class AtributosController extends Controller
 {
@@ -13,7 +15,9 @@ class AtributosController extends Controller
      */
     public function index()
     {
-        //
+        $atrib = Atributos::where('vis',1)->get();
+        
+        return view('admin.atributos_list', compact('atrib'));
     }
 
     /**
@@ -45,7 +49,10 @@ class AtributosController extends Controller
      */
     public function show($id)
     {
-        //
+        $atrib = Atributos::find($id);
+
+        return view('admin.atributos_view', compact('atrib'));
+    
     }
 
     /**

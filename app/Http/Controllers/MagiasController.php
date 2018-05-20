@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Magias;
+use App\Http\Controllers\Controller;
 
 class MagiasController extends Controller
 {
@@ -11,9 +13,9 @@ class MagiasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $magias = Magias::where('vis',1)->get();
+        return view('admin.magias_list', compact('magias'));
     }
 
     /**
@@ -21,9 +23,10 @@ class MagiasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(){
+        $opc = 1;
+        $magia = Magias::orderBy('id')->get();  
+        return view('admin.magias_form', compact('opc', 'magia'));
     }
 
     /**
@@ -32,9 +35,13 @@ class MagiasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $info = $request->all();
+        $magia = Magias::create($info);
+        if ($incentivo) {
+            return redirect()->route('magias.index')
+                            ->with('status', $request->nome . ' Incluído!');
+        }
     }
 
     /**
@@ -43,9 +50,9 @@ class MagiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        $magia = Magias::find($id);
+        return view('admin.magias_view', compact('magia'));
     }
 
     /**
@@ -54,9 +61,10 @@ class MagiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){    
+        $magia = Magias::find($id); 
+        $opc = 2;
+        return view('admin.magias_form', compact('magia','opc'));
     }
 
     /**

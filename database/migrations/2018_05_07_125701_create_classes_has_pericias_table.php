@@ -14,9 +14,10 @@ class CreateClassesHasPericiasTable extends Migration
     public function up()
     {
         Schema::create('classes_has_pericias', function (Blueprint $table) {
-            $table->integer('pericia_ID')->references('id_pericia')->on('pericias');
-            $table->integer('classe_ID')->references('id_classse')->on('classes');
+            $table->integer('pericia_id')->references('id')->on('pericias');
+            $table->integer('classe_id')->references('id')->on('classes');
             $table->timestamps();
+            $table->Boolean('vis');
             });
     }
 

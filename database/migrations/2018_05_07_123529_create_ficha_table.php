@@ -14,7 +14,7 @@ class CreateFichaTable extends Migration
     public function up()
     {
         Schema::create('ficha', function (Blueprint $table) {
-            $table->increments('id_ficha');
+            $table->increments('id');
             $table->double('deslocamento');
             $table->integer('iniciativa');
             $table->integer('classe_armadura');
@@ -33,6 +33,7 @@ class CreateFichaTable extends Migration
             $table->integer('pplatina')->nullable();
             $table->integer('user_ID')->references('id')->on('users');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

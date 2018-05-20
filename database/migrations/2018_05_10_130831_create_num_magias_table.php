@@ -14,7 +14,7 @@ class CreateNumMagiasTable extends Migration
     public function up()
     {
         Schema::create('num_magias', function (Blueprint $table) {
-            $table->increments('id_num_magias');
+            $table->increments('id');
             $table->integer('truques')->nullable();
             $table->integer('nivel1')->nullable();
             $table->integer('nivel2')->nullable();
@@ -25,9 +25,10 @@ class CreateNumMagiasTable extends Migration
             $table->integer('nivel7')->nullable();
             $table->integer('nivel8')->nullable();
             $table->integer('nivel9')->nullable();
-            $table->integer('classe_ID')->references('id_classe')->on('classes');
+            $table->integer('classe_id')->references('id')->on('classes');
             $table->integer('nivel')->references('nivel')->on('ficha_has_classes');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

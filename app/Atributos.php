@@ -9,4 +9,8 @@ class Atributos extends Model
     protected $fillable = [
         'forca', 'destreza', 'inteligencia', 'sabedoria','constituicao','carisma',
     ];
+
+    protected $hidden = [
+        'vis',
+    ];
 }

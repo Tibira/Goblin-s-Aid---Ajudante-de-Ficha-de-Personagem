@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Antecedentes;
+use App\Http\Controllers\Controller;
 class AntecedentesController extends Controller
 {
     /**
@@ -13,7 +14,9 @@ class AntecedentesController extends Controller
      */
     public function index()
     {
-        //
+        $antec = Antecedentes::where('vis',1)->get();
+
+        return view('admin.antecedentes_list', compact('antec'));
     }
 
     /**
@@ -43,9 +46,11 @@ class AntecedentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        $antec = Antecedentes::find($id);
+
+        return view('admin.antecedentes_view', compact('antec'));
+    
     }
 
     /**

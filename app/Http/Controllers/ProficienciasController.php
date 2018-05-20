@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Proficiencias;
+use App\Http\Controllers\Controller;
 
 class ProficienciasController extends Controller
 {
@@ -13,7 +15,9 @@ class ProficienciasController extends Controller
      */
     public function index()
     {
-        //
+        $profic = Proficiencias::where('vis',1)->get();
+        
+        return view('admin.proficiencias_list', compact('profic'));
     }
 
     /**
@@ -45,7 +49,10 @@ class ProficienciasController extends Controller
      */
     public function show($id)
     {
-        //
+        $profic = Proficiencias::find($id);
+
+        return view('admin.proficiencias_view', compact('profic'));
+    
     }
 
     /**

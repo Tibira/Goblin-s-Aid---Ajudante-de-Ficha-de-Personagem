@@ -12,10 +12,11 @@ class Ficha_has_PersonalizacaoSeeder extends Seeder
     public function run()
     {
         DB::table('ficha_has_personalizacao')->insert([
-            'ficha_ID' =>'1',
-            'personalizacao_ID' =>'1',    
+            'ficha_id' =>'1',
+            'personalizacao_id' =>'1',    
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]);
     }
 }

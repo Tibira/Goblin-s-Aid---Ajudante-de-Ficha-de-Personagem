@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Armas;
+use App\Http\Controllers\Controller;
 
 class ArmasController extends Controller
 {
@@ -13,7 +15,9 @@ class ArmasController extends Controller
      */
     public function index()
     {
-        //
+        $arma = Armas::where('vis',1)->get();
+        
+        return view('admin.armas_list', compact('arma'));
     }
 
     /**
@@ -45,7 +49,9 @@ class ArmasController extends Controller
      */
     public function show($id)
     {
-        //
+        $arma = Armas::find($id);
+
+        return view('admin.armas_view', compact('arma'));
     }
 
     /**

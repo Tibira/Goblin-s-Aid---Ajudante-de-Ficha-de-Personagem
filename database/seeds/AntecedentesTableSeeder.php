@@ -24,7 +24,8 @@ class AntecedentesTableSeeder extends Seeder
             'idiomas_ant' => 'Uma, à sua escolha',
             'carac_extras_ant' => 'ASSOCIADOS DA GUILDA Como um membro cativo e respeitado da guilda, você pode contar com certos benefícios que a sociedade garante.',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
             
             DB::table('antecedentes')->insert([
@@ -39,8 +40,26 @@ class AntecedentesTableSeeder extends Seeder
                 ferramentas de ladrão',
                 'carac_extras_ant' => 'CONTATO CRIMINAL: Você possui contatos de confiança que agem como seus informantes em uma rede criminosa.',
                 'created_at' => date('Y-m-d h:i:s'),
-                'updated_at' => date('Y-m-d h:i:s')
+                'updated_at' => date('Y-m-d h:i:s'),
+                'vis'=>'1'
                 ]);
+                DB::table('antecedentes')->insert([
+                    'nome_ant' => 'Eremita',
+                    'descricao_ant' => 'Você viveu em reclusão – ou em uma comunidade isolada
+                    como um monastério ou completamente sozinho – por um
+                    período importante da sua vida. No tempo em que passou
+                    longe do clamor da sociedade, você encontrou quietude,
+                    solidão e, talvez, algumas das respostas que procurava.',
+                    'itens_ant' => 'Um estojo de pergaminho cheio de notas dos seus estudos e orações, um cobertor de inverno, um conjunto de roupas comuns, um kit de herbalismo
+                    e 5 po.',
+                    'pericias_ant' => 'Medicina, Religião',
+                    'idiomas_ant' => 'Uma, à sua escolha',        
+                    'proficiencias_ant' => 'Kit de herbalismo',
+                    'carac_extras_ant' => 'VIDA DE ISOLAMENTO Você pode trabalhar com o Mestre para definir a natureza exata da sua reclusão para determinar a razão por trás do seu isolamento.',
+                    'created_at' => date('Y-m-d h:i:s'),
+                    'updated_at' => date('Y-m-d h:i:s'),
+                    'vis'=>'0'
+                    ]);
        
     }
 }

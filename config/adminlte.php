@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Goblin\'s Aid',
 
     'title_prefix' => '',
 
-    'title_postfix' => '',
+    'title_postfix' => ' - Ajudante de ficha de RPG D&D Next',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Goblin\'s Aid</b>',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>GA</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'green',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,81 +108,145 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'MENU GA',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
+            'text'        => 'Usuários',
+            'url'         => '/users',
+            'icon'        => 'user',
+            'label'       => null,
             'label_color' => 'success',
         ],
-        'ACCOUNT SETTINGS',
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => 'Dados',
+            'icon'    => 'database',
             'submenu' => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Antecedentes',
+                    'url'  => '/antecedentes',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Armaduras',
+                    'url'  => '/armaduras',
                 ],
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Armas',
+                    'url'  => '/armas',
+                ],
+                [
+                    'text' => 'Atributos',
+                    'url'  => '/atributos',
+                ],
+                [
+                    'text' => 'Características',
+                    'url'  => '/caracteristicas',
+                ],
+                [
+                    'text' => 'Classes',
+                    'url'  => '/classes',
+                ],
+                [
+                    'text' => 'Itens',
+                    'url'  => '/itens',
+                ],
+                [
+                    'text' => 'Magias',
+                    'url'  => '/magias',
+                ],
+                [
+                    'text' => 'Perícias',
+                    'url'  => '/pericias',
+                ],
+                [
+                    'text' => 'Proficiências',
+                    'url'  => '/proficiencias',
+                ],
+                [
+                    'text' => 'Racas',
+                    'url'  => '/racas',
+                ],
+                [
+                    'text' => 'Talentos',
+                    'url'  => '/talentos',
                 ],
             ],
-        ],
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
-        ],
+            ],
+            [
+                'text'    => 'Definições',
+                'icon'    => 'question',
+                'url'     => '/definicoes',
+            ],
+            [
+                'text'    => 'Ligações',
+                'icon'    => 'retweet',
+                'submenu' => [
+                    [
+                        'text' => 'Classes',
+                        'submenu' => [
+                            [
+                                'text' => 'Magias',
+                                'url'  => '/talentos',
+                            ],
+                            [
+                                'text' => 'Pericias',
+                                'url'  => '/talentos',
+                            ],
+                            [
+                                'text' => 'Proficiencias',
+                                'url'  => '/talentos',
+                            ],
+                            
+                        ],      
+                    ],
+                    [
+                        'text' => 'Equipamentos',
+                        'submenu' => [
+                            [
+                                'text' => 'Armaduras',
+                                'url'  => '/talentos',
+                            ],
+                            [
+                                'text' => 'Armas',
+                                'url'  => '/talentos',
+                            ],
+                            [
+                                'text' => 'Itens',
+                                'url'  => '/talentos',
+                            ],
+                            
+                        ],      
+                    ],
+                    [
+                        'text' => 'Ficha',
+                        'submenu' => [
+                            [
+                                'text' => 'Antecedentes',
+                                'url'  => '/talentos',
+                            ],
+                            [
+                                'text' => 'Atributos',
+                                'url'  => '/talentos',  
+                            ],
+                            [
+                                'text' => 'Classes',
+                                'url'  => '/talentos',  
+                            ],
+                            [
+                                'text' => 'Personalização',
+                                'url'  => '/talentos',  
+                            ],
+                            [
+                                'text' => 'Raças',
+                                'url'  => '/talentos',
+                            ],
+                            [
+                                'text' => 'Talentos',
+                                'url'  => '/talentos',
+                            ],
+                        ],      
+                    ],
+                    
+                ],
+                ],
     ],
 
     /*

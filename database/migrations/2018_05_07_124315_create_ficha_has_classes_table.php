@@ -14,10 +14,11 @@ class CreateFichaHasClassesTable extends Migration
     public function up()
     {
         Schema::create('ficha_has_classes', function (Blueprint $table) {
-            $table->integer('classe_ID')->references('id_classe')->on('classes');
-            $table->integer('ficha_ID')->references('id_ficha')->on('ficha');
+            $table->integer('classe_id')->references('id')->on('classes');
+            $table->integer('ficha_id')->references('id')->on('ficha');
             $table->integer('nivel');
             $table->timestamps();
+            $table->Boolean('vis');
             });
     }
 

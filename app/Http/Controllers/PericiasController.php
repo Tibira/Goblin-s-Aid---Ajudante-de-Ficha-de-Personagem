@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pericias;
+use App\Http\Controllers\Controller;
 
 class PericiasController extends Controller
 {
@@ -13,7 +15,10 @@ class PericiasController extends Controller
      */
     public function index()
     {
-        //
+        $peric = Pericias::where('vis',1)->get();
+        
+        return view('admin.pericias_list', compact('peric'));
+
     }
 
     /**
@@ -45,7 +50,10 @@ class PericiasController extends Controller
      */
     public function show($id)
     {
-        //
+        $peric = Pericias::find($id);
+
+        return view('admin.pericias_view', compact('peric'));
+    
     }
 
     /**

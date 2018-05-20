@@ -14,10 +14,11 @@ class CreateProficienciasTable extends Migration
     public function up()
     {
         Schema::create('proficiencias', function (Blueprint $table) {
-            $table->increments('id_proficiencia');
+            $table->increments('id');
             $table->String('nome_pro');
             $table->String('descricao_pro');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

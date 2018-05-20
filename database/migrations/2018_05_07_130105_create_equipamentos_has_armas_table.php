@@ -14,10 +14,11 @@ class CreateEquipamentosHasArmasTable extends Migration
     public function up()
     {
         Schema::create('equipamentos_has_armas', function (Blueprint $table) {
-            $table->integer('arma_ID')->references('id_arma')->on('armas');
-            $table->integer('equipamento_ID')->references('id_equipamento')->on('equipamentos');
+            $table->integer('arma_id')->references('id')->on('armas');
+            $table->integer('equipamento_id')->references('id')->on('equipamentos');
             $table->integer('quantidade');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

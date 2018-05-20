@@ -18,9 +18,10 @@ class AtributosTableSeeder extends Seeder
             'sabedoria' => '18',
             'constituicao' => '17',
             'carisma' => '16',
-            'ficha_ID'=>'1',
+            'ficha_id'=>'1',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
     }
 }

@@ -14,7 +14,7 @@ class CreateRacasTable extends Migration
     public function up()
     {
         Schema::create('racas', function (Blueprint $table) {
-            $table->increments('id_raca');
+            $table->increments('id');
             $table->String('nome_rac');
             $table->String('descricao_rac',500);
             $table->String('tracos_raciais',500);
@@ -22,6 +22,7 @@ class CreateRacasTable extends Migration
             $table->integer('val_hab');
             $table->double('deslocamento');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

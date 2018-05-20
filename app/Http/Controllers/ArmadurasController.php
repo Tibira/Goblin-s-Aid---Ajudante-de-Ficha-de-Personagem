@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Armaduras;
+use App\Http\Controllers\Controller;
 class ArmadurasController extends Controller
 {
     /**
@@ -13,7 +14,9 @@ class ArmadurasController extends Controller
      */
     public function index()
     {
-        //
+        $armad = Armaduras::where('vis',1)->get();
+        
+        return view('admin.armaduras_list', compact('armad'));
     }
 
     /**
@@ -43,9 +46,11 @@ class ArmadurasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        
+        $armad = Armaduras::find($id);
+
+        return view('admin.armaduras_view', compact('armad'));
     }
 
     /**

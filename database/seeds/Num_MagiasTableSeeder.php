@@ -22,10 +22,11 @@ class Num_MagiasTableSeeder extends Seeder
             'nivel7' => '0',
             'nivel8' => '0',
             'nivel9' => '0',
-            'classe_ID' => '2',
+            'classe_id' => '2',
             'nivel' => '1',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]); 
         DB::table('num_magias')->insert([
             'truques' => '3',
@@ -38,10 +39,11 @@ class Num_MagiasTableSeeder extends Seeder
             'nivel7' => '0',
             'nivel8' => '0',
             'nivel9' => '0',
-            'classe_ID' => '2',
+            'classe_id' => '2',
             'nivel' => '2',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]); 
         DB::table('num_magias')->insert([
             'truques' => '4',
@@ -54,10 +56,11 @@ class Num_MagiasTableSeeder extends Seeder
             'nivel7' => '0',
             'nivel8' => '0',
             'nivel9' => '0',
-            'classe_ID' => '2',
+            'classe_id' => '2',
             'nivel' => '3',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]); 
         DB::table('num_magias')->insert([
             'truques' => '4',
@@ -70,10 +73,11 @@ class Num_MagiasTableSeeder extends Seeder
             'nivel7' => '0',
             'nivel8' => '0',
             'nivel9' => '0',
-            'classe_ID' => '2',
+            'classe_id' => '2',
             'nivel' => '4',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]); 
     }
 }

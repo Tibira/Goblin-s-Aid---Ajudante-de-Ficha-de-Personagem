@@ -14,9 +14,10 @@ class CreateFichaHasRacasTable extends Migration
     public function up()
     {
         Schema::create('ficha_has_racas', function (Blueprint $table) {
-            $table->integer('raca_ID')->references('id_raca')->on('racas');
-            $table->integer('ficha_ID')->references('id_ficha')->on('ficha');
+            $table->integer('raca_id')->references('id')->on('racas');
+            $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
+            $table->Boolean('vis');
             });
     }
 

@@ -28,7 +28,8 @@ class RacasTableSeeder extends Seeder
             'deslocamento' => '7.5',
             
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]);
         DB::table('racas')->insert([
             'nome_rac' => 'Humano',
@@ -39,14 +40,20 @@ class RacasTableSeeder extends Seeder
             Tendência: Os humanos não possuem inclinação a nenhuma tendência em especial. Os melhores e os piores são encontrados entre eles.
             Idiomas: Você pode falar, ler e escrever Comum e outro idioma adicional, à sua escolha.',
             
-            'habilidade' => 'forca;destreza;inteligencia;sabedoria;constituicao;carisma',
+            'habilidade' => 'forca;
+            destreza;
+            inteligencia;
+            sabedoria;
+            constituicao;
+            carisma',
             
             'val_hab' => '1',
             
             'deslocamento' => '9',
             
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]);
     }
 }

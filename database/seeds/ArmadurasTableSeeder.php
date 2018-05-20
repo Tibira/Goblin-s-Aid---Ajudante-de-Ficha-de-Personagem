@@ -19,7 +19,8 @@ class ArmadurasTableSeeder extends Seeder
             'class_armad' => '16',
             'forca' => '13',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
         DB::table('armaduras')->insert([
             'nome_armd' => 'Placas',
@@ -29,7 +30,8 @@ class ArmadurasTableSeeder extends Seeder
             'class_armad' => '18',
             'forca' => '15',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
         DB::table('armaduras')->insert([
             'nome_armd' => 'Escudo de Madeira',
@@ -38,7 +40,8 @@ class ArmadurasTableSeeder extends Seeder
             'peso_armd' => '3',
             'class_armad' => '2',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
     }
 }

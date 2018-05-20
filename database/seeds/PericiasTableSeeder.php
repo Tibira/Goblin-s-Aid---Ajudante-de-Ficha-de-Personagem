@@ -15,13 +15,15 @@ class PericiasTableSeeder extends Seeder
             'nome_per' =>'Adestrar Animais',
             'descricao_per' =>'Você tem mais facilidade em domar e acalmar animais.',    
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]);
         DB::table('pericias')->insert([
             'nome_per' =>'Intimidação',
             'descricao_per' =>'Você tem mais facilidade em intimidar seus inimigos.',    
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
         ]);
     }
 }

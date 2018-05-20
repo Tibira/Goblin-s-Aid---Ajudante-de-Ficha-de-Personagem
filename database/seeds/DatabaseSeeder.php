@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Classes_has_PericiasSeeder::class);
         $this->call(Classes_has_ProficienciasSeeder::class);
         $this->call(ClassesTableSeeder::class);
+        $this->call(DefinicoesTableSeeder::class);
         $this->call(Equipamentos_has_ArmadurasSeeder::class);
         $this->call(Equipamentos_has_ArmasSeeder::class);
         $this->call(Equipamentos_has_ItensSeeder::class);

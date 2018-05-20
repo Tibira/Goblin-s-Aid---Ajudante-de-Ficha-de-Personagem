@@ -14,9 +14,10 @@ class CreateFichaHasAtributosTable extends Migration
     public function up()
     {
         Schema::create('ficha_has_atributos', function (Blueprint $table) {
-            $table->integer('atributos_ID')->references('id_atributo')->on('atributos');
-            $table->integer('ficha_ID')->references('id_ficha')->on('ficha');
+            $table->integer('atributos_id')->references('id')->on('atributos');
+            $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
+            $table->Boolean('vis');
             });
     }
 

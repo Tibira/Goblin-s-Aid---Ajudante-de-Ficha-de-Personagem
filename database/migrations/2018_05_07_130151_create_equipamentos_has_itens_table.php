@@ -14,10 +14,11 @@ class CreateEquipamentosHasItensTable extends Migration
     public function up()
     {
         Schema::create('equipamentos_has_itens', function (Blueprint $table) {
-            $table->integer('item_ID')->references('id_item')->on('itens');
-            $table->integer('equipamento_ID')->references('id_equipamento')->on('equipamentos');
+            $table->integer('item_id')->references('id')->on('itens');
+            $table->integer('equipamento_id')->references('id')->on('equipamentos');
             $table->integer('quantidade');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

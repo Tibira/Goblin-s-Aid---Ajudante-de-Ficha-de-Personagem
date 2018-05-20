@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Caracteristicas;
+use App\Http\Controllers\Controller;
 
 class CaracteristicasController extends Controller
 {
@@ -13,7 +15,10 @@ class CaracteristicasController extends Controller
      */
     public function index()
     {
-        //
+        $carac = Caracteristicas::where('vis',1)->get();
+        
+        return view('admin.caracteristicas_list', compact('carac'));
+    
     }
 
     /**
@@ -45,7 +50,10 @@ class CaracteristicasController extends Controller
      */
     public function show($id)
     {
-        //
+        $carac = Caracteristicas::find($id);
+
+        return view('admin.caracteristicas_view', compact('carac'));
+    
     }
 
     /**

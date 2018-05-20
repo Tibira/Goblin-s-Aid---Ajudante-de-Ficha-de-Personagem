@@ -14,7 +14,7 @@ class CreateArmadurasTable extends Migration
     public function up()
     {
         Schema::create('armaduras', function (Blueprint $table) {
-            $table->increments('id_armadura');
+            $table->increments('id');
             $table->String('nome_armd');
             $table->String('descricao_armd');
             $table->String('preco_armd');
@@ -22,6 +22,7 @@ class CreateArmadurasTable extends Migration
             $table->integer('class_armad');
             $table->integer('forca')->nullable();
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

@@ -9,4 +9,8 @@ class Talentos extends Model
     protected $fillable = [
         'nome_tal', 'descricao_tal', 'pre_requisito_tal',
     ];
+
+    protected $hidden = [
+        'vis',
+    ];
 }

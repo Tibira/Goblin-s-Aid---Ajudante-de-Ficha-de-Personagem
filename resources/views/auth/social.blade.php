@@ -10,34 +10,18 @@
                         <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                     </div>
                 @endif
-
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center">Social Login </div>
-
+                    <div class="panel-heading text-center">Login </div>
                     <div class="panel-body">
-
-                        <p class="lead text-center">Authenticate using your social network account from one of following providers</p>
-
                         <a href="{{ route('social.oauth', 'facebook') }}" class="btn btn-primary btn-block">
-                            Login with Facebook
+                            Login utilizando Facebook
                         </a>
-
-                        <a href="{{ route('social.oauth', 'twitter') }}" class="btn btn-info btn-block">
-                            Login with Twitter
-                        </a>
-
                         <a href="{{ route('social.oauth', 'google') }}" class="btn btn-danger btn-block">
-                            Login with Google
+                            Login utilizando Google
                         </a>
-
-                        <a href="{{ route('social.oauth', 'github') }}" class="btn btn-default btn-block">
-                            Login with Github
-                        </a>
-
                         <hr>
-
                         <a href="{{ route('login') }}" class="btn btn-default btn-block">
-                            Login with Email
+                            Login utilizando Email
                         </a>
                     </div>
                 </div>

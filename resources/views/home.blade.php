@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Goblin\'s Aid')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Goblin's Aid</h1>
 @stop
 
 @section('content')
-    <p>You are logged in!</p>
+    <p>Bem vindo a área administrativa do GA</p>
 @stop

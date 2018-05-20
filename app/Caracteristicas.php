@@ -9,4 +9,8 @@ class Caracteristicas extends Model
     protected $fillable = [
         'nome_car', 'descricao_car', 'nivel',
     ];
+
+    protected $hidden = [
+        'vis',
+    ];
 }

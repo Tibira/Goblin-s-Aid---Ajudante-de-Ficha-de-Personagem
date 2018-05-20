@@ -14,10 +14,11 @@ class CreatePericiasTable extends Migration
     public function up()
     {
         Schema::create('pericias', function (Blueprint $table) {
-            $table->increments('id_pericias');
+            $table->increments('id');
             $table->String('nome_per');
             $table->String('descricao_per');
             $table->timestamps();
+            $table->Boolean('vis');
         });
     }
 

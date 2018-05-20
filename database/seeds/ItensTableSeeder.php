@@ -17,7 +17,8 @@ class ItensTableSeeder extends Seeder
             'preco_itm' => '1PO',
             'peso_itm' => '0.5',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
         DB::table('itens')->insert([
             'nome_itm' => 'Poção de cura',
@@ -25,7 +26,8 @@ class ItensTableSeeder extends Seeder
             'preco_itm' => '50PO',
             'peso_itm' => '0.25',
             'created_at' => date('Y-m-d h:i:s'),
-            'updated_at' => date('Y-m-d h:i:s')
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1'
             ]);
     }
 }
