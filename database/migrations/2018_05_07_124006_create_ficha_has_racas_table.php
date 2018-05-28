@@ -17,7 +17,7 @@ class CreateFichaHasRacasTable extends Migration
             $table->integer('raca_id')->references('id')->on('racas');
             $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

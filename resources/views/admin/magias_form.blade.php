@@ -95,18 +95,6 @@
                        required>
             </div>
             <div class="form-group">
-            <label for="vis">Combustível:</label>
-            <select class="form-control" id="vis" name="vis">
-                <option value="Visivel" 
-@if ((isset($reg) && $reg->vis=="1") 
-     or old('vis') == "1") selected @endif>
-                        1</option>
-                <option value="Invisivel"
-@if ((isset($reg) && $reg->vis=="0") 
-     or old('vis') == "0") selected @endif>                        
-                        0</option>
-            </select>
-        </div>
             <button type="submit" class="btn btn-primary">Enviar</button>     
             </div>
         </form>

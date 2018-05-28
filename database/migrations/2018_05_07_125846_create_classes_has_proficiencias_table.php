@@ -17,7 +17,7 @@ class CreateClassesHasProficienciasTable extends Migration
             $table->integer('classe_id')->references('id')->on('classes');
             $table->integer('proficiencia_id')->references('id')->on('proficiencias');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

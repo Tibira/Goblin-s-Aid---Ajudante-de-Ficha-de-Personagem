@@ -17,7 +17,7 @@ class CreateFichaHasTalentosTable extends Migration
             $table->integer('talento_id')->references('id')->on('talentos');
             $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

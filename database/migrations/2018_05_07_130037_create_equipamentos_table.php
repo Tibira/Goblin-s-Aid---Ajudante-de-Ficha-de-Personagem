@@ -17,7 +17,7 @@ class CreateEquipamentosTable extends Migration
             $table->increments('id');
             $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

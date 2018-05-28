@@ -26,7 +26,9 @@ class AntecedentesController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $antec = Antecedentes::orderBy('id')->get();  
+        return view('admin.antecedentes_form', compact('opc', 'antec'));
     }
 
     /**
@@ -37,8 +39,14 @@ class AntecedentesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $antec = Antecedentes::create($info);
+        if ($antec) {
+            return redirect()->route('antecedentes.index')
+                            ->with('status', $request->nome . ' Incluído!');
+        
     }
+    }    
 
     /**
      * Display the specified resource.
@@ -48,9 +56,7 @@ class AntecedentesController extends Controller
      */
     public function show($id){
         $antec = Antecedentes::find($id);
-
         return view('admin.antecedentes_view', compact('antec'));
-    
     }
 
     /**
@@ -61,7 +67,9 @@ class AntecedentesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $antec = Antecedentes::find($id); 
+        $opc = 2;
+        return view('admin.antecedentes_form', compact('antec','opc'));
     }
 
     /**
@@ -73,7 +81,25 @@ class AntecedentesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_ant' => 'required',
+            'descricao_ant' => 'required',
+            'itens_ant' => 'required',
+            'pericias_ant' => 'required',
+            'proficiencias_ant' => 'required',
+            'carac_extras_ant' => 'required'
+            ]);
+
+        $antec = Antecedentes::find($id);
+
+        $dados = $request->all();
+
+        $alt = $antec->update($dados);
+
+        if ($alt) {
+            return redirect()->route('antecedentes.index')
+                            ->with('status', $request->nome_ant . ' Alterado!');
+        }
     }
 
     /**
@@ -82,8 +108,13 @@ class AntecedentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $antec = Antecedentes::find($id);
+        $alt = $antec->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('antecedentes.index')
+                        ->with('status',  ' Removido!');
+    }    
+    
     }
 }

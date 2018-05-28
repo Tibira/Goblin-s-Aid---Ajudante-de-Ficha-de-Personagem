@@ -3,7 +3,7 @@
 @section('content_header')
     
 <div class='col-sm-2'>
-    <a href='/' class='btn btn-primary' 
+    <a href='{{route('armaduras.create')}}' class='btn btn-primary' 
        role='button'> Novo </a>
        </div>
 <div class='col-sm-11'>
@@ -14,20 +14,18 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cód.</th>
           <th>Nome</th>
           <th>Descrição</th>
           <th>Preco</th>
           <th>Peso(Kg)</th>
           <th>Classe de Armadura</th>
           <th>Força</th>
-          <th>Ações</th>
+          <th width="200px">Ações</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($armad as $armd)
             <tr>
-              <td>{{$armd->id}}</td>
               <td>{{$armd->nome_armd}}</td>
               <td>{{$armd->descricao_armd}}</td>
               <td>{{$armd->preco_armd}}</td>
@@ -40,13 +38,13 @@
                class='btn btn-info' 
                role='button'> Ver </a> 
 
-            <a href='#'
+            <a href='{{route('armaduras.edit',$armd->id)}}'
                class='btn btn-warning' 
                role='button'> Alterar </a> 
 
             <form style="display: inline-block"
                   method="post"
-                  action="#"
+                  action="{{route('armaduras.destroy',$armd->id)}}"
                   onsubmit="return confirm('Confirma Exclusão?')">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}

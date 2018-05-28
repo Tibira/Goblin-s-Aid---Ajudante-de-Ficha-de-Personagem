@@ -18,7 +18,7 @@ class CreateEquipamentosHasItensTable extends Migration
             $table->integer('equipamento_id')->references('id')->on('equipamentos');
             $table->integer('quantidade');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

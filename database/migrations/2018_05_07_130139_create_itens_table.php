@@ -20,7 +20,7 @@ class CreateItensTable extends Migration
             $table->String('preco_itm');
             $table->double('peso_itm');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

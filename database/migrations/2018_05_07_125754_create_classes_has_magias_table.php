@@ -17,7 +17,7 @@ class CreateClassesHasMagiasTable extends Migration
             $table->integer('magia_id')->references('id')->on('magias');
             $table->integer('classe_id')->references('id')->on('classes');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

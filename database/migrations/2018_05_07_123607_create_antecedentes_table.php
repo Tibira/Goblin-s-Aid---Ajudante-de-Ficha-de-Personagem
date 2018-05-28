@@ -23,7 +23,7 @@ class CreateAntecedentesTable extends Migration
             $table->String('idiomas_ant')->nullable();
             $table->String('carac_extras_ant');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

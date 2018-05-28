@@ -3,7 +3,7 @@
 @section('content_header')
    
 <div class='col-sm-2'>
-    <a href='/' class='btn btn-primary' 
+    <a href='{{route('itens.create')}}' class='btn btn-primary' 
        role='button'> Novo </a>
        </div>
 <div class='col-sm-11'>
@@ -14,18 +14,16 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cód.</th>
           <th>Nome</th>
           <th>Descrição</th>
           <th>Preço</th>
           <th>Peso(Kg)</th>
-          <th>Ações</th>
+          <th width="200px">Ações</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($itens as $itm)
             <tr>
-              <td>{{$itm->id}}</td>
               <td>{{$itm->nome_itm}}</td>
               <td>{{$itm->descricao_itm}}</td>
               <td>{{$itm->preco_itm}}</td>
@@ -36,13 +34,13 @@
                class='btn btn-info' 
                role='button'> Ver </a> 
 
-            <a href='#'
+            <a href='{{route('itens.edit',$itm->id)}}'
                class='btn btn-warning' 
                role='button'> Alterar </a> 
 
             <form style="display: inline-block"
                   method="post"
-                  action="#"
+                  action="{{route('itens.destroy',$itm->id)}}"
                   onsubmit="return confirm('Confirma Exclusão?')">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}

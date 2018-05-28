@@ -20,7 +20,7 @@ class CreateCaracteristicasTable extends Migration
             $table->integer('nivel');
             $table->integer('classe_id')->references('id')->on('classes');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

@@ -18,7 +18,7 @@ class CreateProficienciasTable extends Migration
             $table->String('nome_pro');
             $table->String('descricao_pro');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

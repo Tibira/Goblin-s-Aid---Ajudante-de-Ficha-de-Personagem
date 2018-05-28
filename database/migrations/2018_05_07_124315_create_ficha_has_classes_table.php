@@ -18,7 +18,7 @@ class CreateFichaHasClassesTable extends Migration
             $table->integer('ficha_id')->references('id')->on('ficha');
             $table->integer('nivel');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

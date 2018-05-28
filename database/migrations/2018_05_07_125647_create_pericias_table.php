@@ -18,7 +18,7 @@ class CreatePericiasTable extends Migration
             $table->String('nome_per');
             $table->String('descricao_per');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

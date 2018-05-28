@@ -33,7 +33,7 @@ class CreateFichaTable extends Migration
             $table->integer('pplatina')->nullable();
             $table->integer('user_ID')->references('id')->on('users');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

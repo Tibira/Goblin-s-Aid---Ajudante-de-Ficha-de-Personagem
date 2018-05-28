@@ -12,12 +12,16 @@ class DefinicoesTableSeeder extends Seeder
     public function run()
     {
         DB::table('definicoes')->insert([
-            'item' => 'força',
+            'item' => 'Força',
             'definicao' => 'Força é um atributo que você usa para arombar portas ou abrir um jarro de picles.',
-        'vis'=>'1']);
+            'created_at' => date('Y-m-d h:i:s'),
+            'updated_at' => date('Y-m-d h:i:s'),
+            'vis'=>'1']);
         DB::table('definicoes')->insert([
-            'item' => 'destreza',
+            'item' => 'Destreza',
             'definicao' => 'Destreza é um atributo que você usa para desviar de um ataque ou se equilibrar em uma corda.',
-        'vis'=>'1']);
+            'created_at' => date('Y-m-d h:i:s'),
+            'updated_at' => date('Y-m-d h:i:s'),    
+            'vis'=>'1']);
     }
 }

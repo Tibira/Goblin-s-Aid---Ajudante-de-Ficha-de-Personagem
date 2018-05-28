@@ -17,7 +17,7 @@ class CreateFichaHasAntecedentesTable extends Migration
             $table->integer('antecedente_id')->references('id')->on('antecedentes');
             $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

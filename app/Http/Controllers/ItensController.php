@@ -27,7 +27,9 @@ class ItensController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $itens = Itens::orderBy('id')->get();  
+        return view('admin.itens_form', compact('opc', 'itens'));
     }
 
     /**
@@ -38,7 +40,12 @@ class ItensController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $itens = Itens::create($info);
+        if ($itens) {
+            return redirect()->route('itens.index')
+                            ->with('status', $request->nome_itm . ' Incluído!');
+    }
     }
 
     /**
@@ -62,7 +69,9 @@ class ItensController extends Controller
      */
     public function edit($id)
     {
-        //
+        $itens = Itens::find($id); 
+        $opc = 2;
+        return view('admin.itens_form', compact('itens','opc'));
     }
 
     /**
@@ -74,7 +83,25 @@ class ItensController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_itm' => 'required',
+            'descricao_itm' => 'required',
+            'preco_itm' => 'required',
+            'peso_itm' => 'required|numeric',
+            'vis' => 'required'
+            ]);
+
+        $itens = Itens::find($id);
+
+        $dados = $request->all();
+
+        $alt = $itens->update($dados);
+
+        if ($alt) {
+            return redirect()->route('itens.index')
+                            ->with('status', $request->nome_itm . ' Alterado!');
+        }
+
     }
 
     /**
@@ -85,6 +112,11 @@ class ItensController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $itens = Itens::find($id);
+        $alt = $itens->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('itens.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

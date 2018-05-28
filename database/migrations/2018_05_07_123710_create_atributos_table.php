@@ -23,7 +23,7 @@ class CreateAtributosTable extends Migration
             $table->integer('carisma');
             $table->integer('ficha_id')->references('id_ficha')->on('ficha');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

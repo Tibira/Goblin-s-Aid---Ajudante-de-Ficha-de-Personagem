@@ -27,7 +27,9 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $classes = Classes::orderBy('id')->get();  
+        return view('admin.classes_form', compact('opc', 'classes'));
     }
 
     /**
@@ -38,9 +40,13 @@ class ClassesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $classes = Classes::create($info);
+        if ($classes) {
+            return redirect()->route('classes.index')
+                            ->with('status', $request->nome_cla . ' Incluído!');
     }
-
+    }
     /**
      * Display the specified resource.
      *
@@ -63,7 +69,9 @@ class ClassesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $classes = Classes::find($id); 
+        $opc = 2;
+        return view('admin.classes_form', compact('classes','opc'));
     }
 
     /**
@@ -75,7 +83,24 @@ class ClassesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_cla' => 'required',
+            'descricao_cla' => 'required',
+            'dado_vida' => 'required',
+            'vis' => 'required'
+            ]);
+
+        $classes = Classes::find($id);
+
+        $dados = $request->all();
+
+        $alt = $classes->update($dados);
+
+        if ($alt) {
+            return redirect()->route('classes.index')
+                            ->with('status', $request->nome_cla . ' Alterado!');
+        }
+
     }
 
     /**
@@ -86,6 +111,11 @@ class ClassesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $classes = Classes::find($id);
+        $alt = $classes->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('classes.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

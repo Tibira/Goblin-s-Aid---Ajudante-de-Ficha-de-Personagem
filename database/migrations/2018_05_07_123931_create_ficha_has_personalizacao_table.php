@@ -17,7 +17,7 @@ class CreateFichaHasPersonalizacaoTable extends Migration
             $table->integer('personalizacao_id')->references('id')->on('personalizacao');
             $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

@@ -22,7 +22,7 @@ class CreateArmadurasTable extends Migration
             $table->integer('class_armad');
             $table->integer('forca')->nullable();
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

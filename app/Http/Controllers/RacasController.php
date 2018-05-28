@@ -28,7 +28,9 @@ class RacasController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $racas = Racas::orderBy('id')->get();  
+        return view('admin.racas_form', compact('opc', 'racas'));
     }
 
     /**
@@ -38,8 +40,13 @@ class RacasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $info = $request->all();
+        $racas = Racas::create($info);
+        if ($racas) {
+            return redirect()->route('racas.index')
+                            ->with('status', $request->nome_rac . ' Incluído!');
+    }
     }
 
     /**
@@ -63,7 +70,9 @@ class RacasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $racas = Racas::find($id); 
+        $opc = 2;
+        return view('admin.racas_form', compact('racas','opc'));
     }
 
     /**
@@ -75,7 +84,26 @@ class RacasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_rac' => 'required',
+            'descricao_rac' => 'required',
+            'tracos_raciais' => 'required',
+            'habilidade' => 'required',
+            'val_hab' => 'required|numeric',
+            'deslocamento' => 'required|numeric',
+            'vis' => 'required'
+            ]);
+
+        $racas = Racas::find($id);
+
+        $dados = $request->all();
+
+        $alt = $racas->update($dados);
+
+        if ($alt) {
+            return redirect()->route('racas.index')
+                            ->with('status', $request->nome_rac . ' Alterado!');
+        }
     }
 
     /**
@@ -86,6 +114,11 @@ class RacasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $racas = Racas::find($id);
+        $alt = $racas->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('racas.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

@@ -38,7 +38,7 @@ class MagiasController extends Controller
     public function store(Request $request) {
         $info = $request->all();
         $magia = Magias::create($info);
-        if ($incentivo) {
+        if ($magia) {
             return redirect()->route('magias.index')
                             ->with('status', $request->nome . ' Incluído!');
         }
@@ -76,7 +76,29 @@ class MagiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_mag' => 'required',
+            'descricao_mag' => 'required',
+            'conjuradores_mag' => 'required',
+            'nivel_mag' => 'required|numeric|min:1|max:9',
+            'escola_mag' => 'required',
+            'tempo_mag' => 'required',
+            'componentes_mag' => 'required',
+            'alcance_mag' => 'required',
+            'duracao_mag' => 'required',
+            'vis' => 'required'
+            ]);
+
+        $magia = Magias::find($id);
+
+        $dados = $request->all();
+
+        $alt = $magia->update($dados);
+
+        if ($alt) {
+            return redirect()->route('magias.index')
+                            ->with('status', $request->nome_mag . ' Alterado!');
+        }
     }
 
     /**
@@ -87,6 +109,11 @@ class MagiasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $magias = Magias::find($id);
+        $alt = $magias->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('magias.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

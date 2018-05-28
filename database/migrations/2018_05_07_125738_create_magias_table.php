@@ -25,7 +25,7 @@ class CreateMagiasTable extends Migration
             $table->String('alcance_mag');
             $table->String('duracao_mag');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

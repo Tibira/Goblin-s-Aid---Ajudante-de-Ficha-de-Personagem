@@ -17,7 +17,7 @@ class CreateClassesHasPericiasTable extends Migration
             $table->integer('pericia_id')->references('id')->on('pericias');
             $table->integer('classe_id')->references('id')->on('classes');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

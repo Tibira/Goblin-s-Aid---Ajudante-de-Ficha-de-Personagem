@@ -14,9 +14,11 @@ class CreateDefinicoesTable extends Migration
     public function up()
     {
         Schema::create('definicoes', function (Blueprint $table) {
+            $table->increments('id');
             $table->String('item');
             $table->String('definicao');
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
+            $table->timestamps();
             });
     }
 

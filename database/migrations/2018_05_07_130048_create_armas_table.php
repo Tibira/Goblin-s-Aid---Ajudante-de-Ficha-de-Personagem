@@ -23,7 +23,7 @@ class CreateArmasTable extends Migration
             $table->String('propiedade')->nullable();
             $table->String('efeito_adicional')->nullable();
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

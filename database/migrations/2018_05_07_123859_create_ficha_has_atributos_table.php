@@ -17,7 +17,7 @@ class CreateFichaHasAtributosTable extends Migration
             $table->integer('atributos_id')->references('id')->on('atributos');
             $table->integer('ficha_id')->references('id')->on('ficha');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
             });
     }
 

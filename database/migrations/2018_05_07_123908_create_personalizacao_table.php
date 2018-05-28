@@ -27,7 +27,7 @@ class CreatePersonalizacaoTable extends Migration
                 $table->String('aliados')->nullable();
                 $table->String('historia')->nullable();
                 $table->timestamps();
-                $table->Boolean('vis');
+                $table->Boolean('vis')->default(1);
             });
     }
 

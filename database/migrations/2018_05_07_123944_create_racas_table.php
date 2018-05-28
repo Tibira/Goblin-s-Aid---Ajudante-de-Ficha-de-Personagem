@@ -22,7 +22,7 @@ class CreateRacasTable extends Migration
             $table->integer('val_hab');
             $table->double('deslocamento');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

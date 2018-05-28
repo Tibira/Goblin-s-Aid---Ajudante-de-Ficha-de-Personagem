@@ -19,7 +19,7 @@ class CreateTalentosTable extends Migration
             $table->String('descricao_tal',500);
             $table->String('pre_requisito_tal')->nullable();
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

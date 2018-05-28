@@ -28,7 +28,9 @@ class CaracteristicasController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $carac = Caracteristicas::orderBy('id')->get();  
+        return view('admin.caracteristicas_form', compact('opc', 'carac'));
     }
 
     /**
@@ -38,8 +40,13 @@ class CaracteristicasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $info = $request->all();
+        $carac = Caracteristicas::create($info);
+        if ($carac) {
+            return redirect()->route('caracteristicas.index')
+                            ->with('status', $request->nome_car . ' Incluído!');
+    }
     }
 
     /**
@@ -64,7 +71,9 @@ class CaracteristicasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carac = Caracteristicas::find($id); 
+        $opc = 2;
+        return view('admin.caracteristicas_form', compact('carac','opc'));
     }
 
     /**
@@ -76,7 +85,24 @@ class CaracteristicasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_car' => 'required',
+            'descricao_car' => 'required',
+            'nivel' => 'required|numeric',
+            'classe_id' => 'required|numeric',
+            'vis' => 'required'
+            ]);
+
+        $carac = Caracteristicas::find($id);
+
+        $dados = $request->all();
+
+        $alt = $carac->update($dados);
+
+        if ($alt) {
+            return redirect()->route('caracteristicas.index')
+                            ->with('status', $request->nome_car . ' Alterado!');
+        }
     }
 
     /**
@@ -87,6 +113,11 @@ class CaracteristicasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $carac = Caracteristicas::find($id);
+        $alt = $carac->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('caracteristicas.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

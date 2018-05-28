@@ -29,7 +29,7 @@ class CreateClassesTable extends Migration
             $table->integer('nivel8')->nullable();
             $table->integer('nivel9')->nullable();
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

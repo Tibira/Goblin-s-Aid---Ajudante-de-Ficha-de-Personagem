@@ -28,7 +28,7 @@ class CreateNumMagiasTable extends Migration
             $table->integer('classe_id')->references('id')->on('classes');
             $table->integer('nivel')->references('nivel')->on('ficha_has_classes');
             $table->timestamps();
-            $table->Boolean('vis');
+            $table->Boolean('vis')->default(1);
         });
     }
 

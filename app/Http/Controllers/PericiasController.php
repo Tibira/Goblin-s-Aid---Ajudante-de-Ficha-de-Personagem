@@ -28,7 +28,9 @@ class PericiasController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $peric = Pericias::orderBy('id')->get();  
+        return view('admin.pericias_form', compact('opc', 'peric'));
     }
 
     /**
@@ -39,7 +41,12 @@ class PericiasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $peric = Pericias::create($info);
+        if ($peric) {
+            return redirect()->route('pericias.index')
+                            ->with('status', $request->nome_per . ' Incluído!');
+    }
     }
 
     /**
@@ -64,7 +71,9 @@ class PericiasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peric = Pericias::find($id); 
+        $opc = 2;
+        return view('admin.pericias_form', compact('peric','opc'));
     }
 
     /**
@@ -76,7 +85,24 @@ class PericiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_per' => 'required',
+            'descricao_per' => 'required',
+            'vis' => 'required'
+            ]);
+
+        $peric = Pericias::find($id);
+
+        $dados = $request->all();
+
+        $alt = $peric->update($dados);
+
+        if ($alt) {
+            return redirect()->route('pericias.index')
+                            ->with('status', $request->nome_per . ' Alterado!');
+        }
+
+
     }
 
     /**
@@ -87,6 +113,11 @@ class PericiasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $peric = Pericias::find($id);
+        $alt = $peric->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('pericias.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

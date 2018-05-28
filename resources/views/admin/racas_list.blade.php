@@ -3,7 +3,7 @@
 @section('content_header')
     
 <div class='col-sm-2'>
-    <a href='/' class='btn btn-primary' 
+    <a href='{{route('racas.create')}}' class='btn btn-primary' 
        role='button'> Novo </a>
        </div>
 <div class='col-sm-11'>
@@ -14,20 +14,18 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cod.</th>
           <th>Nome</th>
           <th>Descrição</th>
           <th>Traços Raciais</th>
           <th>Habilidade</th>
           <th>Valor de Hablidade</th>
           <th>Deslocamento</th>
-          <th>Ações</th>
+          <th width="200px">Ações</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($racas as $rac)
             <tr>
-              <td>{{$rac->id}}</td>
               <td>{{$rac->nome_rac}}</td>
               <td>{{$rac->descricao_rac}}</td>
               <td>{{$rac->tracos_raciais}}</td>
@@ -40,13 +38,13 @@
                class='btn btn-info' 
                role='button'> Ver </a> 
 
-            <a href='#'
+            <a href='{{route('racas.edit',$rac->id)}}'
                class='btn btn-warning' 
                role='button'> Alterar </a> 
 
             <form style="display: inline-block"
                   method="post"
-                  action="#"
+                  action="{{route('racas.destroy',$rac->id)}}"
                   onsubmit="return confirm('Confirma Exclusão?')">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}

@@ -14,11 +14,9 @@ class DefinicoesController extends Controller
      */
     public function index()
     {
-        {
             $def = Definicoes::where('vis',1)->get();
             
             return view('admin.definicoes_list', compact('def'));
-        }
     }
 
     /**
@@ -28,7 +26,9 @@ class DefinicoesController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $defin = Definicoes::orderBy('id')->get();  
+        return view('admin.definicoes_form', compact('opc', 'defin'));
     }
 
     /**
@@ -39,7 +39,12 @@ class DefinicoesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $defin = Definicoes::create($info);
+        if ($defin) {
+            return redirect()->route('definicoes.index')
+                            ->with('status', $request->item . ' Incluído!');
+    }
     }
 
     /**
@@ -64,7 +69,9 @@ class DefinicoesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $defin = Definicoes::find($id); 
+        $opc = 2;
+        return view('admin.definicoes_form', compact('defin','opc'));
     }
 
     /**
@@ -76,7 +83,23 @@ class DefinicoesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'item' => 'required',
+            'definicao' => 'required',
+            'vis' => 'required'
+            ]);
+
+        $defin = Definicoes::find($id);
+
+        $dados = $request->all();
+
+        $alt = $defin->update($dados);
+
+        if ($alt) {
+            return redirect()->route('definicoes.index')
+                            ->with('status', $request->item . ' Alterado!');
+        }
+
     }
 
     /**
@@ -87,6 +110,11 @@ class DefinicoesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $defin = Definicoes::find($id);
+        $alt = $defin->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('definicoes.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

@@ -13,7 +13,6 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cód.</th>
           <th>Nome</th>
           <th>Descrição</th>
           <th>Conjuradores</th>
@@ -23,13 +22,12 @@
           <th>Componentes</th>
           <th>Alcance</th>
           <th>Duração</th>
-          <th>Ações</th>
+          <th width="200px">Ações</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($magias as $mag)
             <tr>
-              <td>{{$mag->id}}</td>
               <td>{{$mag->nome_mag}}</td>
               <td>{{$mag->descricao_mag}}</td>
               <td>{{$mag->conjuradores_mag}}</td>
@@ -51,7 +49,7 @@
 
             <form style="display: inline-block"
                   method="post"
-                  action="#"
+                  action="{{route('magias.destroy', $mag->id)}}"
                   onsubmit="return confirm('Confirma Exclusão?')">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}

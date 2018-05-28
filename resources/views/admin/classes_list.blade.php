@@ -3,7 +3,7 @@
 @section('content_header')
     
 <div class='col-sm-2'>
-    <a href='/' class='btn btn-primary' 
+    <a href='{{route('classes.create')}}' class='btn btn-primary' 
        role='button'> Novo </a>
        </div>
 <div class='col-sm-11'>
@@ -14,7 +14,6 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cod.</th>
           <th>Nome</th>
           <th>Descrição</th>
           <th>Dado de Vida</th>
@@ -28,13 +27,12 @@
           <th>Nivel 7</th>
           <th>Nivel 8</th>
           <th>Nivel 9</th>
-          <th>Ações</th>
+          <th width="200px">Ações</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($classes as $classe)
             <tr>
-              <td>{{$classe->id}}</td>
               <td>{{$classe->nome_cla}}</td>
               <td>{{$classe->descricao_cla}}</td>
               <td>{{$classe->dado_vida}}</td>
@@ -54,13 +52,13 @@
                class='btn btn-info' 
                role='button'> Ver </a> 
 
-            <a href='#'
+            <a href='{{route('classes.edit',$classe->id)}}'
                class='btn btn-warning' 
                role='button'> Alterar </a> 
 
             <form style="display: inline-block"
                   method="post"
-                  action="#"
+                  action="{{route('classes.destroy',$classe->id)}}"
                   onsubmit="return confirm('Confirma Exclusão?')">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}

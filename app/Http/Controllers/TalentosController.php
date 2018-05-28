@@ -28,7 +28,9 @@ class TalentosController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $talento = Talentos::orderBy('id')->get();  
+        return view('admin.talentos_form', compact('opc', 'talentos'));
     }
 
     /**
@@ -39,7 +41,12 @@ class TalentosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $talentos = Talentos::create($info);
+        if ($talentos) {
+            return redirect()->route('talentos.index')
+                            ->with('status', $request->nome_tal . ' Incluído!');
+    }
     }
 
     /**
@@ -64,7 +71,9 @@ class TalentosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $talentos = Talentos::find($id); 
+        $opc = 2;
+        return view('admin.talentos_form', compact('talentos','opc'));
     }
 
     /**
@@ -76,7 +85,23 @@ class TalentosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_tal' => 'required',
+            'descricao_tal' => 'required',
+            'pre_requisito_tal' => 'required',
+            'vis' => 'required'
+            ]);
+
+        $talentos = Talentos::find($id);
+
+        $dados = $request->all();
+
+        $alt = $talentos->update($dados);
+
+        if ($alt) {
+            return redirect()->route('talentos.index')
+                            ->with('status', $request->nome_tal . ' Alterado!');
+        }
     }
 
     /**
@@ -87,6 +112,11 @@ class TalentosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $talentos = Talentos::find($id);
+        $alt = $talentos->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('talentos.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

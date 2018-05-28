@@ -27,8 +27,10 @@ class ArmasController extends Controller
      */
     public function create()
     {
-        //
-    }
+        $opc = 1;
+        $arma = Armas::orderBy('id')->get();  
+        return view('admin.armas_form', compact('opc', 'arma'));
+        }
 
     /**
      * Store a newly created resource in storage.
@@ -38,7 +40,12 @@ class ArmasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $arma = Armas::create($info);
+        if ($arma) {
+            return redirect()->route('armas.index')
+                            ->with('status', $request->nome_arm . ' Incluído!');
+    }
     }
 
     /**
@@ -62,7 +69,9 @@ class ArmasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $arma = Armas::find($id); 
+        $opc = 2;
+        return view('admin.armas_form', compact('arma','opc'));
     }
 
     /**
@@ -74,7 +83,24 @@ class ArmasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_arm' => 'required',
+            'tipo_arm' => 'required',
+            'preco_arm' => 'required',
+            'peso_arm' => 'required|numeric',
+            'dano_arm' => 'required'
+            ]);
+
+        $arma = Armas::find($id);
+
+        $dados = $request->all();
+
+        $alt = $arma->update($dados);
+
+        if ($alt) {
+            return redirect()->route('armas.index')
+                            ->with('status', $request->nome_arm . ' Alterado!');
+        }
     }
 
     /**
@@ -85,6 +111,13 @@ class ArmasController extends Controller
      */
     public function destroy($id)
     {
-        //
+    $arma = Armas::find($id);
+
+    $alt = $arma->decrement('vis');   
+
+    if ($alt) {
+        return redirect()->route('armas.index')
+                        ->with('status',  ' Removido!');
+    }    
     }
 }

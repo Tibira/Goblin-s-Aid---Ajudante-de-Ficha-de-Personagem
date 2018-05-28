@@ -26,7 +26,9 @@ class ArmadurasController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $armad = Armaduras::orderBy('id')->get();  
+        return view('admin.armaduras_form', compact('opc', 'armad'));
     }
 
     /**
@@ -37,8 +39,13 @@ class ArmadurasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $armad = Armaduras::create($info);
+        if ($armad) {
+            return redirect()->route('armaduras.index')
+                            ->with('status', $request->nome_armd . ' Incluído!');
     }
+}
 
     /**
      * Display the specified resource.
@@ -61,7 +68,9 @@ class ArmadurasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $armad = Armaduras::find($id); 
+        $opc = 2;
+        return view('admin.armaduras_form', compact('armad','opc'));
     }
 
     /**
@@ -73,7 +82,25 @@ class ArmadurasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_armd' => 'required',
+            'descricao_armd' => 'required',
+            'preco_armd' => 'required',
+            'peso_armd' => 'required|numeric',
+            'class_armad' => 'required|numeric',
+            'vis' => 'required'
+            ]);
+
+        $armad = Armaduras::find($id);
+
+        $dados = $request->all();
+
+        $alt = $armad->update($dados);
+
+        if ($alt) {
+            return redirect()->route('armaduras.index')
+                            ->with('status', $request->nome_armd . ' Alterado!');
+        }
     }
 
     /**
@@ -84,6 +111,11 @@ class ArmadurasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $armad = Armaduras::find($id);
+        $alt = $armad->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('armaduras.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

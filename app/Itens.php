@@ -9,8 +9,4 @@ class Itens extends Model
     protected $fillable = [
         'nome_itm', 'descricao_itm', 'preco_itm', 'peso_itm',
     ];
-
-    protected $hidden = [
-        'vis',
-    ];
 }

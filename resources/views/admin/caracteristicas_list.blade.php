@@ -3,7 +3,7 @@
 @section('content_header')
     
 <div class='col-sm-2'>
-    <a href='/' class='btn btn-primary' 
+    <a href='{{route('caracteristicas.create')}}' class='btn btn-primary' 
        role='button'> Novo </a>
        </div>
 <div class='col-sm-11'>
@@ -14,18 +14,16 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cod.</th>
           <th>Nome</th>
           <th>Descrição</th>
           <th>Nivel</th>
           <th>Classe</th>
-          <th>Ações</th>
+          <th width="200px">Ações</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($carac as $car)
             <tr>
-              <td>{{$car->id}}</td>
               <td>{{$car->nome_car}}</td>
               <td>{{$car->descricao_car}}</td>
               <td>{{$car->nivel}}</td>
@@ -36,13 +34,13 @@
                class='btn btn-info' 
                role='button'> Ver </a> 
 
-            <a href='#'
+            <a href='{{route('caracteristicas.edit',$car->id)}}'
                class='btn btn-warning' 
                role='button'> Alterar </a> 
 
             <form style="display: inline-block"
                   method="post"
-                  action="#"
+                  action="{{route('caracteristicas.destroy',$car->id)}}"
                   onsubmit="return confirm('Confirma Exclusão?')">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}

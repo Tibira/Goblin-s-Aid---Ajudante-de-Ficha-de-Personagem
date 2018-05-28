@@ -27,7 +27,9 @@ class ProficienciasController extends Controller
      */
     public function create()
     {
-        //
+        $opc = 1;
+        $profic = Proficiencias::orderBy('id')->get();  
+        return view('admin.proficiencias_form', compact('opc', 'profic'));
     }
 
     /**
@@ -37,8 +39,13 @@ class ProficienciasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $info = $request->all();
+        $profic = Proficiencias::create($info);
+        if ($profic) {
+            return redirect()->route('proficiencias.index')
+                            ->with('status', $request->nome_pro . ' Incluído!');
+    }
     }
 
     /**
@@ -63,7 +70,9 @@ class ProficienciasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profic = Proficiencias::find($id); 
+        $opc = 2;
+        return view('admin.proficiencias_form', compact('profic','opc'));
     }
 
     /**
@@ -75,7 +84,22 @@ class ProficienciasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome_pro' => 'required',
+            'descricao_pro' => 'required',
+            'vis' => 'required'
+            ]);
+
+        $profic = Proficiencias::find($id);
+
+        $dados = $request->all();
+
+        $alt = $profic->update($dados);
+
+        if ($alt) {
+            return redirect()->route('proficiencias.index')
+                            ->with('status', $request->nome_pro . ' Alterado!');
+        }
     }
 
     /**
@@ -86,6 +110,11 @@ class ProficienciasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profic = Proficiencias::find($id);
+        $alt = $profic->decrement('vis');   
+        if ($alt) {
+        return redirect()->route('proficiencias.index')
+                        ->with('status',  ' Removido!');
+    }   
     }
 }

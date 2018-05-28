@@ -3,7 +3,7 @@
 @section('content_header')
     
 <div class='col-sm-2'>
-    <a href='/' class='btn btn-primary' 
+    <a href='{{route('antecedentes.create')}}' class='btn btn-primary' 
        role='button'> Novo </a>
 </div>
 <div class='col-sm-11'>
@@ -14,7 +14,6 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cód.</th>
           <th>Nome</th>
           <th>Descrição</th>
           <th>Itens</th>
@@ -22,13 +21,12 @@
           <th>Proficiencias</th>
           <th>Idiomas</th>
           <th>Caracteristicas Extras</th>
-          <th>Ações</th>
+          <th width="200px">Ações</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($antec as $ant)
             <tr>
-              <td>{{$ant->id}}</td>
               <td>{{$ant->nome_ant}}</td>
               <td>{{$ant->descricao_ant}}</td>
               <td>{{$ant->itens_ant}}</td>
@@ -42,13 +40,13 @@
                class='btn btn-info' 
                role='button'> Ver </a> 
 
-            <a href='#'
+            <a href='{{route('antecedentes.edit',$ant->id)}}'
                class='btn btn-warning' 
                role='button'> Alterar </a> 
 
             <form style="display: inline-block"
                   method="post"
-                  action="#"
+                  action="{{route('antecedentes.destroy',$ant->id)}}"
                   onsubmit="return confirm('Confirma Exclusão?')">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
