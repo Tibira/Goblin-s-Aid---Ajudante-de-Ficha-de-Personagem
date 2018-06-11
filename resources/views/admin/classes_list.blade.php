@@ -14,19 +14,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Dado de Vida</th>
-          <th>Truques</th>
-          <th>Nivel 1</th>
-          <th>Nivel 2</th>
-          <th>Nivel 3</th>
-          <th>Nivel 4</th>
-          <th>Nivel 5</th>
-          <th>Nivel 6</th>
-          <th>Nivel 7</th>
-          <th>Nivel 8</th>
-          <th>Nivel 9</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -35,17 +24,6 @@
             <tr>
               <td>{{$classe->nome_cla}}</td>
               <td>{{$classe->descricao_cla}}</td>
-              <td>{{$classe->dado_vida}}</td>
-              <td>{{$classe->truques}}</td>
-              <td>{{$classe->nivel1}}</td>
-              <td>{{$classe->nivel2}}</td>
-              <td>{{$classe->nivel3}}</td>
-              <td>{{$classe->nivel4}}</td>
-              <td>{{$classe->nivel5}}</td>
-              <td>{{$classe->nivel6}}</td>
-              <td>{{$classe->nivel7}}</td>
-              <td>{{$classe->nivel8}}</td>
-              <td>{{$classe->nivel9}}</td>
               <td>
             
             <a href='{{route('classes.show',$classe->id)}}'

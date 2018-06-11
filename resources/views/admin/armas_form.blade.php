@@ -39,6 +39,13 @@
                        required>
             </div>
             <div class="form-group">
+                <label for="descricao_arm">Descrição:</label>
+                <input type="text" class="form-control" id="descricao_arm" 
+                       name="descricao_arm" 
+                       value="{{$arma->descricao_arm or old('descricao_arm')}}"
+                       required>
+            </div>
+            <div class="form-group">
                 <label for="tipo_arm">Tipo:</label>
                 <input type="text" class="form-control" id="tipo_arm" 
                        name="tipo_arm" 

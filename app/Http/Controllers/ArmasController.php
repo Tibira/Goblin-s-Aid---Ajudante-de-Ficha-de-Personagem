@@ -85,6 +85,7 @@ class ArmasController extends Controller
     {
         $this->validate($request, [
             'nome_arm' => 'required',
+            'descricao_arm' => 'required',
             'tipo_arm' => 'required',
             'preco_arm' => 'required',
             'peso_arm' => 'required|numeric',

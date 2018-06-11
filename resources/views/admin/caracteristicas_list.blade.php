@@ -14,10 +14,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Nivel</th>
-          <th>Classe</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -26,8 +24,6 @@
             <tr>
               <td>{{$car->nome_car}}</td>
               <td>{{$car->descricao_car}}</td>
-              <td>{{$car->nivel}}</td>
-              <td>{{$car->classe_id}}</td>
               <td>
             
             <a href='{{route('caracteristicas.show',$car->id)}}'

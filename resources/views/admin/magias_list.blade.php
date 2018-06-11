@@ -13,15 +13,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Conjuradores</th>
-          <th>Nivel</th>
-          <th>Escola</th>
-          <th>Tempo</th>
-          <th>Componentes</th>
-          <th>Alcance</th>
-          <th>Duração</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -30,13 +23,6 @@
             <tr>
               <td>{{$mag->nome_mag}}</td>
               <td>{{$mag->descricao_mag}}</td>
-              <td>{{$mag->conjuradores_mag}}</td>
-              <td>{{$mag->nivel_mag}}</td>
-              <td>{{$mag->escola_mag}}</td>
-              <td>{{$mag->tempo_mag}}</td>
-              <td>{{$mag->componentes_mag}}</td>
-              <td>{{$mag->alcance_mag}}</td>
-              <td>{{$mag->duracao_mag}}</td>
               <td>
             
             <a href='{{route('magias.show',$mag->id)}}'

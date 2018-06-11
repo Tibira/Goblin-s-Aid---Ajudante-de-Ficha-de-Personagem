@@ -14,12 +14,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Preco</th>
-          <th>Peso(Kg)</th>
-          <th>Classe de Armadura</th>
-          <th>Força</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -28,10 +24,6 @@
             <tr>
               <td>{{$armd->nome_armd}}</td>
               <td>{{$armd->descricao_armd}}</td>
-              <td>{{$armd->preco_armd}}</td>
-              <td>{{$armd->peso_armd}}</td>
-              <td>{{$armd->class_armad}}</td>
-              <td>{{$armd->forca}}</td>
               <td>
             
             <a href='{{route('armaduras.show',$armd->id)}}'

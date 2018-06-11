@@ -14,13 +14,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
-          <th>Tipo</th>
-          <th>Preco</th>
-          <th>Peso(Kg)</th>
-          <th>Dano</th>
-          <th>Propiedade</th>
-          <th>Efeito Adicional</th>
+          <th width="200px">Nome</th>
+          <th>Descrição</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -28,12 +23,7 @@
             @foreach ($arma as $arm)
             <tr>
               <td>{{$arm->nome_arm}}</td>
-              <td>{{$arm->tipo_arm}}</td>
-              <td>{{$arm->preco_arm}}</td>
-              <td>{{$arm->peso_arm}}</td>
-              <td>{{$arm->dano_arm}}</td>
-              <td>{{$arm->propiedade}}</td>
-              <td>{{$arm->efeito_adicional}}</td>
+              <td>{{$arm->descricao_arm}}</td>
               <td>
             
             <a href='{{route('armas.show',$arm->id)}}'

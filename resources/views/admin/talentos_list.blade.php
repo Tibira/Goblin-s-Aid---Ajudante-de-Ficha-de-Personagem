@@ -13,9 +13,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Pré Requisitos</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -24,7 +23,6 @@
             <tr>
               <td>{{$tal->nome_tal}}</td>
               <td>{{$tal->descricao_tal}}</td>
-              <td>{{$tal->pre_requisito_tal}}</td>
               <td>
             
             <a href='{{route('talentos.show',$tal->id)}}'

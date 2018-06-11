@@ -14,10 +14,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Preço</th>
-          <th>Peso(Kg)</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -26,8 +24,6 @@
             <tr>
               <td>{{$itm->nome_itm}}</td>
               <td>{{$itm->descricao_itm}}</td>
-              <td>{{$itm->preco_itm}}</td>
-              <td>{{$itm->peso_itm}}</td>
               <td>
             
             <a href='{{route('itens.show',$itm->id)}}'

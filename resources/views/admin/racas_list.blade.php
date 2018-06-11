@@ -14,12 +14,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Traços Raciais</th>
-          <th>Habilidade</th>
-          <th>Valor de Hablidade</th>
-          <th>Deslocamento</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -28,10 +24,6 @@
             <tr>
               <td>{{$rac->nome_rac}}</td>
               <td>{{$rac->descricao_rac}}</td>
-              <td>{{$rac->tracos_raciais}}</td>
-              <td>{{$rac->habilidade}}</td>
-              <td>{{$rac->val_hab}}</td>
-              <td>{{$rac->deslocamento}}</td>
               <td>
             
             <a href='{{route('racas.show',$rac->id)}}'

@@ -14,13 +14,8 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Nome</th>
+          <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th>Itens</th>
-          <th>Pericias</th>
-          <th>Proficiencias</th>
-          <th>Idiomas</th>
-          <th>Caracteristicas Extras</th>
           <th width="200px">Ações</th>
         </tr>
         </thead>
@@ -29,11 +24,6 @@
             <tr>
               <td>{{$ant->nome_ant}}</td>
               <td>{{$ant->descricao_ant}}</td>
-              <td>{{$ant->itens_ant}}</td>
-              <td>{{$ant->pericias_ant}}</td>
-              <td>{{$ant->proficiencias_ant}}</td>
-              <td>{{$ant->idiomas_ant}}</td>
-              <td>{{$ant->carac_extras_ant}}</td>
               <td>
             
             <a href='{{route('antecedentes.show',$ant->id)}}'

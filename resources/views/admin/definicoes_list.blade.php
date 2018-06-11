@@ -14,7 +14,7 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Item</th>
+          <th width="200px">Item</th>
           <th>Definição</th>
           <th width="200px">Ações</th>
         </tr>

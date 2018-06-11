@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Goblin\'s Aid</title>
+        <title>Goblin's Aid - Ajudante de ficha de RPG</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -42,7 +42,10 @@
             }
 
             .content {
+                font-family: papyrus;
                 text-align: center;
+                color: black;
+                font-size: 84px;
             }
 
             .title {
@@ -62,6 +65,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .meta{
+                font-family: viner hand itc;
+                font-size: 20px; 
+            }
         </style>
     </head>
     <body>
@@ -72,27 +79,25 @@
                         <a href="{{ url('/home') }}">Dashboard</a>
                     @else
                         <a href="{{ route('social.login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ url('/register') }}">Registro</a>
                     @endif
                 </div>
             @endif
 
             <div class="content">
+            Goblin's Aid
                 <div class="title m-b-md">
                     @if(Auth::check())
                         <img src="{{ auth()->user()->avatar }}" width="200" alt="" class="img-circle"> <br>
                     @else
-                        <img src="http://www.qcode.in/wp-content/themes/qcode1/assets/images/logo.svg" width="200" alt="" class="img-circle"> <br>
+                        <img src="https://user-images.githubusercontent.com/28794961/41233028-83fe7b6a-6d5e-11e8-8256-5b6ad895119d.png" width="200" alt="" class="img-circle"> <br>
                     @endif
-                    Social Auth
+                    
                 </div>
 
                 <p class="meta">
-                    OAuth login using Facebook, Google, Twitter and Github with Laravel Socialite
+                    Ajudante Pessoal de Ficha de RPG
                 </p>
-                <div class="links">
-                    <a href="//qcode.in">Visit QCode.in for tutorial</a>
-                </div>
             </div>
         </div>
     </body>
