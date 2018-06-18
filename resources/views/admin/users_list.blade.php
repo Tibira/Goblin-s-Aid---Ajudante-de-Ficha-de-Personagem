@@ -10,7 +10,7 @@
         <table class="table table-striped">
         <thead>
         <tr>
-          <th>Cód.</th>
+          <th>Código</th>
           <th>Nome</th>
           <th>E-mail</th>
         </tr>

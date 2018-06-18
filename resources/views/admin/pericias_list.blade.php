@@ -16,7 +16,7 @@
         <tr>
           <th width="200px">Nome</th>
           <th>Descrição</th>
-          <th width="200px">Ações</th>
+          <th width="235px">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
             
             <a href='{{route('pericias.show',$per->id)}}'
                class='btn btn-info' 
-               role='button'> Ver </a> 
+               role='button'> Detalhes </a> 
 
             <a href='{{route('pericias.edit',$per->id)}}'
                class='btn btn-warning' 

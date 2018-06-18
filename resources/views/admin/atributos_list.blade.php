@@ -17,7 +17,7 @@
           <th>Constituição</th>
           <th>Carisma</th>
           <th>ID da Ficha</th>
-          <th width="75px">Ações</th>
+          <th width="90px">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
             
             <a href='{{route('atributos.show',$atr->id)}}'
                class='btn btn-info' 
-               role='button'> Ver </a> 
+               role='button'> Detalhes </a> 
             </td>
 
               </tr>
