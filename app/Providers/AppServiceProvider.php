@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(UrlGenenrator $url)
+    public function boot(UrlGenerator $url)
     {
         Schema::defaultStringLength(191);
         if(env('REDIRECT_HTTPS')){
