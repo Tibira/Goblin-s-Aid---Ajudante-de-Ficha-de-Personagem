@@ -91,7 +91,6 @@ class RacasController extends Controller
             'habilidade' => 'required',
             'val_hab' => 'required|numeric',
             'deslocamento' => 'required|numeric',
-            'vis' => 'required'
             ]);
 
         $racas = Racas::find($id);

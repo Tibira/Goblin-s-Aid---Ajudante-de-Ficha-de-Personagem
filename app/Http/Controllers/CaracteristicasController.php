@@ -90,7 +90,6 @@ class CaracteristicasController extends Controller
             'descricao_car' => 'required',
             'nivel' => 'required|numeric',
             'classe_id' => 'required|numeric',
-            'vis' => 'required'
             ]);
 
         $carac = Caracteristicas::find($id);

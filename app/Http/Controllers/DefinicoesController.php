@@ -86,7 +86,6 @@ class DefinicoesController extends Controller
         $this->validate($request, [
             'item' => 'required',
             'definicao' => 'required',
-            'vis' => 'required'
             ]);
 
         $defin = Definicoes::find($id);

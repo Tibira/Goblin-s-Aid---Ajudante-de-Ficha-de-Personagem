@@ -58,7 +58,7 @@
                        name="peso_armd" 
                        value="{{$armad->peso_armd or old('peso_armd')}}"
                        required>
-            </div>-.
+            </div>
             <div class="form-group">
                 <label for="class_armad">Classe de Armadura:</label>
                 <input type="text" class="form-control" id="class_armad" 

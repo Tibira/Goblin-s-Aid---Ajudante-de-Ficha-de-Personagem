@@ -86,7 +86,6 @@ class MagiasController extends Controller
             'componentes_mag' => 'required',
             'alcance_mag' => 'required',
             'duracao_mag' => 'required',
-            'vis' => 'required'
             ]);
 
         $magia = Magias::find($id);

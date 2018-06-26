@@ -88,7 +88,6 @@ class ArmadurasController extends Controller
             'preco_armd' => 'required',
             'peso_armd' => 'required|numeric',
             'class_armad' => 'required|numeric',
-            'vis' => 'required'
             ]);
 
         $armad = Armaduras::find($id);

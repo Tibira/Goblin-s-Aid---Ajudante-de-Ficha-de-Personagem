@@ -88,7 +88,6 @@ class ItensController extends Controller
             'descricao_itm' => 'required',
             'preco_itm' => 'required',
             'peso_itm' => 'required|numeric',
-            'vis' => 'required'
             ]);
 
         $itens = Itens::find($id);

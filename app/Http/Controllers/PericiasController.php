@@ -88,7 +88,6 @@ class PericiasController extends Controller
         $this->validate($request, [
             'nome_per' => 'required',
             'descricao_per' => 'required',
-            'vis' => 'required'
             ]);
 
         $peric = Pericias::find($id);

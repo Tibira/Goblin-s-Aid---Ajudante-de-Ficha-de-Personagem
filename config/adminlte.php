@@ -184,15 +184,15 @@ return [
                         'submenu' => [
                             [
                                 'text' => 'Magias',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             [
                                 'text' => 'Pericias',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             [
                                 'text' => 'Proficiencias',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             
                         ],      
@@ -202,15 +202,15 @@ return [
                         'submenu' => [
                             [
                                 'text' => 'Armaduras',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             [
                                 'text' => 'Armas',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             [
                                 'text' => 'Itens',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             
                         ],      
@@ -220,27 +220,27 @@ return [
                         'submenu' => [
                             [
                                 'text' => 'Antecedentes',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             [
                                 'text' => 'Atributos',
-                                'url'  => '/talentos',  
+                                'url'  => '#',  
                             ],
                             [
                                 'text' => 'Classes',
-                                'url'  => '/talentos',  
+                                'url'  => '#',  
                             ],
                             [
                                 'text' => 'Personalização',
-                                'url'  => '/talentos',  
+                                'url'  => '#',  
                             ],
                             [
                                 'text' => 'Raças',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                             [
                                 'text' => 'Talentos',
-                                'url'  => '/talentos',
+                                'url'  => '#',
                             ],
                         ],      
                     ],

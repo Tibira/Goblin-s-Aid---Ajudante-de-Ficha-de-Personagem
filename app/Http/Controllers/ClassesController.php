@@ -87,7 +87,6 @@ class ClassesController extends Controller
             'nome_cla' => 'required',
             'descricao_cla' => 'required',
             'dado_vida' => 'required',
-            'vis' => 'required'
             ]);
 
         $classes = Classes::find($id);

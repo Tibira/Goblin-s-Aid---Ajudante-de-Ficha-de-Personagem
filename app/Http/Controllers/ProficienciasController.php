@@ -87,7 +87,6 @@ class ProficienciasController extends Controller
         $this->validate($request, [
             'nome_pro' => 'required',
             'descricao_pro' => 'required',
-            'vis' => 'required'
             ]);
 
         $profic = Proficiencias::find($id);

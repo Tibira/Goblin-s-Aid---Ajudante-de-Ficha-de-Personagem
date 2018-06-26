@@ -89,7 +89,6 @@ class TalentosController extends Controller
             'nome_tal' => 'required',
             'descricao_tal' => 'required',
             'pre_requisito_tal' => 'required',
-            'vis' => 'required'
             ]);
 
         $talentos = Talentos::find($id);
