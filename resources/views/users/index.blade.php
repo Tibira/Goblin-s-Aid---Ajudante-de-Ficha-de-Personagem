@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="shortcut icon" href="https://user-images.githubusercontent.com/28794961/42189845-93f9792e-7e30-11e8-89fc-766389d78c2e.jpg" />
         <title>Goblin's Aid - Ajudante de ficha de RPG</title>
 
         <!-- Fonts -->
@@ -51,7 +51,15 @@
             .title {
                 font-size: 84px;
             }
-
+            .button {
+                font-size: 25px;
+                font-family: arial;
+                color: green;
+                background-color: black;
+                width: 160px;
+                margin-left: 150px;
+                border-radius: 4px;
+            }
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -76,28 +84,33 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Dashboard</a>
+                        <a href="{{ url('/home') }}">ENTRAR</a>
                     @else
-                        <a href="{{ route('social.login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Registro</a>
+                        <a href="{{ route('social.login') }}">LOGIN</a>
+                        <a href="{{ url('/register') }}">REGISTRO</a>
                     @endif
                 </div>
             @endif
 
             <div class="content">
             Goblin's Aid
+            <p class="meta">
+                    Ajudante Pessoal de Ficha de RPG
+                </p>
                 <div class="title m-b-md">
                     @if(Auth::check())
-                        <img src="{{ auth()->user()->avatar }}" width="200" alt="" class="img-circle"> <br>
+                        <img src="https://user-images.githubusercontent.com/28794961/42189845-93f9792e-7e30-11e8-89fc-766389d78c2e.jpg" width="200" alt="" class="img-circle"> <br>
+                        
+                        <div class="button">
+                    <a href="{{ url('/home') }}">
+                            ENTRAR
+                    </a>
+                    </div>
                     @else
                         <img src="https://user-images.githubusercontent.com/28794961/41233028-83fe7b6a-6d5e-11e8-8256-5b6ad895119d.png" width="200" alt="" class="img-circle"> <br>
                     @endif
                     
                 </div>
-
-                <p class="meta">
-                    Ajudante Pessoal de Ficha de RPG
-                </p>
             </div>
         </div>
     </body>

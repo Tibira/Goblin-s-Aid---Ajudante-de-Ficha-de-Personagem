@@ -115,4 +115,55 @@ class MagiasController extends Controller
                         ->with('status',  ' Removido!');
     }   
     }
+    public function ws($id = null) {
+        //indica o tipo de retorno do metodo
+        header("content-type: application/json; charset=utf-8");
+        if ($id == null) {
+            $retorno = array(
+                "situacao" => "erro",
+                'nome_mag' => null,
+            'descricao_mag' => null,
+            'conjuradores_mag' => null,
+            'nivel_mag' => null,
+            'escola_mag' => null,
+            'tempo_mag' => null,
+            'componentes_mag' => null,
+            'alcance_mag' => null,
+            'duracao_mag' => null);
+            
+        } else {
+            // obtem o registro do id passado
+            $reg = Magias::find($id);
+
+            //se encontrou
+            if (isset($reg)) {
+                $retorno = array(
+                    "situacao" => "encontrado",
+                    'nome_mag' => $reg->nome_mag,
+            'descricao_mag' => $reg->descricao_mag,
+            'conjuradores_mag' => $reg->conjuradores_mag,
+            'nivel_mag' => $reg->nivel_mag,
+            'escola_mag' => $reg->escola_mag,
+            'tempo_mag' => $reg->tempo_mag,
+            'componentes_mag' => $reg->componentes_mag,
+            'alcance_mag' => $reg->alcance_mag,
+            'duracao_mag' => $reg->duracao_mag);
+            } else {
+                $retorno = array(
+                    "situacao" => "inexistente",
+                    'nome_mag' => null,
+            'descricao_mag' => null,
+            'conjuradores_mag' => null,
+            'nivel_mag' => null,
+            'escola_mag' => null,
+            'tempo_mag' => null,
+            'componentes_mag' => null,
+            'alcance_mag' => null,
+            'duracao_mag' => null);
+            }
+        }
+        //converte array para o formato JSON
+        echo json_encode($retorno, JSON_PRETTY_PRINT);
+    }
+
 }

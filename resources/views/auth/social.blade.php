@@ -11,17 +11,21 @@
                     </div>
                 @endif
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center">Login </div>
+                    <div class="panel-heading text-center">LOGIN </div>
                     <div class="panel-body">
                         <a disabled href="{{ route('social.oauth', 'facebook') }}" class="btn btn-primary btn-block">
+<<<<<<< HEAD
                             Login utilizando Facebook
+=======
+                            LOGIN COM FACEBOOK
+>>>>>>> dev
                         </a>
                         <a href="{{ route('social.oauth', 'google') }}" class="btn btn-danger btn-block">
-                            Login utilizando Google
+                            LOGIN COM GOOGLE
                         </a>
                         <hr>
                         <a href="{{ route('login') }}" class="btn btn-default btn-block">
-                            Login utilizando Email
+                            LOGIN COM EMAIL
                         </a>
                     </div>
                 </div>

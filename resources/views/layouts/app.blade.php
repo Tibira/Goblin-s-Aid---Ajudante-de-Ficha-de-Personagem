@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="https://user-images.githubusercontent.com/28794961/42189845-93f9792e-7e30-11e8-89fc-766389d78c2e.jpg" />
 </head>
 <body>
     <div id="app">
@@ -43,8 +44,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Registro</a></li>
+                            <li><a href="{{ route('login') }}">LOGIN</a></li>
+                            <li><a href="{{ route('register') }}">REGISTRO</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
