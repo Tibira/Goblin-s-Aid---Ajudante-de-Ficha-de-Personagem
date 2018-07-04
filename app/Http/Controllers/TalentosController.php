@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Talentos;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class TalentosController extends Controller
@@ -15,6 +16,9 @@ class TalentosController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $talento = Talentos::where('vis',1)->get();
         
         return view('admin.talentos_list', compact('talento'));
@@ -28,6 +32,9 @@ class TalentosController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $talento = Talentos::orderBy('id')->get();  
         return view('admin.talentos_form', compact('opc', 'talentos'));
@@ -41,6 +48,9 @@ class TalentosController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $talentos = Talentos::create($info);
         if ($talentos) {
@@ -57,6 +67,9 @@ class TalentosController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $talento = Talentos::find($id);
 
         return view('admin.talentos_view', compact('talento'));
@@ -71,6 +84,9 @@ class TalentosController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $talentos = Talentos::find($id); 
         $opc = 2;
         return view('admin.talentos_form', compact('talentos','opc'));
@@ -85,6 +101,9 @@ class TalentosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_tal' => 'required',
             'descricao_tal' => 'required',
@@ -111,6 +130,9 @@ class TalentosController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $talentos = Talentos::find($id);
         $alt = $talentos->decrement('vis');   
         if ($alt) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Magias;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class MagiasController extends Controller
@@ -14,6 +15,9 @@ class MagiasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $magias = Magias::where('vis',1)->get();
         return view('admin.magias_list', compact('magias'));
     }
@@ -24,6 +28,9 @@ class MagiasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $magia = Magias::orderBy('id')->get();  
         return view('admin.magias_form', compact('opc', 'magia'));
@@ -36,6 +43,9 @@ class MagiasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $magia = Magias::create($info);
         if ($magia) {
@@ -51,6 +61,9 @@ class MagiasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $magia = Magias::find($id);
         return view('admin.magias_view', compact('magia'));
     }
@@ -62,6 +75,9 @@ class MagiasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){    
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $magia = Magias::find($id); 
         $opc = 2;
         return view('admin.magias_form', compact('magia','opc'));
@@ -76,6 +92,9 @@ class MagiasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_mag' => 'required',
             'descricao_mag' => 'required',
@@ -108,6 +127,9 @@ class MagiasController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $magias = Magias::find($id);
         $alt = $magias->decrement('vis');   
         if ($alt) {

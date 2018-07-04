@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Proficiencias;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class ProficienciasController extends Controller
@@ -15,6 +16,9 @@ class ProficienciasController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $profic = Proficiencias::where('vis',1)->get();
         
         return view('admin.proficiencias_list', compact('profic'));
@@ -27,6 +31,9 @@ class ProficienciasController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $profic = Proficiencias::orderBy('id')->get();  
         return view('admin.proficiencias_form', compact('opc', 'profic'));
@@ -40,6 +47,9 @@ class ProficienciasController extends Controller
      */
     public function store(Request $request)
     {   
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $profic = Proficiencias::create($info);
         if ($profic) {
@@ -56,6 +66,9 @@ class ProficienciasController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $profic = Proficiencias::find($id);
 
         return view('admin.proficiencias_view', compact('profic'));
@@ -70,6 +83,9 @@ class ProficienciasController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $profic = Proficiencias::find($id); 
         $opc = 2;
         return view('admin.proficiencias_form', compact('profic','opc'));
@@ -84,6 +100,9 @@ class ProficienciasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_pro' => 'required',
             'descricao_pro' => 'required',
@@ -109,6 +128,9 @@ class ProficienciasController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $profic = Proficiencias::find($id);
         $alt = $profic->decrement('vis');   
         if ($alt) {

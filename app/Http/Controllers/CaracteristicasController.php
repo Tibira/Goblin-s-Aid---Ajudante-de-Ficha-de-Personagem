@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Caracteristicas;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class CaracteristicasController extends Controller
@@ -15,6 +16,9 @@ class CaracteristicasController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $carac = Caracteristicas::where('vis',1)->get();
         
         return view('admin.caracteristicas_list', compact('carac'));
@@ -28,6 +32,9 @@ class CaracteristicasController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $carac = Caracteristicas::orderBy('id')->get();  
         return view('admin.caracteristicas_form', compact('opc', 'carac'));
@@ -41,6 +48,9 @@ class CaracteristicasController extends Controller
      */
     public function store(Request $request)
     {   
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $carac = Caracteristicas::create($info);
         if ($carac) {
@@ -57,6 +67,9 @@ class CaracteristicasController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $carac = Caracteristicas::find($id);
 
         return view('admin.caracteristicas_view', compact('carac'));
@@ -71,6 +84,9 @@ class CaracteristicasController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $carac = Caracteristicas::find($id); 
         $opc = 2;
         return view('admin.caracteristicas_form', compact('carac','opc'));
@@ -85,6 +101,9 @@ class CaracteristicasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_car' => 'required',
             'descricao_car' => 'required',
@@ -112,6 +131,9 @@ class CaracteristicasController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $carac = Caracteristicas::find($id);
         $alt = $carac->decrement('vis');   
         if ($alt) {

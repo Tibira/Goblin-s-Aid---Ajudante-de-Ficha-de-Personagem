@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Itens;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class ItensController extends Controller
@@ -15,6 +16,9 @@ class ItensController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $itens = Itens::where('vis',1)->get();
         
         return view('admin.itens_list', compact('itens'));
@@ -27,6 +31,9 @@ class ItensController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $itens = Itens::orderBy('id')->get();  
         return view('admin.itens_form', compact('opc', 'itens'));
@@ -40,6 +47,9 @@ class ItensController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $itens = Itens::create($info);
         if ($itens) {
@@ -56,6 +66,9 @@ class ItensController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $itens = Itens::find($id);
 
         return view('admin.itens_view', compact('itens'));
@@ -69,6 +82,9 @@ class ItensController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $itens = Itens::find($id); 
         $opc = 2;
         return view('admin.itens_form', compact('itens','opc'));
@@ -83,6 +99,9 @@ class ItensController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_itm' => 'required',
             'descricao_itm' => 'required',
@@ -111,6 +130,9 @@ class ItensController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+        return redirect('login');
+    }
         $itens = Itens::find($id);
         $alt = $itens->decrement('vis');   
         if ($alt) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Armaduras;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 class ArmadurasController extends Controller
 {
@@ -14,6 +15,9 @@ class ArmadurasController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $armad = Armaduras::where('vis',1)->get();
         
         return view('admin.armaduras_list', compact('armad'));
@@ -26,6 +30,9 @@ class ArmadurasController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $armad = Armaduras::orderBy('id')->get();  
         return view('admin.armaduras_form', compact('opc', 'armad'));
@@ -39,6 +46,9 @@ class ArmadurasController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+        return redirect('login');
+    }
         $info = $request->all();
         $armad = Armaduras::create($info);
         if ($armad) {
@@ -54,7 +64,9 @@ class ArmadurasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $armad = Armaduras::find($id);
 
         return view('admin.armaduras_view', compact('armad'));
@@ -68,6 +80,9 @@ class ArmadurasController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $armad = Armaduras::find($id); 
         $opc = 2;
         return view('admin.armaduras_form', compact('armad','opc'));
@@ -82,6 +97,9 @@ class ArmadurasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_armd' => 'required',
             'descricao_armd' => 'required',
@@ -110,6 +128,9 @@ class ArmadurasController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $armad = Armaduras::find($id);
         $alt = $armad->decrement('vis');   
         if ($alt) {

@@ -13,6 +13,7 @@
             <p><b>ID: </b> {{$arma->id}}</p>
             <p><b>Nome: </b> {{$arma->nome_arm}}</p>
             <p><b>Descrição: </b> {{$arma->descricao_arm}}</p>
+            <p><b>Tipo: </b> {{$arma->tipo_arm}}</p>
             <p><b>Preço: </b> {{$arma->preco_arm}}</p>
             <p><b>Peso(Kg): </b> {{$arma->peso_arm}}</p>
             <p><b>Dano: </b> {{$arma->dano_arm}}</p>

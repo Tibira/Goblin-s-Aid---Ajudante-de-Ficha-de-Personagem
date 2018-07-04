@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Definicoes;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 class DefinicoesController extends Controller
 {
@@ -14,6 +15,9 @@ class DefinicoesController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
             $def = Definicoes::where('vis',1)->get();
             
             return view('admin.definicoes_list', compact('def'));
@@ -26,6 +30,9 @@ class DefinicoesController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $defin = Definicoes::orderBy('id')->get();  
         return view('admin.definicoes_form', compact('opc', 'defin'));
@@ -39,6 +46,9 @@ class DefinicoesController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $defin = Definicoes::create($info);
         if ($defin) {
@@ -55,6 +65,9 @@ class DefinicoesController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $defin = Definicoes::find($id);
 
         return view('admin.definicoes_view', compact('defin'));
@@ -69,6 +82,9 @@ class DefinicoesController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $defin = Definicoes::find($id); 
         $opc = 2;
         return view('admin.definicoes_form', compact('defin','opc'));
@@ -83,6 +99,9 @@ class DefinicoesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'item' => 'required',
             'definicao' => 'required',
@@ -109,6 +128,9 @@ class DefinicoesController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $defin = Definicoes::find($id);
         $alt = $defin->decrement('vis');   
         if ($alt) {
