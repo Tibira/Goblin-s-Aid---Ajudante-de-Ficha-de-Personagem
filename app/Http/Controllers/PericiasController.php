@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pericias;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class PericiasController extends Controller
@@ -15,6 +16,9 @@ class PericiasController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $peric = Pericias::where('vis',1)->get();
         
         return view('admin.pericias_list', compact('peric'));
@@ -28,6 +32,9 @@ class PericiasController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $peric = Pericias::orderBy('id')->get();  
         return view('admin.pericias_form', compact('opc', 'peric'));
@@ -41,6 +48,9 @@ class PericiasController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $peric = Pericias::create($info);
         if ($peric) {
@@ -57,6 +67,9 @@ class PericiasController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $peric = Pericias::find($id);
 
         return view('admin.pericias_view', compact('peric'));
@@ -71,6 +84,9 @@ class PericiasController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $peric = Pericias::find($id); 
         $opc = 2;
         return view('admin.pericias_form', compact('peric','opc'));
@@ -85,6 +101,9 @@ class PericiasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_per' => 'required',
             'descricao_per' => 'required',
@@ -112,6 +131,9 @@ class PericiasController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $peric = Pericias::find($id);
         $alt = $peric->decrement('vis');   
         if ($alt) {

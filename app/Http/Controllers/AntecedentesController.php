@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Antecedentes;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 class AntecedentesController extends Controller
 {
@@ -14,6 +15,9 @@ class AntecedentesController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $antec = Antecedentes::where('vis',1)->get();
 
         return view('admin.antecedentes_list', compact('antec'));
@@ -26,6 +30,9 @@ class AntecedentesController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $antec = Antecedentes::orderBy('id')->get();  
         return view('admin.antecedentes_form', compact('opc', 'antec'));
@@ -39,6 +46,9 @@ class AntecedentesController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $antec = Antecedentes::create($info);
         if ($antec) {
@@ -55,6 +65,9 @@ class AntecedentesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $antec = Antecedentes::find($id);
         return view('admin.antecedentes_view', compact('antec'));
     }
@@ -67,6 +80,9 @@ class AntecedentesController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $antec = Antecedentes::find($id); 
         $opc = 2;
         return view('admin.antecedentes_form', compact('antec','opc'));
@@ -81,6 +97,9 @@ class AntecedentesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_ant' => 'required',
             'descricao_ant' => 'required',
@@ -109,6 +128,9 @@ class AntecedentesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $antec = Antecedentes::find($id);
         $alt = $antec->decrement('vis');   
         if ($alt) {

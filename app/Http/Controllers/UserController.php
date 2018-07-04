@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 
@@ -16,6 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $users = User::all();
         
         return view('admin.users_list', compact('users'));

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Racas;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class RacasController extends Controller
@@ -15,6 +16,9 @@ class RacasController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $racas = Racas::where('vis',1)->get();
         
         return view('admin.racas_list', compact('racas'));
@@ -28,6 +32,9 @@ class RacasController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $racas = Racas::orderBy('id')->get();  
         return view('admin.racas_form', compact('opc', 'racas'));
@@ -41,6 +48,9 @@ class RacasController extends Controller
      */
     public function store(Request $request)
     {   
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $racas = Racas::create($info);
         if ($racas) {
@@ -57,6 +67,9 @@ class RacasController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $raca = Racas::find($id);
 
         return view('admin.racas_view', compact('raca'));
@@ -70,6 +83,9 @@ class RacasController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $racas = Racas::find($id); 
         $opc = 2;
         return view('admin.racas_form', compact('racas','opc'));
@@ -84,6 +100,9 @@ class RacasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_rac' => 'required',
             'descricao_rac' => 'required',
@@ -113,6 +132,9 @@ class RacasController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $racas = Racas::find($id);
         $alt = $racas->decrement('vis');   
         if ($alt) {

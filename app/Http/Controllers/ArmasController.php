@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Armas;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class ArmasController extends Controller
@@ -15,6 +16,9 @@ class ArmasController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $arma = Armas::where('vis',1)->get();
         
         return view('admin.armas_list', compact('arma'));
@@ -27,6 +31,9 @@ class ArmasController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $opc = 1;
         $arma = Armas::orderBy('id')->get();  
         return view('admin.armas_form', compact('opc', 'arma'));
@@ -40,6 +47,9 @@ class ArmasController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $info = $request->all();
         $arma = Armas::create($info);
         if ($arma) {
@@ -56,6 +66,9 @@ class ArmasController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $arma = Armas::find($id);
 
         return view('admin.armas_view', compact('arma'));
@@ -69,6 +82,9 @@ class ArmasController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $arma = Armas::find($id); 
         $opc = 2;
         return view('admin.armas_form', compact('arma','opc'));
@@ -83,6 +99,9 @@ class ArmasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $this->validate($request, [
             'nome_arm' => 'required',
             'descricao_arm' => 'required',
@@ -112,6 +131,9 @@ class ArmasController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
     $arma = Armas::find($id);
 
     $alt = $arma->decrement('vis');   

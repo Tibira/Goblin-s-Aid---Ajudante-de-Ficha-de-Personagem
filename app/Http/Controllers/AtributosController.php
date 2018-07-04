@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Atributos;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class AtributosController extends Controller
@@ -15,6 +16,9 @@ class AtributosController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $atrib = Atributos::where('vis',1)->get();
         
         return view('admin.atributos_list', compact('atrib'));
@@ -49,6 +53,9 @@ class AtributosController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
         $atrib = Atributos::find($id);
 
         return view('admin.atributos_view', compact('atrib'));
