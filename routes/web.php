@@ -1,5 +1,6 @@
 <?php
     Route::get('/','UserController@home');
+    Route::get('/wsMagia/{id}','MagiasController@ws');
     Route::resource('users', 'UserController');
     Route::resource('antecedentes', 'AntecedentesController');
     Route::resource('armaduras', 'ArmadurasController');
