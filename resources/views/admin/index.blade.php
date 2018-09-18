@@ -6,8 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Goblin's Aid - Ajudante de ficha de RPG</title>
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -74,28 +76,21 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">ENTRAR</a>
+                        <a href="{{ url('/home/admin') }}">Entrar</a>
                     @else
-                        <a href="{{ route('social.login') }}">LOGIN</a>
-                        <a href="{{ url('/register') }}">REGISTRO</a>
+                        <a href="{{ route('social.login') }}">Login</a>
                     @endif
                 </div>
             @endif
-
             <div class="content">
             Goblin's Aid
                 <div class="title m-b-md">
-                    @if(Auth::check())
-                        <img src="{{ auth()->user()->avatar }}" width="200" alt="" class="img-circle"> <br>
-                    @else
                         <img src="https://user-images.githubusercontent.com/28794961/41233028-83fe7b6a-6d5e-11e8-8256-5b6ad895119d.png" width="200" alt="" class="img-circle"> <br>
-                    @endif
-                    
                 </div>
-
                 <p class="meta">
                     Ajudante Pessoal de Ficha de RPG
                 </p>
+                <p class="meta">Área Administrativa</p>
             </div>
         </div>
     </body>

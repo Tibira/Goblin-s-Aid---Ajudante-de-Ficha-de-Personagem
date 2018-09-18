@@ -15,7 +15,7 @@ class CreateFichaHasClassesTable extends Migration
     {
         Schema::create('ficha_has_classes', function (Blueprint $table) {
             $table->integer('classe_id')->references('id')->on('classes');
-            $table->integer('ficha_id')->references('id')->on('ficha');
+            $table->integer('ficha_id')->references('id')->on('fichas');
             $table->integer('nivel');
             $table->timestamps();
             $table->Boolean('vis')->default(1);

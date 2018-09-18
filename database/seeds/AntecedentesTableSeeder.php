@@ -14,10 +14,7 @@ class AntecedentesTableSeeder extends Seeder
         DB::table('antecedentes')->insert([
             'nome_ant' => 'Artesão da guilda',
             'descricao_ant' => 'Você é membro da guilda de artesãos, perito em um campo específico e intimamente associado a outros artesãos',
-            'itens_ant' => 'Um conjunto de ferramentas de artesão
-            (à sua escolha), uma carta de apresentação da sua
-            guilda, um conjunto de roupas de viajante e uma
-            algibeira com 15 po',
+            'itens_ant' => 'Um conjunto de ferramentas de artesão (à sua escolha), uma carta de apresentação da sua guilda, um conjunto de roupas de viajante e uma algibeira com 15 po',
             'pericias_ant' => 'Intuição, Persuasão',
             'proficiencias_ant' => 'Um tipo de ferramenta
             de artesão',

@@ -2,13 +2,13 @@
 
 @section('content_header')
    
-<div class='col-sm-2'>
-    <a href='{{route('armas.create')}}' class='btn btn-primary' 
-       role='button'> Novo </a>
-       </div>
 <div class='col-sm-11'>
         <h2>Armas</h2>
     </div>
+<div class='col-sm-1'>
+    <a href='{{route('armas.create')}}' class='btn btn-primary' 
+       role='button'> Novo </a>
+       </div>
     
     <div class="col-sm-12">
         <table class="table table-striped">

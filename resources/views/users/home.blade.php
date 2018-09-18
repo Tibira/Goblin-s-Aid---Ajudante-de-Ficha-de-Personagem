@@ -5,34 +5,31 @@
     <div class="content-warpper" style="min-height: 540px;">
         <section class="content">
             <div class='col-sm-11'>
-                <h2>Antecedentes</h2>
+                <h2>Fichas</h2>
             </div>
             <div class='col-sm-1'>
-                <a href="{{route('antecedentes.create')}}" class='btn btn-primary' role='button'> Novo </a>
+                <a href="#" class='btn btn-primary' role='button'> Novo </a>
             </div>
             <div class="col-sm-12">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th width="200px">Nome</th>
-                            <th>Descrição</th>
+                            <th width="200px">Nome do Personagem</th>
+                            <th>Classe</th>
                             <th width="235px">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($antec as $ant)
+                        @foreach ($ficha as $fic)
                         <tr>
-                            <td>{{$ant->nome_ant}}</td>
-                            <td>{{$ant->descricao_ant}}</td>
+                            <td>{{$fic->nome_per}}</td>
+                            <td>{{$fic->classe_id}}</td>
                             <td>
-                            <a href="{{route('antecedentes.show',$ant->id)}}"
+                            <a href="{{route('ficha.show',$fic->id)}}"
                                 class='btn btn-info' 
-                                role='button'> Detalhes </a> 
-                            <a href="{{route('antecedentes.edit',$ant->id)}}"
-                                class='btn btn-warning' 
-                                role='button'> Alterar </a> 
+                                role='button'> Editar </a> 
                             <form style="display: inline-block" method="post"
-                                action="{{route('antecedentes.destroy',$ant->id)}}"
+                                action="#"
                                 onsubmit="return confirm('Confirma Exclusão?')">
                                 {{ method_field('delete') }}
                                 {{ csrf_field() }}

@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Fichas;
 use App\User;
-use App\Classes;
+use App\Admin;
 use App\Http\Controllers\Controller;
 
-class FichaController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+     public function home()
     {
-        $ficha = Fichas::where('vis',1)->get();
-        
-        return view('users.home', compact('ficha'));
+        return view('admin.index');
     }
 
     /**
@@ -51,8 +49,7 @@ class FichaController extends Controller
      */
     public function show($id)
     {
-        $ficha = Fichas::find($id);
-        return view('users.ficha', compact('ficha'));
+        //
     }
 
     /**

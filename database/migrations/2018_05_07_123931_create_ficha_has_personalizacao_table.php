@@ -15,7 +15,7 @@ class CreateFichaHasPersonalizacaoTable extends Migration
     {
         Schema::create('ficha_has_personalizacao', function (Blueprint $table) {
             $table->integer('personalizacao_id')->references('id')->on('personalizacao');
-            $table->integer('ficha_id')->references('id')->on('ficha');
+            $table->integer('ficha_id')->references('id')->on('fichas');
             $table->timestamps();
             $table->Boolean('vis')->default(1);
             });

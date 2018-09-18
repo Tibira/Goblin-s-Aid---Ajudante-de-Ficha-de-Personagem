@@ -2,13 +2,13 @@
 
 @section('content_header')
     
-<div class='col-sm-2'>
-    <a href='{{route('armaduras.create')}}' class='btn btn-primary' 
-       role='button'> Novo </a>
-       </div>
 <div class='col-sm-11'>
         <h2>Armaduras</h2>
     </div>
+<div class='col-sm-1'>
+    <a href="{{route('armaduras.create')}}" class='btn btn-primary' 
+       role='button'> Novo </a>
+       </div>
     
     <div class="col-sm-12">
         <table class="table table-striped">
@@ -25,15 +25,12 @@
               <td>{{$armd->nome_armd}}</td>
               <td>{{$armd->descricao_armd}}</td>
               <td>
-            
-            <a href='{{route('armaduras.show',$armd->id)}}'
+            <a href="{{route('armaduras.show',$armd->id)}}"
                class='btn btn-info' 
                role='button'> Detalhes </a> 
-
-            <a href='{{route('armaduras.edit',$armd->id)}}'
+            <a href="{{route('armaduras.edit',$armd->id)}}"
                class='btn btn-warning' 
                role='button'> Alterar </a> 
-
             <form style="display: inline-block"
                   method="post"
                   action="{{route('armaduras.destroy',$armd->id)}}"

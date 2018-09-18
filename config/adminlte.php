@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'home/admin',
 
     'logout_url' => 'logout',
 
@@ -175,78 +175,11 @@ return [
                 'icon'    => 'question',
                 'url'     => '/definicoes',
             ],
-            [
-                'text'    => 'Ligações',
-                'icon'    => 'retweet',
-                'submenu' => [
-                    [
-                        'text' => 'Classes',
-                        'submenu' => [
-                            [
-                                'text' => 'Magias',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Pericias',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Proficiencias',
-                                'url'  => '#',
-                            ],
-                            
-                        ],      
-                    ],
-                    [
-                        'text' => 'Equipamentos',
-                        'submenu' => [
-                            [
-                                'text' => 'Armaduras',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Armas',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Itens',
-                                'url'  => '#',
-                            ],
-                            
-                        ],      
-                    ],
-                    [
-                        'text' => 'Ficha',
-                        'submenu' => [
-                            [
-                                'text' => 'Antecedentes',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Atributos',
-                                'url'  => '#',  
-                            ],
-                            [
-                                'text' => 'Classes',
-                                'url'  => '#',  
-                            ],
-                            [
-                                'text' => 'Personalização',
-                                'url'  => '#',  
-                            ],
-                            [
-                                'text' => 'Raças',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Talentos',
-                                'url'  => '#',
-                            ],
-                        ],      
-                    ],
-                    
-                ],
-                ],
+            /*[
+                'text'    => 'Gráficos',
+                'icon'    => 'pie-chart',
+                'url'     => '/graficos',
+            ],*/
     ],
 
     /*

@@ -13,9 +13,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">Login </div>
                     <div class="panel-body">
-                        <a disabled href="{{ route('social.oauth', 'facebook') }}" class="btn btn-primary btn-block">
-                            Login utilizando Facebook
-                        </a>
                         <a href="{{ route('social.oauth', 'google') }}" class="btn btn-danger btn-block">
                             Login utilizando Google
                         </a>
