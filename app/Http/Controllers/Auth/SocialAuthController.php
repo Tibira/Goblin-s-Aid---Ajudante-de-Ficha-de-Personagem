@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use Exception;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -25,7 +25,7 @@ class SocialAuthController extends Controller
         'github',
         'facebook',
         'google',
-        'twitter'
+        'twitter',
     ];
 
     /**
@@ -46,7 +46,7 @@ class SocialAuthController extends Controller
      */
     public function redirectToProvider($driver)
     {
-        if( ! $this->isProviderAllowed($driver) ) {
+        if (!$this->isProviderAllowed($driver)) {
             return $this->sendFailedResponse("{$driver} is not currently supported");
         }
 
@@ -64,7 +64,7 @@ class SocialAuthController extends Controller
      * @param $driver
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function handleProviderCallback( $driver )
+    public function handleProviderCallback($driver)
     {
         try {
             $user = Socialite::driver($driver)->user();
@@ -73,9 +73,9 @@ class SocialAuthController extends Controller
         }
 
         // check for email in returned user
-        return empty( $user->email )
-            ? $this->sendFailedResponse("No email id returned from {$driver} provider.")
-            : $this->loginOrCreateAccount($user, $driver);
+        return empty($user->email)
+        ? $this->sendFailedResponse("No email id returned from {$driver} provider.")
+        : $this->loginOrCreateAccount($user, $driver);
     }
 
     /**
@@ -113,13 +113,13 @@ class SocialAuthController extends Controller
         $user = User::where('email', $providerUser->getEmail())->first();
 
         // if user already found
-        if( $user ) {
+        if ($user) {
             // update the avatar and provider that might have changed
             $user->update([
                 'avatar' => $providerUser->avatar,
                 'provider' => $driver,
                 'provider_id' => $providerUser->id,
-                'access_token' => $providerUser->token
+                'access_token' => $providerUser->token,
             ]);
         } else {
             // create a new user
@@ -131,10 +131,9 @@ class SocialAuthController extends Controller
                 'provider_id' => $providerUser->getId(),
                 'access_token' => $providerUser->token,
                 // user can use reset password to create a password
-                'password' => ''
+                'password' => '',
             ]);
         }
-
         // login the user
         Auth::login($user, true);
 

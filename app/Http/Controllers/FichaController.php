@@ -17,9 +17,9 @@ class FichaController extends Controller
      */
     public function index()
     {
-        $ficha = Fichas::where('vis',1)->get();
+        $fichas = Fichas::where('vis',1)->get();
         
-        return view('users.home', compact('ficha'));
+        return view('users.fichas', compact('fichas'));
     }
 
     /**
@@ -29,7 +29,8 @@ class FichaController extends Controller
      */
     public function create()
     {
-        //
+        $ficha = Fichas::orderBy('id')->get();  
+        return view('users.ficha', compact('ficha'));
     }
 
     /**
