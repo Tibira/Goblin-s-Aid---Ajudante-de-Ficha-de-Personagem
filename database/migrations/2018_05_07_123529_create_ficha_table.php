@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateFichaTable extends Migration
 {
@@ -48,6 +48,13 @@ class CreateFichaTable extends Migration
             $table->integer('nivel7')->nullable();
             $table->integer('nivel8')->nullable();
             $table->integer('nivel9')->nullable();
+            $table->String('ligacoes')->nullable();
+            $table->String('tracos_personal')->nullable();
+            $table->String('ideal')->nullable();
+            $table->String('defeito')->nullable();
+            $table->String('aparencia')->nullable();
+            $table->String('aliados')->nullable();
+            $table->String('historia')->nullable();
             $table->integer('user_id')->references('id')->on('users');
             $table->integer('classe_id')->references('id')->on('classes');
             $table->timestamps();

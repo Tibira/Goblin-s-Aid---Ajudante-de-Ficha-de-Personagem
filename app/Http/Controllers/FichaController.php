@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Fichas;
-use App\User;
 use App\Classes;
+use App\Fichas;
 use App\Http\Controllers\Controller;
+use App\Talentos;
+use Illuminate\Http\Request;
 
 class FichaController extends Controller
 {
@@ -17,9 +17,9 @@ class FichaController extends Controller
      */
     public function index()
     {
-        $fichas = Fichas::where('vis',1)->get();
-        
-        return view('users.fichas', compact('fichas'));
+        $fichas = Fichas::where('vis', 1)->get();
+        $classe = Classes::orderBy('nome_cla')->get();
+        return view('users.fichas', compact('fichas', 'classe'));
     }
 
     /**
@@ -29,8 +29,9 @@ class FichaController extends Controller
      */
     public function create()
     {
-        $ficha = Fichas::orderBy('id')->get();  
-        return view('users.ficha', compact('ficha'));
+        $talentos = Talentos::orderBy('nome_tal')->get();
+        $ficha = Fichas::orderBy('id')->get();
+        return view('users.ficha', compact('ficha', 'talentos'));
     }
 
     /**
@@ -53,7 +54,8 @@ class FichaController extends Controller
     public function show($id)
     {
         $ficha = Fichas::find($id);
-        return view('users.ficha', compact('ficha'));
+        $talentos = Talentos::orderBy('nome_tal')->get();
+        return view('users.ficha', compact('ficha', 'talentos'));
     }
 
     /**

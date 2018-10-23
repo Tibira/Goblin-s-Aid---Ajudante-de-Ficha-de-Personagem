@@ -1,13 +1,19 @@
 @extends('users.barra')
 
 @section('conteudo')
-<style>
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+<style>
 .buttons{
     margin-top: 20px;
 }
 </style>
-
+</head>
 <body>
 <div class='col-md-7'>
     <h2>Ficha </h2>
@@ -27,7 +33,7 @@
         <form method="post" action="" enctype="multipart/form-data">
             {!! method_field('put') !!}
             {{ csrf_field() }}
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <label for="nome_per">Nome:</label>
                 <input type="text" class="form-control" id="nome_per"
                        name="nome_per"
@@ -69,7 +75,7 @@
                        value="{{$ficha->pontos_vida_total or old('pontos_vida_total')}}"
                        required>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <label for="pontos_vida_temporarios">PV atuais:</label>
                 <input type="text" class="form-control" id="pontos_vida_temporarios"
                        name="pontos_vida_temporarios"
@@ -107,42 +113,42 @@
             <div class="col-md-12">
                 <label for="forca">Atributos:</label>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="forca">Força:</label>
                 <input type="text" class="form-control" id="forca"
                        name="forca"
                        value="{{$ficha->forca or old('forca')}}"
                        required>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="destreza">Destreza:</label>
                 <input type="text" class="form-control" id="destreza"
                        name="destreza"
                        value="{{$ficha->destreza or old('destreza')}}"
                        required>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="inteligencia">Inteligência:</label>
                 <input type="text" class="form-control" id="inteligencia"
                        name="inteligencia"
                        value="{{$ficha->inteligencia or old('inteligencia')}}"
                        required>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="sabedoria">Sabedoria:</label>
                 <input type="text" class="form-control" id="sabedoria"
                        name="sabedoria"
                        value="{{$ficha->sabedoria or old('sabedoria')}}"
                        required>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="carisma">Carisma:</label>
                 <input type="text" class="form-control" id="carisma"
                        name="carisma"
                        value="{{$ficha->carisma or old('carisma')}}"
                        required>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="constituicao">Constituição:</label>
                 <input type="text" class="form-control" id="constituicao"
                        name="constituicao"
@@ -275,6 +281,145 @@
                        required>
             </div>
 
+            <div class="form-group col-md-12">
+            <label for="talento_id">Talentos:</label>
+            <select class="form-control" id="talento_id" name="talento_id">
+            @foreach ($talentos as $talento)
+                <option value="{{$talento->id}}"
+    @if ((isset($reg) && $reg->talento_id==$talento->id)
+            or old('talento_id') == $talento->id) selected @endif>
+                        {{$talento->nome}}</option>
+            @endforeach
+            </select>
+        </div>
+        <div class="col-md-12">
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckAcro" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="acrobacia">Acrobacia</label>
+                <input type="text" class="form-control" id="acrobacia"
+                       name="acrobacia">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckArca"  onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="arcanismo">Arcanismo</label>
+                <input type="text" class="form-control" id="arcanismo"
+                       name="arcanismo">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckAtle" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="atletismo">Atletismo</label>
+                <input type="text" class="form-control" id="atletismo"
+                       name="atletismo">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckAtua" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="atuacao">Atuação</label>
+                <input type="text" class="form-control" id="atuacao"
+                       name="atuacao">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckBlef" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="blefar">Blefar</label>
+                <input type="text" class="form-control" id="blefar"
+                       name="blefar">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckFurt" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="furtividade">Furtividade</label>
+                <input type="text" class="form-control" id="furtividade"
+                       name="furtividade">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckHist" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="historia">História</label>
+                <input type="text" class="form-control" id="historia"
+                       name="historia">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckInti" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="intimidacao">Intimidação</label>
+                <input type="text" class="form-control" id="intimidacao"
+                       name="intimidacao">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckIntu" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="intuicao">Intuição</label>
+                <input type="text" class="form-control" id="intuicao"
+                       name="intuicao">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckInve" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="investigacao">Investigação</label>
+                <input type="text" class="form-control" id="investigacao"
+                       name="investigacao">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckLida" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="lidar_animais">Lidar com Animais</label>
+                <input type="text" class="form-control" id="lidar_animais"
+                       name="lidar_animais">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckMedi" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="medicina">Medicina</label>
+                <input type="text" class="form-control" id="medicina"
+                       name="medicina">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckNatu" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="natureza">Natureza</label>
+                <input type="text" class="form-control" id="natureza"
+                       name="natureza">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckPerc" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="percepcao">Percepção</label>
+                <input type="text" class="form-control" id="percepcao"
+                       name="percepcao">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckPers" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="persuasao">Persuasão</label>
+                <input type="text" class="form-control" id="persuasao"
+                       name="persuasao">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckPrest" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="presti">Prestidigitação</label>
+                <input type="text" class="form-control" id="presti"
+                       name="presti">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckReli" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="religiao">Religião</label>
+                <input type="text" class="form-control" id="religiao"
+                       name="religiao">
+            </div>
+        <div class="col-md-2">
+        <td> <input type="checkbox" id="ckSobr" onclick="calcular()"
+                            style="width:15px; height:15px"> </td>
+                <label for="sobrevivencia">Sobrevivência</label>
+                <input type="text" class="form-control" id="sobrevivencia"
+                       name="sobrevivencia">
+            </div>
+            </div>
         </form>
         <div class='col-md-3 buttons'>
     <a href="{{ route('fichas.index') }}" class='btn btn-primary'
@@ -283,9 +428,14 @@
        role='button'> Salvar </a>
        <a href="{{route('users.index')}}" class='btn btn-primary'
        role='button'> Salvar e Sair </a>
+       <div class="input-group-append">&nbsp;
+        <input type="button" class="btn btn-danger" value="Calcular" id="btCalcular">
+      </div>
 </div>
 
     </div>
+    <script src="/js/calculos_ficha.js"></script>
 </body>
+
 </html>
 @endsection

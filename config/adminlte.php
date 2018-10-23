@@ -133,10 +133,6 @@ return [
                     'url'  => '/armas',
                 ],
                 [
-                    'text' => 'Atributos',
-                    'url'  => '/atributos',
-                ],
-                [
                     'text' => 'Características',
                     'url'  => '/caracteristicas',
                 ],
@@ -151,10 +147,6 @@ return [
                 [
                     'text' => 'Magias',
                     'url'  => '/magias',
-                ],
-                [
-                    'text' => 'Perícias',
-                    'url'  => '/pericias',
                 ],
                 [
                     'text' => 'Proficiências',

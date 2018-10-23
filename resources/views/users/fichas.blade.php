@@ -1,6 +1,7 @@
 @extends('users.barra')
 
 @section('conteudo')
+
     <style>
 .divmargin {
     margin-top: 20px;
@@ -29,12 +30,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($fichas as $fic)
+                        @foreach ($fichas as $ficha)
                         <tr>
-                            <td>{{$fic->nome_per}}</td>
-                            <td>{{$fic->classe_id}}</td>
+                            <td>{{$ficha->nome_per}}</td>
+                            <td>{{$ficha->classe->nome_cla}}</td>
                             <td>
-                            <a href="{{route('ficha.show',$fic->id)}}"
+                            <a href="{{route('ficha.show',$ficha->id)}}"
                                 class='btn btn-info'
                                 role='button'> Editar </a>
                             <form style="display: inline-block" method="post"
@@ -54,11 +55,5 @@
     </div>
     </div>
 </body>
-    <footer class="footer">
-        <div class="pull-right hidden-xs">
-            <b>Verção</b> 0.1
-        </div>
-            Qualquer dúvida, contatar <strong>goblins.aid.help@gmail.com</strong>
-    </footer>
 </html>
 @endsection
