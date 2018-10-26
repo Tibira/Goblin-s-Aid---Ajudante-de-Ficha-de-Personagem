@@ -29,7 +29,7 @@ Route::get('oauth/{driver}', 'Auth\SocialAuthController@redirectToProvider')->na
 Route::get('oauth/{driver}/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('social.callback');
 Auth::routes();
 
-Route::get('/save', 'FichaController@save')->name('save');
+Route::get('/save', 'FichaController@salvar')->name('fichas.salvar');
 
 Route::group(['middleware' => ['web', 'auth']], function () {
 

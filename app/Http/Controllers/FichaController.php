@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Classes;
+use App\User;
+use Auth;
 use App\Fichas;
 use App\Http\Controllers\Controller;
 use App\Talentos;
@@ -17,7 +19,8 @@ class FichaController extends Controller
      */
     public function index()
     {
-        $fichas = Fichas::where('vis', 1)->get();
+        $id = Auth::user()->id;
+        $fichas = Fichas::where('vis', 1)->where('user_id',$id)->get();
         $classe = Classes::orderBy('nome_cla')->get();
         return view('users.fichas', compact('fichas', 'classe'));
     }
@@ -29,9 +32,11 @@ class FichaController extends Controller
      */
     public function create()
     {
+        $acao = 0;
         $talentos = Talentos::orderBy('nome_tal')->get();
         $ficha = Fichas::orderBy('id')->get();
-        return view('users.ficha', compact('ficha', 'talentos'));
+        $classes = Classes::orderBy('nome_cla')->get();
+        return view('users.ficha', compact('ficha', 'talentos', 'classes','acao'));
     }
 
     /**
@@ -52,10 +57,12 @@ class FichaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $acao = 1;
         $ficha = Fichas::find($id);
         $talentos = Talentos::orderBy('nome_tal')->get();
-        return view('users.ficha', compact('ficha', 'talentos'));
+        $classes = Classes::orderBy('id')->get();
+        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao'));
     }
 
     /**
@@ -88,6 +95,10 @@ class FichaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+    public function salvar()
     {
         //
     }

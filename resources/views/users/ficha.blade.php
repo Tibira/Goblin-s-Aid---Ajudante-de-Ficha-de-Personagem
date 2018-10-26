@@ -40,12 +40,32 @@
                        value="{{$ficha->nome_per or old('nome_per')}}"
                        required>
             </div>
+            <div class="col-md-3">
+            <label for="classe_id">Classe:</label>
+            <select class="form-control" id="classe_id" name="classe_id">
+            <option>Selecione a sua classe</option>
+            @foreach ($classes as $classe)
+                <option value="{{$classe->id}}"
+                @if ((isset($reg) && $reg->classe_id==$classe->id)
+            or old('classe_id') == $classe->id) selected @endif>
+                        {{$classe->nome_cla}}</option>
+            @endforeach
+            </select>
+            </div>
             <div class="col-md-2">
-                <label for="tendencia">Tendencia:</label>
-                <input type="text" class="form-control" id="tendencia"
-                       name="tendencia"
-                       value="{{$ficha->tendencia or old('tendencia')}}"
-                       required>
+            <label for="tendencia_id">Tendencia:</label>
+            <select class="form-control" id="classe_id" name="classe_id">
+            <option>Leal & Bom</option>
+            <option>Leal & Neutro</option>
+            <option>Leal & Mau</option>
+            <option>Neutro & Bom</option>
+            <option>Neutro & Neutro</option>
+            <option>Neutro & Mau</option>
+            <option>Caótico & Bom</option>
+            <option>Caótico & Neutro</option>
+            <option>Caótico & Mau</option>
+            </select>
+
             </div>
             <div class="col-md-2">
                 <label for="deslocamento">Deslocamento(m):</label>
@@ -76,13 +96,15 @@
                        required>
             </div>
             <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="zZz" id="btDescansar">
                 <label for="pontos_vida_temporarios">PV atuais:</label>
                 <input type="text" class="form-control" id="pontos_vida_temporarios"
                        name="pontos_vida_temporarios"
                        value="{{$ficha->pontos_vida_temporarios or old('pontos_vida_temporarios')}}"
                        required>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="+" id="btLevel">
                 <label for="nivel">Nível:</label>
                 <input type="text" class="form-control" id="nivel"
                        name="nivel"
@@ -96,12 +118,16 @@
                        value="{{$ficha->bon_proficiencia or old('bon_proficiencia')}}"
                        required>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <label for="experiencia">Experiência:</label>
                 <input type="text" class="form-control" id="experiencia"
                        name="experiencia"
                        value="{{$ficha->experiencia or old('experiencia')}}"
                        required>
+            </div>
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="Adicionar XP" id="btAddxp">
+                <input type="text" class="form-control" id="addXP" value="0">
             </div>
             <div class="col-md-3">
                 <label for="idiomas">Idiomas:</label>
@@ -201,94 +227,88 @@
                        required>
             </div>
             <div class="col-md-12">
-                <label for="magias">Magias:</label>
+                <label for="magias">Quantidade de Magias:</label>
             </div>
-            <div class="col-md-1">
-                <label for="truques">Truques:</label>
-                <input type="text" class="form-control" id="truques"
-                       name="truques"
-                       value="{{$ficha->truques or old('truques')}}"
-                       required>
-                       </div>
-            <div class="col-md-1">
-                <label for="nivel1">Nivel 01:</label>
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl1">
+            <label for="nivel1">Nivel 01:</label>
                 <input type="text" class="form-control" id="nivel1"
                        name="nivel1"
                        value="{{$ficha->nivel1 or old('nivel1')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl2">
                 <label for="nivel2">Nivel 02:</label>
                 <input type="text" class="form-control" id="nivel2"
                        name="nivel2"
                        value="{{$ficha->nivel2 or old('nivel2')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl3">
                 <label for="nivel3">Nivel 03:</label>
                 <input type="text" class="form-control" id="nivel3"
                        name="nivel3"
                        value="{{$ficha->nivel3 or old('nivel3')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl4">
                 <label for="nivel4">Nivel 04:</label>
                 <input type="text" class="form-control" id="nivel4"
                        name="nivel4"
                        value="{{$ficha->nivel4 or old('nivel4')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl5">
                 <label for="nivel5">Nivel 05:</label>
                 <input type="text" class="form-control" id="nivel5"
                        name="nivel5"
                        value="{{$ficha->nivel5 or old('nivel5')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl6">
                 <label for="nivel6">Nivel 06:</label>
                 <input type="text" class="form-control" id="nivel6"
                        name="nivel6"
                        value="{{$ficha->nivel6 or old('nivel6')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl7">
                 <label for="nivel7">Nivel 07:</label>
                 <input type="text" class="form-control" id="nivel7"
                        name="nivel7"
                        value="{{$ficha->nivel7 or old('nivel7')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl8">
                 <label for="nivel8">Nivel 08:</label>
                 <input type="text" class="form-control" id="nivel8"
                        name="nivel8"
                        value="{{$ficha->nivel8 or old('nivel8')}}"
                        required>
                        </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
+            <input type="button" class="btn btn-success" value="-" id="btMaglvl9">
                 <label for="nivel9">Nivel 09:</label>
                 <input type="text" class="form-control" id="nivel9"
                        name="nivel9"
                        value="{{$ficha->nivel9 or old('nivel9')}}"
                        required>
                        </div>
-            <div class="col-md-1">
-                <label for="nivel10">Nivel 10:</label>
-                <input type="text" class="form-control" id="nivel10"
-                       name="nivel10"
-                       value="{{$ficha->nivel10 or old('nivel10')}}"
-                       required>
-            </div>
-
             <div class="form-group col-md-12">
             <label for="talento_id">Talentos:</label>
             <select class="form-control" id="talento_id" name="talento_id">
             @foreach ($talentos as $talento)
                 <option value="{{$talento->id}}"
-    @if ((isset($reg) && $reg->talento_id==$talento->id)
+                @if ((isset($reg) && $reg->talento_id==$talento->id)
             or old('talento_id') == $talento->id) selected @endif>
-                        {{$talento->nome}}</option>
+                        {{$talento->nome_tal}}</option>
             @endforeach
             </select>
         </div>
@@ -424,17 +444,27 @@
         <div class='col-md-3 buttons'>
     <a href="{{ route('fichas.index') }}" class='btn btn-primary'
        role='button'> Voltar </a>
-       <a href="home" class='btn btn-primary'
+       <a href="" class='btn btn-primary'
        role='button'> Salvar </a>
-       <a href="{{route('users.index')}}" class='btn btn-primary'
+       <a href="{{route('fichas.salvar')}}" class='btn btn-primary'
        role='button'> Salvar e Sair </a>
        <div class="input-group-append">&nbsp;
-        <input type="button" class="btn btn-danger" value="Calcular" id="btCalcular">
+        <input type="button" class="btn btn-success" value="Calcular" id="btCalcular">
       </div>
 </div>
 
     </div>
     <script src="/js/calculos_ficha.js"></script>
+    @if ($acao == 1)
+    <script>
+    calcular();
+    </script>
+    @else{
+    <script>
+    iniciaFicha();
+    </script>
+    }
+    @endif
 </body>
 
 </html>
