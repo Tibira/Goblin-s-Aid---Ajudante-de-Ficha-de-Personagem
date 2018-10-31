@@ -19,6 +19,9 @@ class Fichas extends Model
     public function classe() {
         return $this->belongsTo('App\Classes');
     }
+    public function raca() {
+        return $this->belongsTo('App\Racas');
+    }
     public function talentos() {
         return $this->belongsTo('App\Talentos');
     }

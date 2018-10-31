@@ -38,7 +38,11 @@ var ckSobr = document.getElementById("ckSobr");
 
 var proficiencia = document.getElementById("bon_proficiencia");
 
-var proficiencia = document.getElementById("bon_proficiencia");
+var pcobre = document.getElementById("pcobre");
+var pprata = document.getElementById("pprata");
+var peletron = document.getElementById("peletron");
+var pouro = document.getElementById("pouro");
+var pplatina = document.getElementById("pplatina");
 
 var xp = document.getElementById("experiencia");
 var addxp = document.getElementById("addXP");
@@ -54,6 +58,12 @@ var sabedoria = document.getElementById("sabedoria");
 var carisma = document.getElementById("carisma");
 
 var nivel = document.getElementById("nivel");
+
+var addcobre = document.getElementById("addcobre");
+var addprata = document.getElementById("addprata");
+var addeletron = document.getElementById("addeletron");
+var addouro = document.getElementById("addouro");
+var addplatina = document.getElementById("addplatina");
 
 var nivel1 = document.getElementById("nivel1");
 var nivel2 = document.getElementById("nivel2");
@@ -79,8 +89,15 @@ var btCalcular = document.getElementById("btCalcular");
 var btDescansar = document.getElementById("btDescansar");
 var btLevel = document.getElementById("btLevel");
 var btAddxp = document.getElementById("btAddxp");
+var btMoedas = document.getElementById("btMoedas");
 
 var txtFicha = document.getElementById("txtFicha");
+
+var cobre = Number(pcobre.value);
+var prata = Number(pprata.value);
+var eletron = Number(peletron.value);
+var ouro = Number(pouro.value);
+var platina = Number(pplatina.value);
 
 function conta(numero) {
 
@@ -88,7 +105,7 @@ function conta(numero) {
         alert("Informe um número");
         return
     }
-    if (numero == ""||numero == null) {
+    if (numero == "" || numero == null) {
         alert("Informe um número");
         return
     }
@@ -99,8 +116,8 @@ function conta(numero) {
     return Math.floor((numero - 10) / 2);
 }
 
-function iniciaFicha(){
-    
+function iniciaFicha() {
+
 }
 
 function calcVida() {
@@ -109,7 +126,7 @@ function calcVida() {
         if (result == true) {
             var x = Math.floor(1 + Math.random() * 8);
             pv_total.value = Number(pv_total.value) + x;
-            alert("Foi gerado o numero " + x + ", seus pontos de vida ficaram " + pv_total.value + ".");
+            alert("Foi gerado o número " + x + ", com seu modificador de constituição " + Math.floor((constituicao.value - 10) / 2) + ", seus pontos de vida ficaram " + pv_total.value + ".");
         } else {
             pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 5;
         }
@@ -376,7 +393,6 @@ function calcular() {
     marked(ckPrest, prest, destreza);
     marked(ckReli, religiao, inteligencia);
     marked(ckSobr, sobrevivencia, sabedoria);
-
 }
 
 function atualizar() {
@@ -527,6 +543,80 @@ function lvlXP() {
 
 }
 
+function dinheiro() {
+    if (cobre >= 100) {
+        prata += 1;
+        cobre += -100;
+    }else if(cobre <=0){
+        prata += -1;
+        cobre += 100;
+    }
+    if (prata >= 100) {
+        eletron += 1;
+        prata += -100;
+    }else if(prata<=0){
+        eletron += -1;
+        prata += 100;
+    }
+    if (eletron >= 100) {
+        ouro += 1;
+        eletron += -100;
+    }else if(eletron<=0){
+        ouro += -1;
+        eletron += 100;
+    }
+    if (ouro >= 100) {
+        platina += 1;
+        ouro += -100;
+    }else if(ouro<=0){
+        platina += -1;
+        ouro += 100;
+    }
+    pcobre.value = cobre;
+    pprata.value = prata;
+    peletron.value = eletron;
+    pouro.value = ouro;
+    pplatina.value = platina;
+}
+
+function addmoedas(){
+    addCobre= Number(addcobre.value);
+    addPrata= Number(addprata.value);
+    addEletron= Number(addeletron.value);
+    addOuro= Number(addouro.value);
+    addPlatina= Number(addplatina.value);
+    cobre += addCobre;
+    prata+=addPrata;
+    eletron+=addEletron;
+    ouro+=addOuro;
+    platina+=addPlatina;
+    addcobre.value = 0;
+    addprata.value = 0;
+    addeletron.value = 0;
+    addouro.value = 0;
+    addplatina.value = 0;
+    dinheiro();
+}
+
+function rmmoedas(){
+    addCobre= Number(addcobre.value);
+    addPrata= Number(addprata.value);
+    addEletron= Number(addeletron.value);
+    addOuro= Number(addouro.value);
+    addPlatina= Number(addplatina.value);
+    cobre += -addCobre;
+    prata+= - addPrata;
+    eletron+= -addEletron;
+    ouro+= -addOuro;
+    platina+= -addPlatina;
+    addcobre.value = 0;
+    addprata.value = 0;
+    addeletron.value = 0;
+    addouro.value = 0;
+    addplatina.value = 0;
+    dinheiro();
+}
+
 
 btMaglvl1.addEventListener("click", diminuiMagia1);
 btMaglvl2.addEventListener("click", diminuiMagia2);
@@ -538,8 +628,10 @@ btMaglvl7.addEventListener("click", diminuiMagia7);
 btMaglvl8.addEventListener("click", diminuiMagia8);
 btMaglvl9.addEventListener("click", diminuiMagia9);
 
-btCalcular.addEventListener("click", calcular);
+btCalcular.addEventListener("click", dinheiro);
 btDescansar.addEventListener("click", descansar);
 btLevel.addEventListener("click", atualizar);
 btAddxp.addEventListener("click", addexp);
+btMoedas.addEventListener("click", addmoedas);
+btRmMoedas.addEventListener("click", rmmoedas);
 //window.addEventListener("load", calcular);

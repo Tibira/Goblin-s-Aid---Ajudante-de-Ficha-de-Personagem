@@ -22,8 +22,8 @@
         <tbody>
             @foreach ($itens as $itm)
             <tr>
-              <td>{{$itm->nome_itm}}</td>
-              <td>{{$itm->descricao_itm}}</td>
+              <td>{{$itm->nome}}</td>
+              <td>{{$itm->descricao}}</td>
               <td>
             
             <a href='{{route('itens.show',$itm->id)}}'

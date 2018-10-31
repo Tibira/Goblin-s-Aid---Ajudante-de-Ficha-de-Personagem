@@ -15,8 +15,8 @@ class CreateMagiasTable extends Migration
     {
         Schema::create('magias', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('nome_mag');
-            $table->String('descricao_mag');
+            $table->String('nome');
+            $table->String('descricao');
             $table->String('conjuradores_mag');
             $table->integer('nivel_mag');
             $table->String('escola_mag');

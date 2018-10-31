@@ -83,8 +83,8 @@ class ArmadurasController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_armd' => 'required',
-            'descricao_armd' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'preco_armd' => 'required',
             'peso_armd' => 'required|numeric',
             'class_armad' => 'required|numeric',

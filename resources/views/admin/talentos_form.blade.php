@@ -32,17 +32,17 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="nome_tal">Nome:</label>
-                <input type="text" class="form-control" id="nome_tal" 
-                       name="nome_tal" 
-                       value="{{$talentos->nome_tal or old('nome_tal')}}"
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" 
+                       name="nome" 
+                       value="{{$talentos->nome or old('nome')}}"
                        required>
             </div>
             <div class="form-group">
-                <label for="descricao_tal">Descrição:</label>
-                <input type="text" class="form-control" id="descricao_tal" 
-                       name="descricao_tal" 
-                       value="{{$talentos->descricao_tal or old('descricao_tal')}}"
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" 
+                       name="descricao" 
+                       value="{{$talentos->descricao or old('descricao')}}"
                        required>
             </div>
             <div class="form-group">

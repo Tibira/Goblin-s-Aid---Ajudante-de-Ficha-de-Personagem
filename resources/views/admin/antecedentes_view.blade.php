@@ -12,8 +12,8 @@
     <div>
         <div class='col-sm-12'>
             <p><b>ID: </b> {{$antec->id}}</p>
-            <p><b>Nome: </b> {{$antec->nome_ant}}</p>
-            <p><b>Descrição: </b> {{$antec->descricao_ant}}</p>
+            <p><b>Nome: </b> {{$antec->nome}}</p>
+            <p><b>Descrição: </b> {{$antec->descricao}}</p>
             <p><b>Itens: </b> {{$antec->itens_ant}}</p>
             <p><b>Pericias: </b> {{$antec->pericias_ant}}</p>
             <p><b>Proficiencias: </b> {{$antec->proficiencias_ant}}</p>

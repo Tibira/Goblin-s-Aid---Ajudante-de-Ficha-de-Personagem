@@ -21,8 +21,8 @@
         <tbody>
             @foreach ($magias as $mag)
             <tr>
-              <td>{{$mag->nome_mag}}</td>
-              <td>{{$mag->descricao_mag}}</td>
+              <td>{{$mag->nome}}</td>
+              <td>{{$mag->descricao}}</td>
               <td>
             
             <a href='{{route('magias.show',$mag->id)}}'

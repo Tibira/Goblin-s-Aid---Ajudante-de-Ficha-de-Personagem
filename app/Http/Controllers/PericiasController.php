@@ -86,8 +86,8 @@ class PericiasController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_per' => 'required',
-            'descricao_per' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             ]);
 
         $peric = Pericias::find($id);

@@ -22,8 +22,8 @@
         <tbody>
             @foreach ($carac as $car)
             <tr>
-              <td>{{$car->nome_car}}</td>
-              <td>{{$car->descricao_car}}</td>
+              <td>{{$car->nome}}</td>
+              <td>{{$car->descricao}}</td>
               <td>
             
             <a href='{{route('caracteristicas.show',$car->id)}}'

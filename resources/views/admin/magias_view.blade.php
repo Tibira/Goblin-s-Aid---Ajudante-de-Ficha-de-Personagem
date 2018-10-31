@@ -11,8 +11,8 @@
         <div class='col-sm-12'>
             <h2> Detalhes da Magia</h2>
             <p><b>ID: </b> {{$magia->id}}</p>
-            <p><b>Nome: </b> {{$magia->nome_mag}}</p>
-            <p><b>Descrição: </b> {{$magia->descricao_mag}}</p>
+            <p><b>Nome: </b> {{$magia->nome}}</p>
+            <p><b>Descrição: </b> {{$magia->descricao}}</p>
             <p><b>Conjuradores: </b> {{$magia->conjuradores_mag}}</p>
             <p><b>Nivel: </b> {{$magia->nivel_mag}}</p>
             <p><b>Escola: </b> {{$magia->escola_mag}}</p>

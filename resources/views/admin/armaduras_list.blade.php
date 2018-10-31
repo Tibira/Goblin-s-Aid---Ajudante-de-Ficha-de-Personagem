@@ -22,8 +22,8 @@
         <tbody>
             @foreach ($armad as $armd)
             <tr>
-              <td>{{$armd->nome_armd}}</td>
-              <td>{{$armd->descricao_armd}}</td>
+              <td>{{$armd->nome}}</td>
+              <td>{{$armd->descricao}}</td>
               <td>
             <a href="{{route('armaduras.show',$armd->id)}}"
                class='btn btn-info' 

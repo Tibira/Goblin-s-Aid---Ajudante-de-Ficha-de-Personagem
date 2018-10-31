@@ -11,8 +11,8 @@
         <div class='col-sm-12'>
             <h2> Detalhes da Pericia</h2>
             <p><b>ID: </b> {{$peric->id}}</p>
-            <p><b>Nome: </b> {{$peric->nome_per}}</p>
-            <p><b>Descrição: </b> {{$peric->descricao_per}}</p>
+            <p><b>Nome: </b> {{$peric->nome}}</p>
+            <p><b>Descrição: </b> {{$peric->descricao}}</p>
             </div>
     </div>
 @endsection

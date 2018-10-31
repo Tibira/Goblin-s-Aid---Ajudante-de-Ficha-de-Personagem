@@ -6,7 +6,7 @@
         <h2>Armas</h2>
     </div>
 <div class='col-sm-1'>
-    <a href='{{route('armas.create')}}' class='btn btn-primary' 
+    <a href="{{route('armas.create')}}" class='btn btn-primary' 
        role='button'> Novo </a>
        </div>
     
@@ -22,15 +22,15 @@
         <tbody>
             @foreach ($arma as $arm)
             <tr>
-              <td>{{$arm->nome_arm}}</td>
-              <td>{{$arm->descricao_arm}}</td>
+              <td>{{$arm->nome}}</td>
+              <td>{{$arm->descricao}}</td>
               <td>
             
-            <a href='{{route('armas.show',$arm->id)}}'
+            <a href="{{route('armas.show',$arm->id)}}"
                class='btn btn-info' 
                role='button'> Detalhes </a> 
 
-            <a href='{{route('armas.edit',$arm->id)}}'
+            <a href="{{route('armas.edit',$arm->id)}}"
                class='btn btn-warning' 
                role='button'> Alterar </a> 
 

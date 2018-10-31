@@ -12,8 +12,8 @@ class AntecedentesTableSeeder extends Seeder
     public function run()
     {
         DB::table('antecedentes')->insert([
-            'nome_ant' => 'Artesão da guilda',
-            'descricao_ant' => 'Você é membro da guilda de artesãos, perito em um campo específico e intimamente associado a outros artesãos',
+            'nome' => 'Artesão da guilda',
+            'descricao' => 'Você é membro da guilda de artesãos, perito em um campo específico e intimamente associado a outros artesãos',
             'itens_ant' => 'Um conjunto de ferramentas de artesão (à sua escolha), uma carta de apresentação da sua guilda, um conjunto de roupas de viajante e uma algibeira com 15 po',
             'pericias_ant' => 'Intuição, Persuasão',
             'proficiencias_ant' => 'Um tipo de ferramenta
@@ -26,8 +26,8 @@ class AntecedentesTableSeeder extends Seeder
         ]);
 
         DB::table('antecedentes')->insert([
-            'nome_ant' => 'Criminoso',
-            'descricao_ant' => 'Você é um criminoso experiente com um histórico de
+            'nome' => 'Criminoso',
+            'descricao' => 'Você é um criminoso experiente com um histórico de
                 contravenções.',
             'itens_ant' => 'Um pé de cabra, um conjunto de roupas
                 escuras comuns com capuz e uma algibeira contendo
@@ -41,8 +41,8 @@ class AntecedentesTableSeeder extends Seeder
             'vis' => '1',
         ]);
         DB::table('antecedentes')->insert([
-            'nome_ant' => 'Eremita',
-            'descricao_ant' => 'Você viveu em reclusão – ou em uma comunidade isolada como um monastério ou completamente sozinho – por um período importante da sua vida. No tempo em que passou longe do clamor da sociedade, você encontrou quietude, solidão e, talvez, algumas das respostas que procurava.',
+            'nome' => 'Eremita',
+            'descricao' => 'Você viveu em reclusão – ou em uma comunidade isolada como um monastério ou completamente sozinho – por um período importante da sua vida. No tempo em que passou longe do clamor da sociedade, você encontrou quietude, solidão e, talvez, algumas das respostas que procurava.',
             'itens_ant' => 'Um estojo de pergaminho cheio de notas dos seus estudos e orações, um cobertor de inverno, um conjunto de roupas comuns, um kit de herbalismo e 5 peças de ouro.',
             'pericias_ant' => 'Medicina, Religião',
             'idiomas_ant' => 'Uma, à sua escolha',

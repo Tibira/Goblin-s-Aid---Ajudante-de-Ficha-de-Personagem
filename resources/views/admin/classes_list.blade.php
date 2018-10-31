@@ -22,8 +22,8 @@
         <tbody>
             @foreach ($classes as $classe)
             <tr>
-              <td>{{$classe->nome_cla}}</td>
-              <td>{{$classe->descricao_cla}}</td>
+              <td>{{$classe->nome}}</td>
+              <td>{{$classe->descricao}}</td>
               <td>
             
             <a href='{{route('classes.show',$classe->id)}}'

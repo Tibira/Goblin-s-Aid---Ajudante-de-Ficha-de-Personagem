@@ -6,6 +6,7 @@ use App\Classes;
 use App\User;
 use Auth;
 use App\Fichas;
+use App\Racas;
 use App\Http\Controllers\Controller;
 use App\Talentos;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class FichaController extends Controller
     {
         $id = Auth::user()->id;
         $fichas = Fichas::where('vis', 1)->where('user_id',$id)->get();
-        $classe = Classes::orderBy('nome_cla')->get();
+        $classe = Classes::orderBy('nome')->get();
         return view('users.fichas', compact('fichas', 'classe'));
     }
 
@@ -33,10 +34,11 @@ class FichaController extends Controller
     public function create()
     {
         $acao = 0;
-        $talentos = Talentos::orderBy('nome_tal')->get();
+        $talentos = Talentos::orderBy('nome')->get();
         $ficha = Fichas::orderBy('id')->get();
-        $classes = Classes::orderBy('nome_cla')->get();
-        return view('users.ficha', compact('ficha', 'talentos', 'classes','acao'));
+        $classes = Classes::orderBy('nome')->get();
+        $racas = Racas::orderBy('nome')->get();
+        return view('users.ficha', compact('ficha', 'talentos', 'classes','acao','racas'));
     }
 
     /**
@@ -47,8 +49,12 @@ class FichaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = $request->all();
+        $fich = Fichas::create($info);
+        if ($fich) {
+            return redirect()->route('fichas.index');
     }
+}
 
     /**
      * Display the specified resource.
@@ -60,9 +66,10 @@ class FichaController extends Controller
     {   
         $acao = 1;
         $ficha = Fichas::find($id);
-        $talentos = Talentos::orderBy('nome_tal')->get();
+        $talentos = Talentos::orderBy('nome')->get();
         $classes = Classes::orderBy('id')->get();
-        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao'));
+        $racas = Racas::orderBy('id')->get();
+        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao','racas'));
     }
 
     /**
@@ -85,7 +92,12 @@ class FichaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fich = Fichas::find($id);
+        $dados = $request->all();
+        $alt = $fich->update($dados);
+        if ($alt) {
+            return redirect()->route('users.index');
+        }
     }
 
     /**
@@ -96,10 +108,11 @@ class FichaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fich = Fichas::find($id);
+        $alt = $fich->decrement('vis');   
+        if ($alt) {
+            return redirect()->route('fichas.index');
+        }        
     }
-    public function salvar()
-    {
-        //
-    }
+    
 }

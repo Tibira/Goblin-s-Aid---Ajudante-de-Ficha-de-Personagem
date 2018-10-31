@@ -84,8 +84,8 @@ class ClassesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_cla' => 'required',
-            'descricao_cla' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'dado_vida' => 'required',
             ]);
 

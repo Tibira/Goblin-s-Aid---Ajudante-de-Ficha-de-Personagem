@@ -12,8 +12,8 @@
     <div>
         <div class='col-sm-12'>
             <p><b>ID: </b> {{$arma->id}}</p>
-            <p><b>Nome: </b> {{$arma->nome_arm}}</p>
-            <p><b>Descrição: </b> {{$arma->descricao_arm}}</p>
+            <p><b>Nome: </b> {{$arma->nome}}</p>
+            <p><b>Descrição: </b> {{$arma->descricao}}</p>
             <p><b>Preço: </b> {{$arma->preco_arm}}</p>
             <p><b>Peso(Kg): </b> {{$arma->peso_arm}}</p>
             <p><b>Dano: </b> {{$arma->dano_arm}}</p>

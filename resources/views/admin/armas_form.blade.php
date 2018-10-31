@@ -36,17 +36,17 @@
             {{ csrf_field() }}
 
             <div class="col-md-12">
-                <label for="nome_arm">Nome:</label>
-                <input type="text" class="form-control" id="nome_arm" 
-                       name="nome_arm" 
-                       value="{{$arma->nome_arm or old('nome_arm')}}"
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" 
+                       name="nome" 
+                       value="{{$arma->nome or old('nome')}}"
                        required>
             </div>
             <div class="col-md-12">
-                <label for="descricao_arm">Descrição:</label>
-                <input type="text" class="form-control" id="descricao_arm" 
-                       name="descricao_arm" 
-                       value="{{$arma->descricao_arm or old('descricao_arm')}}"
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" 
+                       name="descricao" 
+                       value="{{$arma->descricao or old('descricao')}}"
                        required>
             </div>
             <div class="col-md-6">

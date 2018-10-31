@@ -12,8 +12,8 @@ class ArmasTableSeeder extends Seeder
     public function run()
     {
         DB::table('armas')->insert([
-            'nome_arm' => 'Maça',
-            'descricao_arm' => 'Uma bola de aço com espinhos e um punhal',
+            'nome' => 'Maça',
+            'descricao' => 'Uma bola de aço com espinhos e um punhal',
             'tipo_arm' => 'Contusão',
             'dano_arm' => '1D6',
             'preco_arm' => '5 Peças de Ouro',
@@ -24,8 +24,8 @@ class ArmasTableSeeder extends Seeder
             ]);
             
         DB::table('armas')->insert([
-            'nome_arm' => 'Espada longa',
-            'descricao_arm' => 'Um objeto cortante de metal',
+            'nome' => 'Espada longa',
+            'descricao' => 'Um objeto cortante de metal',
             'tipo_arm' => 'Cortante',
             'dano_arm' => '1D8',
             'preco_arm' => '15 Peças de Ouro',

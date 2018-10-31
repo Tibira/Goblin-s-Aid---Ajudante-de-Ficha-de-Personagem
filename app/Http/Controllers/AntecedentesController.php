@@ -82,8 +82,8 @@ class AntecedentesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_ant' => 'required',
-            'descricao_ant' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'itens_ant' => 'required',
             'pericias_ant' => 'required',
             'proficiencias_ant' => 'required',

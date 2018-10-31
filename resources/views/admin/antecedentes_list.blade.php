@@ -22,8 +22,8 @@
                     <tbody>
                         @foreach ($antec as $ant)
                         <tr>
-                            <td>{{$ant->nome_ant}}</td>
-                            <td>{{$ant->descricao_ant}}</td>
+                            <td>{{$ant->nome}}</td>
+                            <td>{{$ant->descricao}}</td>
                             <td>
                             <a href="{{route('antecedentes.show',$ant->id)}}"
                                 class='btn btn-info' 

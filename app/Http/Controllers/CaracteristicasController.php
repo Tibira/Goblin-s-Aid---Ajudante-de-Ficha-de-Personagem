@@ -86,8 +86,8 @@ class CaracteristicasController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_car' => 'required',
-            'descricao_car' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'nivel' => 'required|numeric',
             'classe_id' => 'required|numeric',
             ]);

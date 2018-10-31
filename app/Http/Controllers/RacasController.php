@@ -85,8 +85,8 @@ class RacasController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_rac' => 'required',
-            'descricao_rac' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'tracos_raciais' => 'required',
             'habilidade' => 'required',
             'val_hab' => 'required|numeric',

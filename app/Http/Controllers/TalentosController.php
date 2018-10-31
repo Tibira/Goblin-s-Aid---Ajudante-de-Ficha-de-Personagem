@@ -86,8 +86,8 @@ class TalentosController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_tal' => 'required',
-            'descricao_tal' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'pre_requisito_tal' => 'required',
             ]);
 

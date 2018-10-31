@@ -15,8 +15,8 @@ class CreateAntecedentesTable extends Migration
     {
         Schema::create('antecedentes', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('nome_ant');
-            $table->String('descricao_ant',1000);
+            $table->String('nome');
+            $table->String('descricao',1000);
             $table->String('itens_ant');
             $table->String('pericias_ant');
             $table->String('proficiencias_ant');

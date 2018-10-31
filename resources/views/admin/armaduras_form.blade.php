@@ -31,17 +31,17 @@
             @endif
             {{ csrf_field() }}
             <div class="col-sm-12">
-                <label for="nome_armd">Nome:</label>
-                <input type="text" class="form-control" id="nome_armd" 
-                       name="nome_armd" 
-                       value="{{$armad->nome_armd or old('nome_armd')}}"
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" 
+                       name="nome" 
+                       value="{{$armad->nome or old('nome')}}"
                        required>
             </div>
             <div class="col-sm-12">
-                <label for="descricao_armd">Descrição:</label>
-                <input type="text" class="form-control" id="descricao_armd" 
-                       name="descricao_armd" 
-                       value="{{$armad->descricao_armd or old('descricao_armd')}}"
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" 
+                       name="descricao" 
+                       value="{{$armad->descricao or old('descricao')}}"
                        required>
             </div>
             <div class="col-sm-6">

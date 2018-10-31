@@ -30,16 +30,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @if($fichas==null)
+                        <h1>Você não tem nenhuma ficha... ainda!</h1>
+                    @else
                         @foreach ($fichas as $ficha)
                         <tr>
                             <td>{{$ficha->nome_per}}</td>
-                            <td>{{$ficha->classe->nome_cla}}</td>
+                            <td>{{$ficha->classe->nome}}</td>
                             <td>
                             <a href="{{route('ficha.show',$ficha->id)}}"
                                 class='btn btn-info'
                                 role='button'> Editar </a>
                             <form style="display: inline-block" method="post"
-                                action="#"
+                                action="{{route('ficha.destroy',$ficha->id)}}"
                                 onsubmit="return confirm('Confirma Exclusão?')">
                                 {{ method_field('delete') }}
                                 {{ csrf_field() }}
@@ -48,6 +51,8 @@
                             </td>
                         </tr>
                         @endforeach
+                    
+                    @endif
                         </tbody>
                 </table>
             </div>

@@ -22,8 +22,8 @@
         <tbody>
             @foreach ($racas as $rac)
             <tr>
-              <td>{{$rac->nome_rac}}</td>
-              <td>{{$rac->descricao_rac}}</td>
+              <td>{{$rac->nome}}</td>
+              <td>{{$rac->descricao}}</td>
               <td>
             
             <a href='{{route('racas.show',$rac->id)}}'

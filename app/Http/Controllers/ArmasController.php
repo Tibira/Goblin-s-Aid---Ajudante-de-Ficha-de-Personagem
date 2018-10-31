@@ -84,8 +84,8 @@ class ArmasController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_arm' => 'required',
-            'descricao_arm' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'tipo_arm' => 'required',
             'preco_arm' => 'required',
             'peso_arm' => 'required|numeric',

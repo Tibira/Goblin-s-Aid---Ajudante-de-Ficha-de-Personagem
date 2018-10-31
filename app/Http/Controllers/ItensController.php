@@ -84,8 +84,8 @@ class ItensController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nome_itm' => 'required',
-            'descricao_itm' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'preco_itm' => 'required',
             'peso_itm' => 'required|numeric',
             ]);

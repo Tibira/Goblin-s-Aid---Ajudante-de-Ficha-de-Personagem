@@ -15,8 +15,8 @@ class CreatePericiasTable extends Migration
     {
         Schema::create('pericias', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('nome_per');
-            $table->String('descricao_per');
+            $table->String('nome');
+            $table->String('descricao');
             $table->timestamps();
             $table->Boolean('vis')->default(1);
         });

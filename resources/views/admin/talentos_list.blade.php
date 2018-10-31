@@ -21,8 +21,8 @@
         <tbody>
             @foreach ($talento as $tal)
             <tr>
-              <td>{{$tal->nome_tal}}</td>
-              <td>{{$tal->descricao_tal}}</td>
+              <td>{{$tal->nome}}</td>
+              <td>{{$tal->descricao}}</td>
               <td>
             
             <a href='{{route('talentos.show',$tal->id)}}'
