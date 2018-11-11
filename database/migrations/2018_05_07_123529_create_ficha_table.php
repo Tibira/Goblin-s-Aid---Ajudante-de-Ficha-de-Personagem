@@ -16,13 +16,13 @@ class CreateFichaTable extends Migration
         Schema::create('fichas', function (Blueprint $table) {
             $table->increments('id');
             $table->String('nome_per')->nullable();
-            $table->String('tendencia')->nullable();
             $table->double('deslocamento')->nullable();
             $table->integer('iniciativa')->nullable();
             $table->integer('classe_armadura')->nullable();
             $table->integer('pontos_vida_total')->nullable();
             $table->integer('pontos_vida_temporarios')->nullable();
             $table->integer('nivel')->nullable();
+            $table->integer('tendencia')->nullable();
             $table->integer('bon_proficiencia')->nullable();
             $table->integer('experiencia')->nullable();
             $table->String('idiomas')->nullable();
@@ -75,6 +75,7 @@ class CreateFichaTable extends Migration
             $table->String('historia')->nullable();
             $table->integer('user_id')->references('id')->on('users');
             $table->integer('classe_id')->references('id')->on('classes');
+            $table->integer('raca_id')->references('id')->on('racas');
             $table->timestamps();
             $table->Boolean('vis')->default(1);
         });

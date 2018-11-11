@@ -14,6 +14,13 @@
 <div class="divmargin">
     <div class="content-warpper" style="min-height: 540px;">
         <section class="content">
+        @if($fichas->isEmpty())
+                        <h1>Você não tem nenhuma ficha... ainda!</h1>
+                        <h2>&nbsp↓ Crie uma ficha :)</h2>
+                        <div class='col-sm-1'>
+                            <a href="{{route('ficha.create')}}" class='btn btn-primary' role='button'> Nova Ficha </a>
+                        </div>
+                    @else
             <div class='col-sm-11'>
                 <h2>Fichas</h2>
             </div>
@@ -30,9 +37,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @if($fichas==null)
-                        <h1>Você não tem nenhuma ficha... ainda!</h1>
-                    @else
                         @foreach ($fichas as $ficha)
                         <tr>
                             <td>{{$ficha->nome_per}}</td>
@@ -51,7 +55,6 @@
                             </td>
                         </tr>
                         @endforeach
-                    
                     @endif
                         </tbody>
                 </table>

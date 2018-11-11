@@ -19,9 +19,13 @@
 </style>
 </head>
 <body>
-<div class='col-md-7'>
+<div class='col-md-11'>
     <h2>Ficha </h2>
 </div>
+<div class='col-md-1'>
+    <input type="button" class="btn btn-success" value="?" id="btDuvida">
+</div>
+
 <div class="col-md-12">
     @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -46,7 +50,7 @@
             <div class="col-md-3">
             <label for="classe_id">Classe:</label>
             <select class="form-control" id="classe_id" name="classe_id">
-            <option>Selecione a sua classe</option>
+            <option value="0">Selecione a sua classe</option>
             @foreach ($classes as $classe)
                 <option value="{{$classe->id}}"
                 @if ((isset($reg) && $reg->classe_id==$classe->id)
@@ -60,7 +64,7 @@
             <select class="form-control" id="raca_id" name="raca_id">
             <option id="0">Selecione a sua raça</option>
             @foreach ($racas as $raca)
-                <option value="{{$raca->id or old('id')}}"
+                <option value="{{$raca->id}}"
                 @if ((isset($reg) && $reg->raca_id==$raca->id)
             or old('raca_id') == $raca->id) selected @endif>
                         {{$raca->nome}}</option>

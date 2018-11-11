@@ -13,13 +13,13 @@ class FichasTableSeeder extends Seeder
     {
         DB::table('fichas')->insert([
             'nome_per' => 'Robinho',
-            'tendencia' => 'Caótico Neutro',
             'deslocamento' => '9',
             'iniciativa' => '8',
             'classe_armadura' => '15',
             'pontos_vida_total' => '10',
             'pontos_vida_temporarios' => '10',
             'nivel' => '1',
+            'tendencia' => '1',
             'bon_proficiencia' => '2',
             'experiencia' => '0',
             'idiomas' => 'Comum, Dracônico',
@@ -37,19 +37,20 @@ class FichasTableSeeder extends Seeder
             'pplatina' => '15',
             'user_id' => '1',
             'classe_id' => '1',
+            'raca_id' => '1',
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
             'vis' => '1'
         ]);
         DB::table('fichas')->insert([
             'nome_per' => 'Bob',
-            'tendencia' => 'Caótico Neutro',
             'deslocamento' => '9',
             'iniciativa' => '8',
             'classe_armadura' => '15',
             'pontos_vida_total' => '10',
             'pontos_vida_temporarios' => '10',
             'nivel' => '1',
+            'tendencia' => '2',
             'bon_proficiencia' => '2',
             'experiencia' => '0',
             'idiomas' => 'Comum, Dracônico',
@@ -67,19 +68,20 @@ class FichasTableSeeder extends Seeder
             'pplatina' => '15',
             'user_id' => '1',
             'classe_id' => '2',
+            'raca_id' => '1',
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
             'vis' => '1'
         ]);
         DB::table('fichas')->insert([
             'nome_per' => 'Tobias',
-            'tendencia' => 'Caótico Neutro',
             'deslocamento' => '9',
             'iniciativa' => '8',
             'classe_armadura' => '15',
             'pontos_vida_total' => '10',
             'pontos_vida_temporarios' => '10',
             'nivel' => '1',
+            'tendencia' => '3',
             'bon_proficiencia' => '2',
             'experiencia' => '0',
             'idiomas' => 'Comum, Dracônico',
@@ -101,6 +103,7 @@ class FichasTableSeeder extends Seeder
             'pplatina' => '15',
             'user_id' => '2',
             'classe_id' => '2',
+            'raca_id' => '1',
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
             'vis' => '1'
