@@ -19,13 +19,16 @@
 </style>
 </head>
 <body>
-<div class='col-md-11'>
-    <h2>Ficha </h2>
+<div class='col-md-1'>
+    <input type="button" class="btn btn-success" value="Pesquisa" id="btDuvida">
+</div>
+<div class='col-md-1'> 
+    <input type="button" class="btn btn-success" value="Descansar" id="btDescansar">
 </div>
 <div class='col-md-1'>
-    <input type="button" class="btn btn-success" value="?" id="btDuvida">
-</div>
-
+<input type="button" class="btn btn-success" value="Calcular" id="btCalcular">
+</div> 
+    
 <div class="col-md-12">
     @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -38,9 +41,13 @@
     @endif
 </div>
 <div class='box-body'>
-        <form method="post" action="" enctype="multipart/form-data">
+    @if ($acao == 0)
+    <form method="post" action="{{route('fichas.store')}}" enctype="multipart/form-data">
+        @else 
+        <form method="post" action="{{route('fichas.update', $ficha->id)}}" enctype="multipart/form-data">
             {!! method_field('put') !!}
-            {{ csrf_field() }}
+            @endif
+           {{ csrf_field() }}
             <div class="col-md-2">
                 <label for="nome_per">Nome:</label>
                 <input type="text" class="form-control" id="nome_per"
@@ -48,27 +55,41 @@
                        value="{{$ficha->nome_per or old('nome_per')}}">
             </div>
             <div class="col-md-3">
-            <label for="classe_id">Classe:</label>
-            <select class="form-control" id="classe_id" name="classe_id">
-            <option value="0">Selecione a sua classe</option>
-            @foreach ($classes as $classe)
+            <label for="classe">Classe:</label>
+            <select class="form-control" id="classe_id" onchange="choice2()" name="classe_id">
+                <option value="0">Selecione a sua classe</option>
+            @if($acao == 1)
+                @foreach ($classes as $classe)
                 <option value="{{$classe->id}}"
-                @if ((isset($reg) && $reg->classe_id==$classe->id)
-            or old('classe_id') == $classe->id) selected @endif>
-                        {{$classe->nome}}</option>
+                @if ((isset($ficha) && $ficha->classe_id==$classe->id)
+                    or old('classe_id') == $classe->id) selected @endif>
+                        {{$classe->nome}} </option>            
             @endforeach
+            @else
+                @foreach ($classes as $classe)
+                    <option value="{{$classe->id}}">
+                        {{$classe->nome}} </option>
+                @endforeach
+            @endif 
             </select>
             </div>
             <div class="col-md-3">
-            <label for="raca_id">Raça:</label>
-            <select class="form-control" id="raca_id" name="raca_id">
+            <label for="raca">Raça:</label>
+            <select class="form-control" id="raca_id" onchange="choice1()" name="raca_id">
             <option id="0">Selecione a sua raça</option>
+            @if($acao == 1)
             @foreach ($racas as $raca)
                 <option value="{{$raca->id}}"
-                @if ((isset($reg) && $reg->raca_id==$raca->id)
+                @if ((isset($ficha) && $ficha->raca_id == $raca->id)
             or old('raca_id') == $raca->id) selected @endif>
                         {{$raca->nome}}</option>
             @endforeach
+            @else
+            @foreach ($racas as $raca)
+                <option value="{{$raca->id}}">
+                        {{$raca->nome}}</option>
+            @endforeach
+            @endif
             </select>
             </div>
             <div class="col-md-2">
@@ -92,26 +113,13 @@
                        name="deslocamento"
                        value="{{$ficha->deslocamento or old('deslocamento')}}">
             </div>
-            <div class="col-md-1">
-                <label for="iniciativa">Iniciativa:</label>
-                <input type="text" class="form-control" id="iniciativa"
-                       name="iniciativa"
-                       value="{{$ficha->iniciativa or old('iniciativa')}}">
-            </div>
-            <div class="col-md-1">
-                <label for="classe_armadura">CA:</label>
-                <input type="text" class="form-control" id="classe_armadura"
-                       name="classe_armadura"
-                       value="{{$ficha->classe_armadura or old('classe_armadura')}}">
-            </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <label for="pontos_vida_total">PV totais:</label>
                 <input type="text" class="form-control" id="pontos_vida_total"
                        name="pontos_vida_total"
                        value="{{$ficha->pontos_vida_total or old('pontos_vida_total')}}">
             </div>
             <div class="col-md-2">
-            <input type="button" class="btn btn-success" value="zZz" id="btDescansar">
                 <label for="pontos_vida_temporarios">PV atuais:</label>
                 <input type="text" class="form-control" id="pontos_vida_temporarios"
                        name="pontos_vida_temporarios"
@@ -132,7 +140,7 @@
             </div>
             <div class="col-md-2">
                 <label for="experiencia">Experiência:</label>
-                <input type="text" class="form-control" id="experiencia"
+                <input disabled type="text" class="form-control" id="experiencia"
                        name="experiencia"
                        value="{{$ficha->experiencia or old('experiencia')}}">
             </div>
@@ -185,12 +193,12 @@
                        name="constituicao"
                        value="{{$ficha->constituicao or old('constituicao')}}">
             </div>
-            <div class="col-md-12">
+            <!--<div class="col-md-12">
                 <label for="tesouros">Tesouros:</label>
                 <input type="text" class="form-control" id="tesouros"
                        name="tesouros"
                        value="{{$ficha->tesouros or old('tesouros')}}">
-            </div>
+            </div>-->
             <div class="col-md-12">
                 <label for="tesouros">Peças de:</label>
             </div>
@@ -470,21 +478,57 @@
                        name="sobrevivencia">
             </div>
             </div>
+            <div class="col-md-12">
+                <h3>Personalização</h3>
+            </div>
+            <div class="col-md-12">
+                <label for="aparencia">Aparencia:</label>
+                <input type="text" class="form-control" id="aparencia"
+                       name="aparencia"
+                       value="{{$ficha->aparencia or old('aparencia')}}">
+            </div>
+            <div class="col-md-12">
+                <label for="defeitos">Defeitos:</label>
+                <input type="text" class="form-control" id="defeitos"
+                       name="defeitos"
+                       value="{{$ficha->defeitos or old('defeitos')}}">
+            </div>
+            <div class="col-md-12">
+                <label for="ligacoes">Ligações:</label>
+                <input type="text" class="form-control" id="ligacoes"
+                       name="ligacoes"
+                       value="{{$ficha->ligacoes or old('ligacoes')}}">
+            </div>
+            <div class="col-md-12">
+                <label for="tracos_personal">Traços de personalidade:</label>
+                <input type="text" class="form-control" id="tracos_personal"
+                       name="tracos_personal"
+                       value="{{$ficha->tracos_personal or old('tracos_personal')}}">
+            </div>
+            <div class="col-md-12">
+                <label for="ideal">Ideal:</label>
+                <input type="text" class="form-control" id="ideal"
+                       name="ideal"
+                       value="{{$ficha->ideal or old('ideal')}}">
+            </div>
+            <div class="col-md-12">
+                <label for="aliados">Aliados:</label>
+                <input type="text" class="form-control" id="aliados"
+                       name="aliados"
+                       value="{{$ficha->aliados or old('aliados')}}">
+            </div>
+            <div class="col-md-12">
+                <label for="historia">História:</label>
+                <input type="text" class="form-control" id="historia"
+                       name="historia"
+                       value="{{$ficha->historia or old('historia')}}">
+            </div>
+            <div class='col-md-3 buttons'>
+                    <button type="submit" class="btn btn-primary">Salvar</button>     
+                    <a href="{{ route('fichas.index') }}" class='btn btn-primary' role='button'> Voltar </a>
+                    </div>    
         </form>
-        <div class='col-md-3 buttons'>
-        @if ($acao == 1)
-        <a href="{{route('fichas.update', $ficha->id)}}" class='btn btn-primary'
-       role='button'> Salvar </a>
-    @else{
-        <a href="{{route('fichas.store')}}" class='btn btn-primary'
-       role='button'> Salvar </a>
-    }
-    @endif
-    <a href="{{ route('fichas.index') }}" class='btn btn-primary'
-       role='button'> Voltar </a>
-       <div class="input-group-append">&nbsp;
-        <input type="button" class="btn btn-success" value="Calcular" id="btCalcular">
-      </div>
+        
 </div>
 
     </div>
@@ -493,11 +537,11 @@
     <script>
     calcular();
     </script>
-    @else{
+    @else
     <script>
     iniciaFicha();
     </script>
-    }
+    
     @endif
 </body>
 

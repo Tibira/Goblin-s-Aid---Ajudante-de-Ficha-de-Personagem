@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'UserController@home');
+Route::get('/pergunta', 'FichaController@pergunta')->name('ficha.pesq');
 Route::resource('users', 'UserController');
 Route::resource('admin', 'AdminController');
 Route::resource('fichas', 'FichaController');

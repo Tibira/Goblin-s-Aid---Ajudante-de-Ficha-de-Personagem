@@ -91,6 +91,11 @@ var btLevel = document.getElementById("btLevel");
 var btAddxp = document.getElementById("btAddxp");
 var btMoedas = document.getElementById("btMoedas");
 
+var classe = document.getElementById("classe_id");
+var raca = document.getElementById("raca_id");
+
+var deslocamento = document.getElementById("deslocamento");
+
 var txtFicha = document.getElementById("txtFicha");
 
 var cobre = Number(pcobre.value);
@@ -99,36 +104,127 @@ var eletron = Number(peletron.value);
 var ouro = Number(pouro.value);
 var platina = Number(pplatina.value);
 
+var c1;
+var c2;
+
 function conta(numero) {
 
     if (isNaN(numero)) {
         alert("Informe um número");
-        return
+        return;
     }
     if (numero == "" || numero == null) {
         alert("Informe um número");
-        return
+        return;
     }
     if (numero < 3 || numero > 20) {
         alert("Informe um número entre 3 e 20");
-        return
+        return;
     }
     return Math.floor((numero - 10) / 2);
 }
 
-function iniciaFicha() {
+function choice1() {
+    c1 = 1;
+    if (c2 == 1) {
+        iniciaFicha();
+    }
+}
 
+function choice2() {
+    c2 = 1;
+    if (c1 == 1) {
+        iniciaFicha();
+    }
+}
+
+function iniciaFicha() {
+    if (c1 == undefined && c2 == undefined) {
+        var tutor = confirm("Boas vindas ao Goblin's Aid\n\nPronto para começar?\n\nGostaria de ajuda para completar sua ficha?");
+        if (tutor == true) {
+            var tutor = confirm("Certo, vamos começar.\n\nPrimeiro selecione a classe e a raça do seu personagem.");
+        }else{
+            alert('Ok...\n\nCaso queira calcular seus status, clique em "Calcular".');
+        }
+    } else {
+        if (classe.value == 2) {
+            var resultado = confirm("Muito bem, agora defina seus atributos!\n\nPrecione 'OK' para gerar atributos ideais para um Druida ou 'Cancelar' para você completar sozinho.");
+            if (resultado == true) {
+                sabedoria.value = 16;
+                constituicao.value = 14;
+                forca.value = 10;
+                carisma.value = 8;
+                inteligencia.value = 10;
+                destreza.value = 12;
+                }else{
+                    alert('Ok...\n\nCaso queira calcular seus status, clique em "Calcular".');
+                    statusIniciais();
+                }
+        } else {
+            var resultado = confirm("Muito bem, agora defina seus atributos!\n\nPrecione 'OK' para gerar atributos ideais para um Guerreiro ou 'Cancelar' para você completar sozinho.");
+            if (resultado == true) {
+                sabedoria.value = 10;
+                constituicao.value = 14;
+                forca.value = 16;
+                carisma.value = 8;
+                inteligencia.value = 10;
+                destreza.value = 12;
+            }else{
+                alert('Certo!\n\nCaso queira calcular seus status, clique em "Calcular".');
+                statusIniciais();
+            }
+        }
+        if (raca.value == 2) {
+            sabedoria.value = Number(sabedoria.value) + 1;
+            constituicao.value = Number(constituicao.value) + 1;
+            forca.value = Number(forca.value) + 1;
+            carisma.value = Number(carisma.value) + 1;
+            inteligencia.value = Number(inteligencia.value) + 1;
+            destreza.value = Number(destreza.value) + 1;
+            deslocamento.value = 9;
+            pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 8;
+            statusIniciais();
+        } else {
+            forca.value = Number(forca.value) + 2;
+            constituicao.value = Number(constituicao.value) + 2;
+            deslocamento.value = 7.5;
+            pv_total.value = Math.floor((constituicao.value - 10) / 2) + 10;
+            statusIniciais();
+        }
+
+    }
+}
+
+function statusIniciais(){
+    nivel.value = 1;
+    xp.value = 0;
+    proficiencia.value = 2;
+    calcular();
+    descansar();
+    alert("Certo, agora você pode costumizar seu personagem!\n\nDivirta-se :)");
 }
 
 function calcVida() {
     do {
         var result = confirm("Seu personagem subiu de nível!!!\n\nClique 'OK' para gerar pontos de vida aleatório ou 'Cancelar' par gerar um número mediano.");
         if (result == true) {
-            var x = Math.floor(1 + Math.random() * 8);
-            pv_total.value = Number(pv_total.value) + x;
-            alert("Foi gerado o número " + x + ", com seu modificador de constituição " + Math.floor((constituicao.value - 10) / 2) + ", seus pontos de vida ficaram " + pv_total.value + ".");
+            if (classe.value == 2) {
+                var x = Math.floor(1 + Math.random() * 8);
+                pv_total.value = Number(pv_total.value) + x;
+                alert("Foi gerado o número " + x + ", com seu modificador de constituição " + Math.floor((constituicao.value - 10) / 2) + ", seus pontos de vida ficaram " + pv_total.value + ".");
+            } else {
+                var x = Math.floor(1 + Math.random() * 10);
+                pv_total.value = Number(pv_total.value) + x;
+                alert("Foi gerado o número " + x + ", com seu modificador de constituição " + Math.floor((constituicao.value - 10) / 2) + ", seus pontos de vida ficaram " + pv_total.value + ".");
+            }
         } else {
-            pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 5;
+            if (classe.value == 2) {
+                pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 5;
+                alert("Com a adição de 5 pontos, seus pontos de vida ficaram " + pv_total.value + ".");
+            } else {
+                pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 6;
+                alert("Com a adição de 6 pontos, seus pontos de vida ficaram " + pv_total.value + ".");
+            }
         }
     } while (result == null);
 }
@@ -224,153 +320,169 @@ function addexp() {
 
 function descansar() {
     pv_atual.value = pv_total.value;
-    if (nivel.value == 1) {
-        nivel1.value = 2;
-    }
-    if (nivel.value == 2) {
-        nivel1.value = 3;
-    }
-    if (nivel.value == 3) {
-        nivel1.value = 4;
-        nivel2.value = 2;
-    }
-    if (nivel.value == 4) {
-        nivel1.value = 4;
-        nivel2.value = 2;
-    }
-    if (nivel.value == 5) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 2;
-    }
-    if (nivel.value == 6) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-    }
-    if (nivel.value == 7) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 1;
-    }
-    if (nivel.value == 8) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 2;
-    }
-    if (nivel.value == 9) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 1;
-    }
-    if (nivel.value == 10) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-    }
-    if (nivel.value == 11) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-        nivel6.value = 1;
-    }
-    if (nivel.value == 12) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-        nivel6.value = 1;
-    }
-    if (nivel.value == 13) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-        nivel6.value = 1;
-        nivel7.value = 1;
-    }
-    if (nivel.value == 14) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-        nivel6.value = 1;
-        nivel7.value = 1;
-    }
-    if (nivel.value == 15) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-        nivel6.value = 1;
-        nivel7.value = 1;
-        nivel8.value = 1;
-    }
-    if (nivel.value == 16) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-        nivel6.value = 1;
-        nivel7.value = 1;
-        nivel8.value = 1;
-    }
-    if (nivel.value == 17) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 2;
-        nivel6.value = 1;
-        nivel7.value = 1;
-        nivel8.value = 1;
-        nivel9.value = 1;
-    }
-    if (nivel.value == 18) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 3;
-        nivel6.value = 1;
-        nivel7.value = 1;
-        nivel8.value = 1;
-        nivel9.value = 1;
-    }
-    if (nivel.value == 19) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 3;
-        nivel6.value = 2;
-        nivel7.value = 1;
-        nivel8.value = 1;
-        nivel9.value = 1;
-    }
-    if (nivel.value == 20) {
-        nivel1.value = 4;
-        nivel2.value = 3;
-        nivel3.value = 3;
-        nivel4.value = 3;
-        nivel5.value = 3;
-        nivel6.value = 2;
-        nivel7.value = 2;
-        nivel8.value = 1;
-        nivel9.value = 1;
+    restaurarMagias();
+}
+
+function restaurarMagias(){
+    if (classe.value = 2) {
+        if (nivel.value == 1) {
+            nivel1.value = 2;
+        }
+        if (nivel.value == 2) {
+            nivel1.value = 3;
+        }
+        if (nivel.value == 3) {
+            nivel1.value = 4;
+            nivel2.value = 2;
+        }
+        if (nivel.value == 4) {
+            nivel1.value = 4;
+            nivel2.value = 2;
+        }
+        if (nivel.value == 5) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 2;
+        }
+        if (nivel.value == 6) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+        }
+        if (nivel.value == 7) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 1;
+        }
+        if (nivel.value == 8) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 2;
+        }
+        if (nivel.value == 9) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 1;
+        }
+        if (nivel.value == 10) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+        }
+        if (nivel.value == 11) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+            nivel6.value = 1;
+        }
+        if (nivel.value == 12) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+            nivel6.value = 1;
+        }
+        if (nivel.value == 13) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+            nivel6.value = 1;
+            nivel7.value = 1;
+        }
+        if (nivel.value == 14) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+            nivel6.value = 1;
+            nivel7.value = 1;
+        }
+        if (nivel.value == 15) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+            nivel6.value = 1;
+            nivel7.value = 1;
+            nivel8.value = 1;
+        }
+        if (nivel.value == 16) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+            nivel6.value = 1;
+            nivel7.value = 1;
+            nivel8.value = 1;
+        }
+        if (nivel.value == 17) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 2;
+            nivel6.value = 1;
+            nivel7.value = 1;
+            nivel8.value = 1;
+            nivel9.value = 1;
+        }
+        if (nivel.value == 18) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 3;
+            nivel6.value = 1;
+            nivel7.value = 1;
+            nivel8.value = 1;
+            nivel9.value = 1;
+        }
+        if (nivel.value == 19) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 3;
+            nivel6.value = 2;
+            nivel7.value = 1;
+            nivel8.value = 1;
+            nivel9.value = 1;
+        }
+        if (nivel.value == 20) {
+            nivel1.value = 4;
+            nivel2.value = 3;
+            nivel3.value = 3;
+            nivel4.value = 3;
+            nivel5.value = 3;
+            nivel6.value = 2;
+            nivel7.value = 2;
+            nivel8.value = 1;
+            nivel9.value = 1;
+        }
+    } else {
+        nivel1.value = 0;
+        nivel2.value = 0;
+        nivel3.value = 0;
+        nivel4.value = 0;
+        nivel5.value = 0;
+        nivel6.value = 0;
+        nivel7.value = 0;
+        nivel8.value = 0;
+        nivel9.value = 0;
     }
 }
 
@@ -547,28 +659,28 @@ function dinheiro() {
     if (cobre >= 100) {
         prata += 1;
         cobre += -100;
-    }else if(cobre <=0){
+    } else if (cobre <= 0) {
         prata += -1;
         cobre += 100;
     }
     if (prata >= 100) {
         eletron += 1;
         prata += -100;
-    }else if(prata<=0){
+    } else if (prata <= 0) {
         eletron += -1;
         prata += 100;
     }
     if (eletron >= 100) {
         ouro += 1;
         eletron += -100;
-    }else if(eletron<=0){
+    } else if (eletron <= 0) {
         ouro += -1;
         eletron += 100;
     }
     if (ouro >= 100) {
         platina += 1;
         ouro += -100;
-    }else if(ouro<=0){
+    } else if (ouro <= 0) {
         platina += -1;
         ouro += 100;
     }
@@ -579,17 +691,17 @@ function dinheiro() {
     pplatina.value = platina;
 }
 
-function addmoedas(){
-    addCobre= Number(addcobre.value);
-    addPrata= Number(addprata.value);
-    addEletron= Number(addeletron.value);
-    addOuro= Number(addouro.value);
-    addPlatina= Number(addplatina.value);
+function addmoedas() {
+    addCobre = Number(addcobre.value);
+    addPrata = Number(addprata.value);
+    addEletron = Number(addeletron.value);
+    addOuro = Number(addouro.value);
+    addPlatina = Number(addplatina.value);
     cobre += addCobre;
-    prata+=addPrata;
-    eletron+=addEletron;
-    ouro+=addOuro;
-    platina+=addPlatina;
+    prata += addPrata;
+    eletron += addEletron;
+    ouro += addOuro;
+    platina += addPlatina;
     addcobre.value = 0;
     addprata.value = 0;
     addeletron.value = 0;
@@ -598,17 +710,17 @@ function addmoedas(){
     dinheiro();
 }
 
-function rmmoedas(){
-    addCobre= Number(addcobre.value);
-    addPrata= Number(addprata.value);
-    addEletron= Number(addeletron.value);
-    addOuro= Number(addouro.value);
-    addPlatina= Number(addplatina.value);
+function rmmoedas() {
+    addCobre = Number(addcobre.value);
+    addPrata = Number(addprata.value);
+    addEletron = Number(addeletron.value);
+    addOuro = Number(addouro.value);
+    addPlatina = Number(addplatina.value);
     cobre += -addCobre;
-    prata+= - addPrata;
-    eletron+= -addEletron;
-    ouro+= -addOuro;
-    platina+= -addPlatina;
+    prata += - addPrata;
+    eletron += -addEletron;
+    ouro += -addOuro;
+    platina += -addPlatina;
     addcobre.value = 0;
     addprata.value = 0;
     addeletron.value = 0;
@@ -617,6 +729,8 @@ function rmmoedas(){
     dinheiro();
 }
 
+function comteste() {
+}
 
 btMaglvl1.addEventListener("click", diminuiMagia1);
 btMaglvl2.addEventListener("click", diminuiMagia2);
@@ -634,4 +748,4 @@ btLevel.addEventListener("click", atualizar);
 btAddxp.addEventListener("click", addexp);
 btMoedas.addEventListener("click", addmoedas);
 btRmMoedas.addEventListener("click", rmmoedas);
-//window.addEventListener("load", calcular);
+//window.addEventListener("load", comteste);

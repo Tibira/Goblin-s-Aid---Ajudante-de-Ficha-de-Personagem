@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Classes;
+use App\Fichas;
+use App\Http\Controllers\Controller;
+use App\Racas;
+use App\Talentos;
 use App\User;
 use Auth;
-use App\Fichas;
-use App\Racas;
-use App\Http\Controllers\Controller;
-use App\Talentos;
 use Illuminate\Http\Request;
 
 class FichaController extends Controller
@@ -21,7 +21,7 @@ class FichaController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $fichas = Fichas::where('vis', 1)->where('user_id',$id)->get();
+        $fichas = Fichas::where('vis', 1)->where('user_id', $id)->get();
         $classe = Classes::orderBy('nome')->get();
         return view('users.fichas', compact('fichas', 'classe'));
     }
@@ -38,7 +38,7 @@ class FichaController extends Controller
         $ficha = Fichas::orderBy('id')->get();
         $classes = Classes::orderBy('nome')->get();
         $racas = Racas::orderBy('nome')->get();
-        return view('users.ficha', compact('ficha', 'talentos', 'classes','acao','racas'));
+        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao', 'racas'));
     }
 
     /**
@@ -50,11 +50,13 @@ class FichaController extends Controller
     public function store(Request $request)
     {
         $info = $request->all();
-        $fich = Fichas::create($info);
-        if ($fich) {
+        $user_id = Auth::user()->id;
+        $info="user_id"->$user_id;
+        $ficha = Fichas::create($info);
+        if ($ficha) {
             return redirect()->route('fichas.index');
+        }
     }
-}
 
     /**
      * Display the specified resource.
@@ -63,13 +65,13 @@ class FichaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
+    {
         $acao = 1;
         $ficha = Fichas::find($id);
         $talentos = Talentos::orderBy('nome')->get();
         $classes = Classes::orderBy('id')->get();
         $racas = Racas::orderBy('id')->get();
-        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao','racas'));
+        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao', 'racas'));
     }
 
     /**
@@ -96,7 +98,7 @@ class FichaController extends Controller
         $dados = $request->all();
         $alt = $fich->update($dados);
         if ($alt) {
-            return redirect()->route('users.index');
+            return redirect()->route('fichas.index');
         }
     }
 
@@ -109,10 +111,16 @@ class FichaController extends Controller
     public function destroy($id)
     {
         $fich = Fichas::find($id);
-        $alt = $fich->decrement('vis');   
+        $alt = $fich->decrement('vis');
         if ($alt) {
             return redirect()->route('fichas.index');
-        }        
+        }
     }
-    
+    public function pergunta()
+    {
+        $racas = Racas::paginate(6);
+        $classes = Classes::paginate(6);
+        return view('users.pesquisa', compact('classes', 'racas'));
+    }
+
 }
