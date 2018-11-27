@@ -49,13 +49,23 @@ var addxp = document.getElementById("addXP");
 
 var pv_atual = document.getElementById("pontos_vida_temporarios");
 var pv_total = document.getElementById("pontos_vida_total");
+var btDano = document.getElementById("btDano");
+var dano = document.getElementById("dano");
+
+var nome = document.getElementById("nome_per");
 
 var forca = document.getElementById("forca");
+var modForca = document.getElementById("modForca");
+var destreza = document.getElementById("destreza");
 var destreza = document.getElementById("destreza");
 var constituicao = document.getElementById("constituicao");
+var modConstituicao = document.getElementById("modConstituicao");
 var inteligencia = document.getElementById("inteligencia");
+var modInteligencia = document.getElementById("modInteligencia");
 var sabedoria = document.getElementById("sabedoria");
+var modSabedoria = document.getElementById("modSabedoria");
 var carisma = document.getElementById("carisma");
+var modCarisma = document.getElementById("modCarisma");
 
 var nivel = document.getElementById("nivel");
 
@@ -106,6 +116,33 @@ var platina = Number(pplatina.value);
 
 var c1;
 var c2;
+var vivo;
+var morto;
+var tutorial;
+
+function calcDano() {
+    var dmg = dano.value - pv_atual.value;
+    if (dmg >= 0) {
+        alert("Seu personagem está morrendo\n\nAgora serão gerados numeros aleatórios, se os números forem três vezes maiores que 10, seu personagem vive.\n\nCaso contrário... RIP");
+        vivo = Number(0);
+        morto = Number(0);
+        while (vivo != 3 && morto != 3) {
+            var x = Math.floor(1 + Math.random() * 20);
+            alert("Foi gerado o número " + x + "\n\nVivo = " + vivo + "\nMorto = " + morto);
+            if (x >= 10) {
+                vivo = vivo + 1;
+            } else {
+                morto = morto + 1;
+            }
+        }
+        if (vivo == 3) {
+            alert("Seu personagem ainda está vivo, segue o jogo :D");
+        } else {
+            alert("Seu personagem morreu, descanse em paz " + nome.value);
+        }
+    }
+    pv_atual.value = pv_atual.value - dano.value;
+}
 
 function conta(numero) {
 
@@ -143,35 +180,38 @@ function iniciaFicha() {
         var tutor = confirm("Boas vindas ao Goblin's Aid\n\nPronto para começar?\n\nGostaria de ajuda para completar sua ficha?");
         if (tutor == true) {
             var tutor = confirm("Certo, vamos começar.\n\nPrimeiro selecione a classe e a raça do seu personagem.");
-        }else{
+            tutorial = 1;
+        } else {
             alert('Ok...\n\nCaso queira calcular seus status, clique em "Calcular".');
         }
     } else {
-        if (classe.value == 2) {
-            var resultado = confirm("Muito bem, agora defina seus atributos!\n\nPrecione 'OK' para gerar atributos ideais para um Druida ou 'Cancelar' para você completar sozinho.");
-            if (resultado == true) {
-                sabedoria.value = 16;
-                constituicao.value = 14;
-                forca.value = 10;
-                carisma.value = 8;
-                inteligencia.value = 10;
-                destreza.value = 12;
-                }else{
+        if (tutorial == 1) {
+            if (classe.value == 2) {
+                var resultado = confirm("Muito bem, agora defina seus atributos!\n\nPrecione 'OK' para gerar atributos ideais para um Druida ou 'Cancelar' para você completar sozinho.");
+                if (resultado == true) {
+                    sabedoria.value = 16;
+                    constituicao.value = 14;
+                    forca.value = 10;
+                    carisma.value = 8;
+                    inteligencia.value = 10;
+                    destreza.value = 12;
+                } else {
                     alert('Ok...\n\nCaso queira calcular seus status, clique em "Calcular".');
                     statusIniciais();
                 }
-        } else {
-            var resultado = confirm("Muito bem, agora defina seus atributos!\n\nPrecione 'OK' para gerar atributos ideais para um Guerreiro ou 'Cancelar' para você completar sozinho.");
-            if (resultado == true) {
-                sabedoria.value = 10;
-                constituicao.value = 14;
-                forca.value = 16;
-                carisma.value = 8;
-                inteligencia.value = 10;
-                destreza.value = 12;
-            }else{
-                alert('Certo!\n\nCaso queira calcular seus status, clique em "Calcular".');
-                statusIniciais();
+            } else {
+                var resultado = confirm("Muito bem, agora defina seus atributos!\n\nPrecione 'OK' para gerar atributos ideais para um Guerreiro ou 'Cancelar' para você completar sozinho.");
+                if (resultado == true) {
+                    sabedoria.value = 10;
+                    constituicao.value = 14;
+                    forca.value = 16;
+                    carisma.value = 8;
+                    inteligencia.value = 10;
+                    destreza.value = 12;
+                } else {
+                    alert('Certo!\n\nCaso queira calcular seus status, clique em "Calcular".');
+                    statusIniciais();
+                }
             }
         }
         if (raca.value == 2) {
@@ -195,7 +235,7 @@ function iniciaFicha() {
     }
 }
 
-function statusIniciais(){
+function statusIniciais() {
     nivel.value = 1;
     xp.value = 0;
     proficiencia.value = 2;
@@ -323,7 +363,7 @@ function descansar() {
     restaurarMagias();
 }
 
-function restaurarMagias(){
+function restaurarMagias() {
     if (classe.value = 2) {
         if (nivel.value == 1) {
             nivel1.value = 2;
@@ -505,6 +545,12 @@ function calcular() {
     marked(ckPrest, prest, destreza);
     marked(ckReli, religiao, inteligencia);
     marked(ckSobr, sobrevivencia, sabedoria);
+    modForca.value = Math.floor((forca.value - 10) / 2);
+    modDestreza.value = Math.floor((destreza.value - 10) / 2);
+    modCarisma.value = Math.floor((carisma.value - 10) / 2);
+    modConstituicao.value = Math.floor((constituicao.value - 10) / 2);
+    modSabedoria.value = Math.floor((sabedoria.value - 10) / 2);
+    modInteligencia.value = Math.floor((inteligencia.value - 10) / 2);
 }
 
 function atualizar() {
@@ -748,4 +794,5 @@ btLevel.addEventListener("click", atualizar);
 btAddxp.addEventListener("click", addexp);
 btMoedas.addEventListener("click", addmoedas);
 btRmMoedas.addEventListener("click", rmmoedas);
+btDano.addEventListener("click", calcDano);
 //window.addEventListener("load", comteste);

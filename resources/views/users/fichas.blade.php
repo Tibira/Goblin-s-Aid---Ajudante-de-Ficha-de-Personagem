@@ -32,7 +32,8 @@
                     <thead>
                         <tr>
                             <th width="200px">Nome do Personagem</th>
-                            <th>Classe</th>
+                            <th width="200px">Classe</th>
+                            <th>Raça</th>
                             <th width="235px">Ações</th>
                         </tr>
                     </thead>
@@ -41,6 +42,7 @@
                         <tr>
                             <td>{{$ficha->nome_per}}</td>
                             <td>{{$ficha->classe->nome}}</td>
+                            <td>{{$ficha->raca->nome}}</td>
                             <td>
                             <a href="{{route('ficha.show',$ficha->id)}}"
                                 class='btn btn-info'

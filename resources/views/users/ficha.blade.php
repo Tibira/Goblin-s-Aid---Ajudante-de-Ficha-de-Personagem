@@ -20,13 +20,13 @@
 </head>
 <body>
 <div class='col-md-1'>
-    <input type="button" class="btn btn-success" value="Pesquisa" id="btDuvida">
+    <input type="button" class="btn btn-primary" value="Pesquisa" id="btDuvida">
 </div>
 <div class='col-md-1'> 
     <input type="button" class="btn btn-success" value="Descansar" id="btDescansar">
 </div>
 <div class='col-md-1'>
-<input type="button" class="btn btn-success" value="Calcular" id="btCalcular">
+<input type="button" class="btn btn-warning" value="Calcular" id="btCalcular">
 </div> 
     
 <div class="col-md-12">
@@ -48,7 +48,7 @@
             {!! method_field('put') !!}
             @endif
            {{ csrf_field() }}
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="nome_per">Nome:</label>
                 <input type="text" class="form-control" id="nome_per"
                        name="nome_per"
@@ -92,22 +92,10 @@
             @endif
             </select>
             </div>
-            <div class="col-md-2">
-            <label for="tendencia_id">Tendencia:</label>
-            <select class="form-control" id="tendencia_id" name="tendencia_id">
-            <option>Leal & Bom</option>
-            <option>Leal & Neutro</option>
-            <option>Leal & Mau</option>
-            <option>Neutro & Bom</option>
-            <option>Neutro & Neutro</option>
-            <option>Neutro & Mau</option>
-            <option>Caótico & Bom</option>
-            <option>Caótico & Neutro</option>
-            <option>Caótico & Mau</option>
-            </select>
+            
 
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="deslocamento">Deslocamento(m):</label>
                 <input type="text" class="form-control" id="deslocamento"
                        name="deslocamento"
@@ -121,10 +109,15 @@
             </div>
             <div class="col-md-2">
                 <label for="pontos_vida_temporarios">PV atuais:</label>
-                <input type="text" class="form-control" id="pontos_vida_temporarios"
+                <input disabled type="text" class="form-control" id="pontos_vida_temporarios"
                        name="pontos_vida_temporarios"
                        value="{{$ficha->pontos_vida_temporarios or old('pontos_vida_temporarios')}}">
             </div>
+            <div class="col-md-1">
+                <input type="button" class="btn btn-danger" value="Dano" id="btDano">
+                    <input type="text" class="form-control" id="dano"
+                           name="dano">
+                </div>   
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="+" id="btLevel">
                 <label for="nivel">Nível:</label>
@@ -155,43 +148,55 @@
                        value="{{$ficha->idiomas or old('idiomas')}}">
             </div>-->
             <div class="col-md-12">
-                <label for="forca">Atributos:</label>
+                <label for="forca">Atributos/Modificadores:</label>
             </div>
             <div class="col-md-1">
                 <label for="forca">Força:</label>
                 <input type="text" class="form-control" id="forca"
                        name="forca"
                        value="{{$ficha->forca or old('forca')}}">
+
+                       <input type="text" class="form-control" id="modForca"name="modForca">
             </div>
             <div class="col-md-1">
                 <label for="destreza">Destreza:</label>
                 <input type="text" class="form-control" id="destreza"
                        name="destreza"
                        value="{{$ficha->destreza or old('destreza')}}">
+                       <input type="text" class="form-control" id="modDestreza"
+                       name="modDestreza">
             </div>
             <div class="col-md-1">
                 <label for="inteligencia">Inteligência:</label>
                 <input type="text" class="form-control" id="inteligencia"
                        name="inteligencia"
                        value="{{$ficha->inteligencia or old('inteligencia')}}">
+                       <input type="text" class="form-control" id="modInteligencia"
+                       name="modInteligencia">
             </div>
             <div class="col-md-1">
                 <label for="sabedoria">Sabedoria:</label>
                 <input type="text" class="form-control" id="sabedoria"
                        name="sabedoria"
                        value="{{$ficha->sabedoria or old('sabedoria')}}">
+                       <input type="text" class="form-control" id="modSabedoria"
+                       name="modSabedoria">
             </div>
             <div class="col-md-1">
                 <label for="carisma">Carisma:</label>
                 <input type="text" class="form-control" id="carisma"
                        name="carisma"
                        value="{{$ficha->carisma or old('carisma')}}">
+                       <input type="text" class="form-control" id="modCarisma"
+                       name="modCarisma">
             </div>
             <div class="col-md-1">
                 <label for="constituicao">Constituição:</label>
                 <input type="text" class="form-control" id="constituicao"
                        name="constituicao"
                        value="{{$ficha->constituicao or old('constituicao')}}">
+                       <input type="text" class="form-control" id="modConstituicao"
+                       name="modConstituicao">
             </div>
             <!--<div class="col-md-12">
                 <label for="tesouros">Tesouros:</label>
@@ -234,9 +239,9 @@
             </div>
             <div class="col-md-12">
             <div class="col-md-4">
+            <label for="tesouros">Adicionar Moedas:</label>
             <input type="button" class="btn btn-success" value="Adicionar" id="btMoedas">
             <input type="button" class="btn btn-danger" value="Remover" id="btRmMoedas">
-                <label for="tesouros">Adicionar Moedas:</label>
             </div>
             </div>
 
@@ -488,10 +493,10 @@
                        value="{{$ficha->aparencia or old('aparencia')}}">
             </div>
             <div class="col-md-12">
-                <label for="defeitos">Defeitos:</label>
-                <input type="text" class="form-control" id="defeitos"
-                       name="defeitos"
-                       value="{{$ficha->defeitos or old('defeitos')}}">
+                <label for="defeito">Defeitos:</label>
+                <input type="text" class="form-control" id="defeito"
+                       name="defeito"
+                       value="{{$ficha->defeito or old('defeito')}}">
             </div>
             <div class="col-md-12">
                 <label for="ligacoes">Ligações:</label>
@@ -526,7 +531,10 @@
             <div class='col-md-3 buttons'>
                     <button type="submit" class="btn btn-primary">Salvar</button>     
                     <a href="{{ route('fichas.index') }}" class='btn btn-primary' role='button'> Voltar </a>
-                    </div>    
+                    </div>
+                    @if ($acao == 0)
+                    <input type="hidden" name="user_id" value="{{$user_id}}">        
+                    @endif
         </form>
         
 </div>

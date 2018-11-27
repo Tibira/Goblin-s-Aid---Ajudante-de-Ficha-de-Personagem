@@ -38,7 +38,8 @@ class FichaController extends Controller
         $ficha = Fichas::orderBy('id')->get();
         $classes = Classes::orderBy('nome')->get();
         $racas = Racas::orderBy('nome')->get();
-        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao', 'racas'));
+        $user_id = Auth::user()->id;
+        return view('users.ficha', compact('ficha', 'talentos', 'classes', 'acao', 'racas', "user_id"));
     }
 
     /**
@@ -50,8 +51,7 @@ class FichaController extends Controller
     public function store(Request $request)
     {
         $info = $request->all();
-        $user_id = Auth::user()->id;
-        $info="user_id"->$user_id;
+        
         $ficha = Fichas::create($info);
         if ($ficha) {
             return redirect()->route('fichas.index');

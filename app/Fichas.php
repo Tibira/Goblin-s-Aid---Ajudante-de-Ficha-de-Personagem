@@ -14,7 +14,7 @@ class Fichas extends Model
         'tesouros','pcobre','pprata','peletron','pouro','pplatina',
         'truques','nivel1','nivel2','nivel3','nivel4','nivel5','nivel6','nivel7','nivel8','nivel9',
         'ligacoes','tracos_personal','ideal','defeito','cabelo','olhos','altura','pele','peso','aliados',
-        'historia','classe_id','raca_id','user_id'
+        'historia','classe_id','raca_id','user_id','aparencia'
     ];
     
     public function classe() {
