@@ -15,7 +15,7 @@ class CreateFichaHasTalentosTable extends Migration
     {
         Schema::create('ficha_has_talentos', function (Blueprint $table) {
             $table->integer('talento_id')->references('id')->on('talentos');
-            $table->integer('ficha_id')->references('id')->on('ficha');
+            $table->integer('ficha_id')->references('id')->on('fichas');
             $table->timestamps();
             $table->Boolean('vis')->default(1);
             });

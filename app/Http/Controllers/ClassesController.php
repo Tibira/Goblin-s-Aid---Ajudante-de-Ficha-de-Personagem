@@ -103,8 +103,8 @@ class ClassesController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'nome_cla' => 'required',
-            'descricao_cla' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'dado_vida' => 'required',
             ]);
 

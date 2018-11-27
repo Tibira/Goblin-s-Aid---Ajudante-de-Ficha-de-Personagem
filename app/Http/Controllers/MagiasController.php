@@ -96,8 +96,8 @@ class MagiasController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'nome_mag' => 'required',
-            'descricao_mag' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'conjuradores_mag' => 'required',
             'nivel_mag' => 'required|numeric|min:1|max:9',
             'escola_mag' => 'required',

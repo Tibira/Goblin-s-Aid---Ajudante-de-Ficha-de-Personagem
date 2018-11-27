@@ -11,8 +11,8 @@
         <div class='col-sm-12'>
             <h2> Detalhes da Caracteristica</h2>
             <p><b>ID: </b> {{$carac->id}}</p>
-            <p><b>Nome: </b> {{$carac->nome_car}}</p>
-            <p><b>Descrição: </b> {{$carac->descricao_car}}</p>
+            <p><b>Nome: </b> {{$carac->nome}}</p>
+            <p><b>Descrição: </b> {{$carac->descricao}}</p>
             <p><b>Nivel: </b> {{$carac->nivel}}</p>
             <p><b>ID da classe: </b> {{$carac->classe_id}}</p>
             </div>

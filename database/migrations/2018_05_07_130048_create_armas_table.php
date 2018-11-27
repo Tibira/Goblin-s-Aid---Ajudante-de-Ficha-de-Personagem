@@ -15,8 +15,8 @@ class CreateArmasTable extends Migration
     {
         Schema::create('armas', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('nome_arm');
-            $table->String('descricao_arm');
+            $table->String('nome');
+            $table->String('descricao');
             $table->String('tipo_arm');
             $table->String('preco_arm');
             $table->double('peso_arm'); 

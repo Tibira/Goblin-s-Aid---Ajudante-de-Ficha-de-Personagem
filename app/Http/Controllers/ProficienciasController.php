@@ -104,8 +104,8 @@ class ProficienciasController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'nome_pro' => 'required',
-            'descricao_pro' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             ]);
 
         $profic = Proficiencias::find($id);

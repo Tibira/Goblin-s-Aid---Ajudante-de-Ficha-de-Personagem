@@ -12,9 +12,9 @@ class ArmadurasTableSeeder extends Seeder
     public function run()
     {
         DB::table('armaduras')->insert([
-            'nome_armd' => 'Cota de Malha',
-            'descricao_armd' => 'Armadura feita com pequenos aneis de metal.',
-            'preco_armd' => '75 PO',
+            'nome' => 'Cota de Malha',
+            'descricao' => 'Armadura feita com pequenos aneis de metal.',
+            'preco_armd' => '75 Peças de Ouro',
             'peso_armd' => '27.5',
             'class_armad' => '16',
             'forca' => '13',
@@ -23,9 +23,9 @@ class ArmadurasTableSeeder extends Seeder
             'vis'=>'1'
             ]);
         DB::table('armaduras')->insert([
-            'nome_armd' => 'Placas',
-            'descricao_armd' => 'Armadura feita de placas de aço, extremamente resistente',
-            'preco_armd' => '1500 PO',
+            'nome' => 'Placas',
+            'descricao' => 'Armadura feita de placas de aço, extremamente resistente',
+            'preco_armd' => '1500 Peças de Ouro',
             'peso_armd' => '32.5',
             'class_armad' => '18',
             'forca' => '15',
@@ -34,9 +34,9 @@ class ArmadurasTableSeeder extends Seeder
             'vis'=>'1'
             ]);
         DB::table('armaduras')->insert([
-            'nome_armd' => 'Escudo de Madeira',
-            'descricao_armd' => 'Um escudo feito de madeira, bem leve e resistente',
-            'preco_armd' => '10 PO',
+            'nome' => 'Escudo de Madeira',
+            'descricao' => 'Um escudo feito de madeira, bem leve e resistente',
+            'preco_armd' => '10 Peças de Ouro',
             'peso_armd' => '3',
             'class_armad' => '2',
             'created_at' => date('Y-m-d h:i:s'),

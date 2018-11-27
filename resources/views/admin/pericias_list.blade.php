@@ -22,8 +22,8 @@
         <tbody>
             @foreach ($peric as $per)
             <tr>
-              <td>{{$per->nome_per}}</td>
-              <td>{{$per->descricao_per}}</td>
+              <td>{{$per->nome}}</td>
+              <td>{{$per->descricao}}</td>
               <td>
             
             <a href='{{route('pericias.show',$per->id)}}'

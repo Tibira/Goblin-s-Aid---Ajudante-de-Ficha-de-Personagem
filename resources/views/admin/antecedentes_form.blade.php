@@ -22,7 +22,7 @@
     </div>
     @endif    
 </div>
-<div class='col-sm-12'>
+<div class='box-body'>
     @if ($opc == 1)
     <form method="post" action="{{route('antecedentes.store')}}" enctype="multipart/form-data">
         @else 
@@ -31,56 +31,51 @@
             @endif
             {{ csrf_field() }}
 
-            <div class="form-group">
-                <label for="nome_ant">Nome:</label>
-                <input type="text" class="form-control" id="nome_ant" 
-                       name="nome_ant" 
-                       value="{{$antec->nome_ant or old('nome_ant')}}"
-                       required>
+            <div class="col-sm-12">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" 
+                       name="nome" 
+                       value="{{$antec->nome or old('nome')}}">
             </div>
-            <div class="form-group">
-                <label for="descricao_ant">Descrição:</label>
-                <input type="text" class="form-control" id="descricao_ant" 
-                       name="descricao_ant" 
-                       value="{{$antec->descricao_ant or old('descricao_ant')}}"
-                       required>
+            <div class="col-sm-12">
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" 
+                       name="descricao" 
+                       value="{{$antec->descricao or old('descricao')}}">
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="itens_ant">Itens:</label>
                 <input type="text" class="form-control" id="itens_ant" 
                        name="itens_ant" 
-                       value="{{$antec->itens_ant or old('itens_ant')}}"
-                       required>
+                       value="{{$antec->itens_ant or old('itens_ant')}}">
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="pericias_ant">Pericias:</label>
                 <input type="text" class="form-control" id="pericias_ant" 
                        name="pericias_ant" 
-                       value="{{$antec->pericias_ant or old('pericias_ant')}}"
-                       required>
+                       value="{{$antec->pericias_ant or old('pericias_ant')}}">
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="proficiencias_ant">Proficiencias:</label>
                 <input type="text" class="form-control" id="proficiencias_ant" 
                        name="proficiencias_ant" 
-                       value="{{$antec->proficiencias_ant or old('proficiencias_ant')}}"
-                       required>
+                       value="{{$antec->proficiencias_ant or old('proficiencias_ant')}}">
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="idiomas_ant">Idiomas:</label>
                 <input type="text" class="form-control" id="idiomas_ant" 
                        name="idiomas_ant" 
-                       value="{{$antec->idiomas_ant or old('idiomas_ant')}}"
-                       required>
+                       value="{{$antec->idiomas_ant or old('idiomas_ant')}}">
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="carac_extras_ant">Caracteristicas Extras:</label>
                 <input type="text" class="form-control" id="carac_extras_ant" 
                        name="carac_extras_ant" 
-                       value="{{$antec->carac_extras_ant or old('carac_extras_ant')}}"
-                       required>
+                       value="{{$antec->carac_extras_ant or old('carac_extras_ant')}}">
             </div>
+            </div>
+            <div class="box-footer">
             <button type="submit" class="btn btn-primary">Enviar</button>     
-            </div>
+            </div>  
         </form>
         @endsection

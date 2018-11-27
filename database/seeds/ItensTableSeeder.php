@@ -12,18 +12,18 @@ class ItensTableSeeder extends Seeder
     public function run()
     {
         DB::table('itens')->insert([
-            'nome_itm' => 'Aljava',
-            'descricao_itm' => 'Aljavas são feitas de couro, podem carregar até 20 flechas',
-            'preco_itm' => '1PO',
+            'nome' => 'Aljava',
+            'descricao' => 'Aljavas são feitas de couro, podem carregar até 20 flechas',
+            'preco_itm' => '1 Peças de Ouro',
             'peso_itm' => '0.5',
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
             'vis'=>'1'
             ]);
         DB::table('itens')->insert([
-            'nome_itm' => 'Poção de cura',
-            'descricao_itm' => 'Um pequeno frasco de vidro com um liquido curativo dentro. Cura 2D4+2 de pontos de vida',
-            'preco_itm' => '50PO',
+            'nome' => 'Poção de cura',
+            'descricao' => 'Um pequeno frasco de vidro com um liquido curativo dentro. Cura 2D4+2 de pontos de vida',
+            'preco_itm' => '50 Peças de Ouro',
             'peso_itm' => '0.25',
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),

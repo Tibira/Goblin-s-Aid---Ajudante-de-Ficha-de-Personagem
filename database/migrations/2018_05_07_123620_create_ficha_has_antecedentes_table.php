@@ -15,7 +15,7 @@ class CreateFichaHasAntecedentesTable extends Migration
     {
         Schema::create('ficha_has_antecedentes', function (Blueprint $table) {
             $table->integer('antecedente_id')->references('id')->on('antecedentes');
-            $table->integer('ficha_id')->references('id')->on('ficha');
+            $table->integer('ficha_id')->references('id')->on('fichas');
             $table->timestamps();
             $table->Boolean('vis')->default(1);
             });

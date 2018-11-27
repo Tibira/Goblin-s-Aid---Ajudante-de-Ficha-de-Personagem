@@ -105,8 +105,8 @@ class TalentosController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'nome_tal' => 'required',
-            'descricao_tal' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'pre_requisito_tal' => 'required',
             ]);
 

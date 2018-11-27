@@ -11,8 +11,8 @@
         <div class='col-sm-12'>
             <h2> Detalhes do Item</h2>
             <p><b>ID: </b> {{$itens->id}}</p>
-            <p><b>Nome: </b> {{$itens->nome_itm}}</p>
-            <p><b>Descrição: </b> {{$itens->descricao_itm}}</p>
+            <p><b>Nome: </b> {{$itens->nome}}</p>
+            <p><b>Descrição: </b> {{$itens->descricao}}</p>
             <p><b>Preço: </b> {{$itens->preco_itm}}</p>
             <p><b>Peso(Kg): </b> {{$itens->peso_itm}}</p>
             </div>

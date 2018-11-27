@@ -12,8 +12,8 @@ class CaracteristicasTableSeeder extends Seeder
     public function run()
     {
         DB::table('caracteristicas')->insert([
-            'nome_car' => 'Circulo Druídico',
-            'descricao_car' => 'Você escolhe se identificar com um círculo de druidas: o Círculo da Terra ou o Círculo da Lua, ambos detalhados no final da descrição da classe.',
+            'nome' => 'Circulo Druídico',
+            'descricao' => 'Você escolhe se identificar com um círculo de druidas: o Círculo da Terra ou o Círculo da Lua, ambos detalhados no final da descrição da classe.',
             'nivel' => '2',
             'classe_id'=>'2',
             'created_at' => date('Y-m-d h:i:s'),
@@ -21,8 +21,8 @@ class CaracteristicasTableSeeder extends Seeder
             'vis'=>'1'
             ]);
         DB::table('caracteristicas')->insert([
-            'nome_car' => 'Druídico',
-            'descricao_car' => 'Voce conhece o idioma Druídico conhecido apenas pelos Druidas.',
+            'nome' => 'Druídico',
+            'descricao' => 'Voce conhece o idioma Druídico conhecido apenas pelos Druidas.',
             'nivel' => '1',
             'classe_id'=>'2',
             'created_at' => date('Y-m-d h:i:s'),
@@ -30,8 +30,8 @@ class CaracteristicasTableSeeder extends Seeder
             'vis'=>'1'
         ]);
         DB::table('caracteristicas')->insert([
-            'nome_car' => 'Retomar Folego',
-            'descricao_car' => 'No seu turno, você
+            'nome' => 'Retomar Folego',
+            'descricao' => 'No seu turno, você
             pode usar uma ação bônus para recuperar pontos de vida
             igual a 1d10 + seu nível de guerreiro.',
             'nivel' => '1',
@@ -41,8 +41,8 @@ class CaracteristicasTableSeeder extends Seeder
             'vis'=>'1'
         ]);
         DB::table('caracteristicas')->insert([
-            'nome_car' => 'Surto de Ação',
-            'descricao_car' => 'Durante o seu turno,
+            'nome' => 'Surto de Ação',
+            'descricao' => 'Durante o seu turno,
             você pode realizar uma ação adicional juntamente com
             sua ação e possível ação bônus.',
             'nivel' => '1',

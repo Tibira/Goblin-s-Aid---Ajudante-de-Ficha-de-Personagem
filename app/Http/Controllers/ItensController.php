@@ -103,8 +103,8 @@ class ItensController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'nome_itm' => 'required',
-            'descricao_itm' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'preco_itm' => 'required',
             'peso_itm' => 'required|numeric',
             ]);

@@ -103,8 +103,8 @@ class ArmasController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'nome_arm' => 'required',
-            'descricao_arm' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             'tipo_arm' => 'required',
             'preco_arm' => 'required',
             'peso_arm' => 'required|numeric',

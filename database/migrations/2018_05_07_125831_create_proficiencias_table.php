@@ -15,8 +15,8 @@ class CreateProficienciasTable extends Migration
     {
         Schema::create('proficiencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('nome_pro');
-            $table->String('descricao_pro');
+            $table->String('nome');
+            $table->String('descricao');
             $table->timestamps();
             $table->Boolean('vis')->default(1);
         });

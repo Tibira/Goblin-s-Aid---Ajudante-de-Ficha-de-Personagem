@@ -26,7 +26,7 @@ class UserController extends Controller
     }
     public function home()
     {
-        return view('users.index');
+        return view('index');
     }
     /**
      * Show the form for creating a new resource.

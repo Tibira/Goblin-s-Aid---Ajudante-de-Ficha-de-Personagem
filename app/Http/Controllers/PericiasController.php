@@ -105,8 +105,8 @@ class PericiasController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'nome_per' => 'required',
-            'descricao_per' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             ]);
 
         $peric = Pericias::find($id);

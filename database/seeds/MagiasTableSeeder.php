@@ -12,8 +12,8 @@ class MagiasTableSeeder extends Seeder
     public function run()
     {
         DB::table('magias')->insert([
-            'nome_mag' => 'Auxílio Divino',
-            'descricao_mag' => 'As suas orações o revestem com um esplendor divino. Até o término da magia, todos os seus ataques com arma causam um dano extra de 1d4 radiante se acertar.',
+            'nome' => 'Auxílio Divino',
+            'descricao' => 'As suas orações o revestem com um esplendor divino. Até o término da magia, todos os seus ataques com arma causam um dano extra de 1d4 radiante se acertar.',
             'conjuradores_mag' => 'Paladino',
             'nivel_mag' => '1',
             'escola_mag' => 'Evocação',
@@ -26,8 +26,8 @@ class MagiasTableSeeder extends Seeder
             'vis'=>'1'
             ]);
             DB::table('magias')->insert([
-                'nome_mag' => 'Criar Comida e Água',
-                'descricao_mag' => 'Você cria 20 kg de comida e 110 litros de água no chão ou em um recipiente dentro do alcance da magia, o bastante para alimentar e sustentar até 15 humanoides ou 5 cavalos por 24 horas.',
+                'nome' => 'Criar Comida e Água',
+                'descricao' => 'Você cria 20 kg de comida e 110 litros de água no chão ou em um recipiente dentro do alcance da magia, o bastante para alimentar e sustentar até 15 humanoides ou 5 cavalos por 24 horas.',
                 'conjuradores_mag' => 'Clérigo, Paladino',
                 'nivel_mag' => '3',
                 'escola_mag' => 'Conjuração',
@@ -40,8 +40,8 @@ class MagiasTableSeeder extends Seeder
                 'vis'=>'1'
                 ]);
                 DB::table('magias')->insert([
-                    'nome_mag' => 'Escudo Arcano',
-                    'descricao_mag' => 'Uma barreira invisível de força mágica surge e protege você. Até o começo do seu próximo turno, você ganha um bônus de +5 na CA, e você não sofre dano dos mísseis mágicos.',
+                    'nome' => 'Escudo Arcano',
+                    'descricao' => 'Uma barreira invisível de força mágica surge e protege você. Até o começo do seu próximo turno, você ganha um bônus de +5 na CA, e você não sofre dano dos mísseis mágicos.',
                     'conjuradores_mag' => 'Feiticeiro, Mago',
                     'nivel_mag' => '1',
                     'escola_mag' => 'Abjuração',

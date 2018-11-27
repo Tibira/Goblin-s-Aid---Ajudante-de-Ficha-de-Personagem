@@ -22,8 +22,8 @@
         <tbody>
             @foreach ($profic as $prof)
             <tr>
-              <td>{{$prof->nome_pro}}</td>
-              <td>{{$prof->descricao_pro}}</td>
+              <td>{{$prof->nome}}</td>
+              <td>{{$prof->descricao}}</td>
               <td>
             
             <a href='{{route('proficiencias.show',$prof->id)}}'

@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Admin;
+use App\Http\Controllers\Controller;
 
-class PersonalizacaoController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+     public function home()
     {
-        //
+        return view('admin.index');
     }
 
     /**

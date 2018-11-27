@@ -13,9 +13,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">LOGIN </div>
                     <div class="panel-body">
+<<<<<<< HEAD
                         <a disabled href="{{ route('social.oauth', 'facebook') }}" class="btn btn-primary btn-block">
                             LOGIN COM FACEBOOK
                         </a>
+=======
+>>>>>>> local
                         <a href="{{ route('social.oauth', 'google') }}" class="btn btn-danger btn-block">
                             LOGIN COM GOOGLE
                         </a>
