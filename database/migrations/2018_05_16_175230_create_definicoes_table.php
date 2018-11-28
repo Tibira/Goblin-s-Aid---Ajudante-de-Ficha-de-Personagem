@@ -15,8 +15,8 @@ class CreateDefinicoesTable extends Migration
     {
         Schema::create('definicoes', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('item');
-            $table->String('definicao');
+            $table->String('nome');
+            $table->String('descricao',1000);
             $table->Boolean('vis')->default(1);
             $table->timestamps();
             });

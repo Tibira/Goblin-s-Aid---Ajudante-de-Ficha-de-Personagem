@@ -5,8 +5,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="shortcut icon" href="https://user-images.githubusercontent.com/28794961/42189845-93f9792e-7e30-11e8-89fc-766389d78c2e.jpg" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+                div.bot {
+                    margin-top: 100px;
+                    margin-bottom: 100px;
+                    margin-right: 30px;
+                    margin-left: 30px;
+                }
+                </style>
     </head>
     <body>
 
@@ -41,10 +50,12 @@
         </div>
     </body>
     <footer class="footer">
+<div class="bot">
         <div class="pull-right hidden-xs">
-            <b>Verção</b> 0.1
+            <b>Versão</b> 0.1
         </div>
             Qualquer dúvida, contatar <strong>goblins.aid.help@gmail.com</strong>
-    </footer>
+    </div>
+        </footer>
 
 </html>

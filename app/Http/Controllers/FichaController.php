@@ -116,11 +116,5 @@ class FichaController extends Controller
             return redirect()->route('fichas.index');
         }
     }
-    public function pergunta()
-    {
-        $racas = Racas::paginate(6);
-        $classes = Classes::paginate(6);
-        return view('users.pesquisa', compact('classes', 'racas'));
-    }
 
 }

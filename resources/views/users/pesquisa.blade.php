@@ -6,48 +6,43 @@
     <h2> Pesquisa </h2>
 </div>
 
-<form method="post" action="ficha.pesq">
+<form method="post" action="{{URL::to('/pesquisa')}}" role="pesquisa">
     {{ csrf_field() }}
 
     <div class="col-sm-6">
         <div class="form-group">
-            <label for="pergunta"> O que procura? </label>
-            <input type="text" id="pergunta" name="pergunta" class="form-control">
+            <label for="pesquisa"> O que procura? </label>
+            <input type="text" id="pesquisa" name="pesquisa" class="form-control">
         </div>
     </div>
     <div class="col-sm-1">
         <div class="form-group">
             <label> &nbsp; </label>
-            <button type="submit" class="btn btn-primary">Pesquisar</button>
+            <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-search"></span></button>
         </div>
     </div>
 </form>
 
-@if (count($racas)==0)
-<div class="col-sm-12">
-    <div class="alert alert-success">
-        Não achei nada, tem certeza que é isso que procura?
-    </div>
-</div>
+@if (isset($details))
+<h1>Encontrei algo!</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th width="170px">Nome</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($details as $info)
+        <tr>
+        <th>{{$info->nome}}</th>
+        <th>{{$info->descricao}}</th>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@elseif(isset($mensagem))
+<p>{{$mensagem}}</p>
 @endif
-
-<div class='col-sm-12'>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($racas as $perg) 
-            <tr>
-                <td> {{$perg->nome}} </td>
-                <td> {{$perg->descricao}} </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>    
-</div>
 
 @endsection
