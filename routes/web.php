@@ -1,7 +1,34 @@
 <?php
 
+use App\Racas;
+use App\Classes;
+use App\Antecedentes;
+use App\Armaduras;
+use App\Armas;
+use App\Definicoes;
+use App\Itens;
+use App\Magias;
+use App\User;
+use Illuminate\Support\Facades\Input;
 Route::get('/', 'UserController@home');
-Route::get('/pergunta', 'FichaController@pergunta')->name('ficha.pesq');
+Route::get('/pesquisa', 'FichaController@pesq')->name('pesquisa.go');
+
+Route::post('/pesquisa', function () {
+return view('users.pesquisa');
+});
+
+Route::any('/pesquisa', function () {
+    $pesquisa = Input::get('pesquisa');
+    if ($pesquisa != "") {
+        $defin = Definicoes::where('nome', 'LIKE', '%' . $pesquisa . '%')
+            ->orWhere('descricao', 'LIKE', '%' . $pesquisa . '%')->orderBy('nome')->get();
+        if (count($defin) > 0) {
+            return view('users.pesquisa')->withDetails($defin)->withQuery($pesquisa);
+        }
+    }
+    return view('users.pesquisa')->withMessage("Não achei nada!");
+});
+
 Route::resource('users', 'UserController');
 Route::resource('admin', 'AdminController');
 Route::resource('fichas', 'FichaController');

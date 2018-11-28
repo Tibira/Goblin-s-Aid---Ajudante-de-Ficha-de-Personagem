@@ -19,13 +19,29 @@
 </style>
 </head>
 <body>
-<div class='col-md-1'>
-    <input type="button" class="btn btn-primary" value="Pesquisa" id="btDuvida">
-</div>
-<div class='col-md-1'> 
+    <form method="post" action="{{URL::to('/pesquisa')}}" role="pesquisa">
+        {{ csrf_field() }}
+    
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="pesquisa"> O que procura? </label>
+                <input type="text" id="pesquisa" name="pesquisa" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-1">
+                <label> &nbsp; </label>
+            <div class="form-group">
+                <label> &nbsp; </label>
+                <label> &nbsp; </label>
+                <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-search"></span></button>
+            </div>
+        </div>
+    </form><div class='col-md-1'>
+            <label> &nbsp; </label> 
     <input type="button" class="btn btn-success" value="Descansar" id="btDescansar">
 </div>
 <div class='col-md-1'>
+        <label> &nbsp; </label>
 <input type="button" class="btn btn-warning" value="Calcular" id="btCalcular">
 </div> 
     

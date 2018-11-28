@@ -7,6 +7,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+                div.bot {
+                    margin-top: 100px;
+                    margin-bottom: 100px;
+                    margin-right: 30px;
+                    margin-left: 30px;
+                }
+                </style>
     </head>
     <body>
 
@@ -41,10 +49,12 @@
         </div>
     </body>
     <footer class="footer">
+<div class="bot">
         <div class="pull-right hidden-xs">
-            <b>Verção</b> 0.1
+            <b>Versão</b> 0.1
         </div>
             Qualquer dúvida, contatar <strong>goblins.aid.help@gmail.com</strong>
-    </footer>
+    </div>
+        </footer>
 
 </html>
