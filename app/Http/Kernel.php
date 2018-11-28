@@ -17,7 +17,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
-        \App\Http\Middleware\IsAdmin::class,
+        \App\Http\Middleware\isAdmin::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
