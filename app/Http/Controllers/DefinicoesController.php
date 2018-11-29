@@ -18,7 +18,7 @@ class DefinicoesController extends Controller
         if (!Auth::check()) {
             return redirect('login');
         }
-            $def = Definicoes::where('vis',1)->paginate(5);
+            $def = Definicoes::where('vis',1)->get();
             
             return view('admin.definicoes_list', compact('def'));
     }
