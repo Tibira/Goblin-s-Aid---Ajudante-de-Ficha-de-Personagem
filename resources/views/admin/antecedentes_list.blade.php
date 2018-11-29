@@ -44,6 +44,7 @@
                     </tbody>
                 </table>
             </div>
+            {{ $antec->links() }}
         </section>
     </div>
 </body>
