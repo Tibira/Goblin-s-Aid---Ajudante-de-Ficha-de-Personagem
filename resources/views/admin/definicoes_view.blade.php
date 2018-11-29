@@ -11,8 +11,8 @@
         <div class='col-sm-12'>
             <h2> Detalhes</h2>
             <p><b>ID: </b> {{$defin->id}}</p>
-            <p><b>Item: </b> {{$defin->item}}</p>
-            <p><b>Definição: </b> {{$defin->definicao}}</p>
+            <p><b>Item: </b> {{$defin->nome}}</p>
+            <p><b>Definição: </b> {{$defin->descricao}}</p>
         </div>
     </div>
 @endsection

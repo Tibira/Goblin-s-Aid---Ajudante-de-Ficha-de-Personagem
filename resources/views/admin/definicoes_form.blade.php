@@ -32,20 +32,21 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="item">Item:</label>
-                <input type="text" class="form-control" id="item" 
-                       name="item" 
-                       value="{{$defin->item or old('item')}}"
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" 
+                       name="nome" 
+                       value="{{$defin->nome or old('nome')}}"
                        required>
             </div>
             <div class="form-group">
-                <label for="definicao">Definição:</label>
-                <input type="text" class="form-control" id="definicao" 
-                       name="definicao" 
-                       value="{{$defin->definicao or old('definicao')}}"
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" 
+                       name="descricao" 
+                       value="{{$defin->descricao or old('descricao')}}"
                        required>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>     
-            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Enviar</button>     
+                </div>  
         </form>
         @endsection

@@ -1,7 +1,10 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    
+<body>
+  <div class="content-warpper" style="min-height: 540px;">
+      <section class="content">
+
 <div class='col-sm-2'>
     <a href='{{route('definicoes.create')}}' class='btn btn-primary' 
        role='button'> Novo </a>
@@ -22,8 +25,8 @@
         <tbody>
             @foreach ($def as $defin)
             <tr>
-              <td>{{$defin->item}}</td>
-              <td>{{$defin->definicao}}</td>
+              <td>{{$defin->nome}}</td>
+              <td>{{$defin->descricao}}</td>
               <td>
             
             <a href='{{route('definicoes.show',$defin->id)}}'
@@ -50,4 +53,7 @@
         </tbody>
     </table>
 </div>
+ </section>
+        </div>
+    </body>
 @stop   

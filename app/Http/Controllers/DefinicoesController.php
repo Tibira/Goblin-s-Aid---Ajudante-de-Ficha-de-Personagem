@@ -53,7 +53,7 @@ class DefinicoesController extends Controller
         $defin = Definicoes::create($info);
         if ($defin) {
             return redirect()->route('definicoes.index')
-                            ->with('status', $request->item . ' Incluído!');
+                            ->with('status', $request->nome . ' Incluído!');
     }
     }
 
@@ -103,8 +103,8 @@ class DefinicoesController extends Controller
             return redirect('login');
         }
         $this->validate($request, [
-            'item' => 'required',
-            'definicao' => 'required',
+            'nome' => 'required',
+            'descricao' => 'required',
             ]);
 
         $defin = Definicoes::find($id);
@@ -115,7 +115,7 @@ class DefinicoesController extends Controller
 
         if ($alt) {
             return redirect()->route('definicoes.index')
-                            ->with('status', $request->item . ' Alterado!');
+                            ->with('status', $request->nome . ' Alterado!');
         }
 
     }
