@@ -78,38 +78,32 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">ENTRAR</a>
-                    @else
-                        <a href="{{ route('social.login') }}">LOGIN</a>
-                        <a href="{{ url('/register') }}">REGISTRO</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-            Goblin's Aid
-            <p class="meta">
-                    Ajudante Pessoal de Ficha de RPG
-                </p>
-                <div class="title m-b-md">
-                    @if(Auth::check())
-                        <img src="https://user-images.githubusercontent.com/28794961/42189845-93f9792e-7e30-11e8-89fc-766389d78c2e.jpg" width="200" alt="" class="img-circle"> <br>
-                        
-                        <div class="button">
-                    <a href="{{ url('/home') }}">
-                            ENTRAR
-                    </a>
+           
+            <div class="flex-center position-ref full-height">
+                    @if (Route::has('login'))
+                    <div class="top-right links">
+                        @if (Auth::check())
+                            <a href="{{ url('/home') }}">ENTRAR</a>
+                        @else
+                            <a href="{{ route('social.login') }}">LOGIN</a>
+                            <a href="{{ url('/register') }}">REGISTRO</a>
+                        @endif
                     </div>
-                    @else
-                        <img src="https://user-images.githubusercontent.com/28794961/41233028-83fe7b6a-6d5e-11e8-8256-5b6ad895119d.png" width="200" alt="" class="img-circle"> <br>
-                    @endif
-                    
+                @endif
+    
+                <div class="content">
+                        Goblin's Aid
+                        <p class="meta">
+                                Ajudante Pessoal de Ficha de RPG
+                            </p>
+                    <div class="title m-b-md">
+                        @if(Auth::check())
+                            <img src="{{ auth()->user()->avatar }}" width="200" alt="" class="img-circle"> <br>
+                        @else
+                            <img src="https://user-images.githubusercontent.com/28794961/41233028-83fe7b6a-6d5e-11e8-8256-5b6ad895119d.png" width="200" alt="" class="img-circle"> <br>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-    </body>
+        </body>
 </html>
