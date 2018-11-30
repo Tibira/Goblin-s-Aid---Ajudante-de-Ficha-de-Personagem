@@ -52,7 +52,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$def->link()}}
+    {{$def->links()}}
 </div>
  </section>
         </div>
