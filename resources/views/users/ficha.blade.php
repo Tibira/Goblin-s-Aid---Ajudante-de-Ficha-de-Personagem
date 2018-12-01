@@ -92,7 +92,7 @@
             <div class="col-md-3">
             <label for="raca">Raça:</label>
             <select class="form-control" id="raca_id" onchange="choice1()" name="raca_id">
-            <option id="0">Selecione a sua raça</option>
+            <option value="0">Selecione a sua raça</option>
             @if($acao == 1)
             @foreach ($racas as $raca)
                 <option value="{{$raca->id}}"
