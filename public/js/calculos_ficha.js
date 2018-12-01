@@ -215,16 +215,16 @@ function statusIniciais() {
 }
 
 function calcular() {
-    if (raca.value == 0) {
-        alert("Selecione uma raça antes de calcular seus atributos");
-        return;
-    }
     if (classe.value == 0) {
         alert("Selecione uma classe antes de calcular seus atributos");
         return;
     }
-    if (marked(ckAcro, acrobacia, destreza)==0) {
-return 0
+    if (raca.value == 0) {
+        alert("Selecione uma raça antes de calcular seus atributos");
+        return;
+    }
+    if (marked(ckAcro, acrobacia, destreza) == 100) {
+        return 100
     }
     marked(ckAcro, acrobacia, destreza);
     marked(ckArca, arcanismo, inteligencia);
@@ -258,23 +258,23 @@ return 0
 
 function marked(checkbox, pericia, atributo) {
     if (checkbox.checked == true) {
-        if (conta(atributo.value) != 0) {
+        if (conta(atributo.value) != 100) {
             return pericia.value = conta(atributo.value) + Number(proficiencia.value);
         } else {
-            return 0;
+            return 100;
         }
     } else {
-        if (conta(atributo.value) != 0) {
+        if (conta(atributo.value) != 100) {
             return pericia.value = conta(atributo.value);
         } else {
-            return 0;
+            return 100;
         }
     }
 }
 
 function conta(numero) {
-    if (ckAllAtr() == 0) {
-        return 0;
+    if (ckAllAtr() == 100) {
+        return 100;
     } else {
         if (isNaN(numero)) {
             alert("Informe um número");
@@ -295,29 +295,29 @@ function conta(numero) {
 function ckAllAtr() {
     if (forca.value == "" || forca.value == undefined) {
         alert("Preencha o seu atributo 'Força' antes de continuar");
-        return 0;
+        return 100;
     }
     if (destreza.value == "" || destreza.value == undefined) {
         alert("Preencha o seu atributo 'Destreza' antes de continuar");
-        return 0;
+        return 100;
     }
     if (inteligencia.value == "" || inteligencia.value == undefined) {
         alert("Preencha o seu atributo 'Inteligência' antes de continuar");
-        return 0;
+        return 100;
     }
     if (sabedoria.value == "" || sabedoria.value == undefined) {
         alert("Preencha o seu atributo 'Sabedoria' antes de continuar");
-        return 0;
+        return 100;
     }
     if (carisma.value == "" || carisma.value == undefined) {
         alert("Preencha o seu atributo 'Carisma' antes de continuar");
-        return 0;
+        return 100;
     }
     if (constituicao.value == "" || constituicao.value == undefined) {
         alert("Preencha o seu atributo 'Constituição' antes de continuar");
-        return 0;
+        return 100;
     }
-    
+
 }
 
 function calcVida() {
