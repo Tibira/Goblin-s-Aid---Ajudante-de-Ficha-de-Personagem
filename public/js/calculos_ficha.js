@@ -144,37 +144,6 @@ function calcDano() {
     pv_atual.value = pv_atual.value - dano.value;
 }
 
-function conta(numero) {
-
-    if (isNaN(numero)) {
-        alert("Informe um número");
-        return;
-    }
-    if (numero == "" || numero == null) {
-        alert("Informe um número");
-        return;
-    }
-    if (numero < 3 || numero > 20) {
-        alert("Informe um número entre 3 e 20");
-        return;
-    }
-    return Math.floor((numero - 10) / 2);
-}
-
-function choice1() {
-    c1 = 1;
-    if (c2 == 1) {
-        iniciaFicha();
-    }
-}
-
-function choice2() {
-    c2 = 1;
-    if (c1 == 1) {
-        iniciaFicha();
-    }
-}
-
 function iniciaFicha() {
     if (c1 == undefined && c2 == undefined) {
         var tutor = confirm("Boas vindas ao Goblin's Aid\n\nPronto para começar?\n\nGostaria de ajuda para completar sua ficha?");
@@ -182,7 +151,8 @@ function iniciaFicha() {
             var tutor = confirm("Certo, vamos começar.\n\nPrimeiro selecione a classe e a raça do seu personagem.");
             tutorial = 1;
         } else {
-            alert('Ok...\n\nCaso queira calcular seus status, clique em "Calcular".');
+            alert('Ok.\n\nQuando quiser calcular seus status iniciais, clique em "Calcular".');
+            tutorial = 0;
         }
     } else {
         if (tutorial == 1) {
@@ -213,35 +183,141 @@ function iniciaFicha() {
                     statusIniciais();
                 }
             }
-        }
-        if (raca.value == 2) {
-            sabedoria.value = Number(sabedoria.value) + 1;
-            constituicao.value = Number(constituicao.value) + 1;
-            forca.value = Number(forca.value) + 1;
-            carisma.value = Number(carisma.value) + 1;
-            inteligencia.value = Number(inteligencia.value) + 1;
-            destreza.value = Number(destreza.value) + 1;
-            deslocamento.value = 9;
-            pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 8;
-            statusIniciais();
-        } else {
-            forca.value = Number(forca.value) + 2;
-            constituicao.value = Number(constituicao.value) + 2;
-            deslocamento.value = 7.5;
-            pv_total.value = Math.floor((constituicao.value - 10) / 2) + 10;
             statusIniciais();
         }
-
     }
 }
 
 function statusIniciais() {
+    if (raca.value == 2) {
+        sabedoria.value = Number(sabedoria.value) + 1;
+        constituicao.value = Number(constituicao.value) + 1;
+        forca.value = Number(forca.value) + 1;
+        carisma.value = Number(carisma.value) + 1;
+        inteligencia.value = Number(inteligencia.value) + 1;
+        destreza.value = Number(destreza.value) + 1;
+        deslocamento.value = 9;
+        pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 8;
+
+    } else {
+        forca.value = Number(forca.value) + 2;
+        constituicao.value = Number(constituicao.value) + 2;
+        deslocamento.value = 7.5;
+        pv_total.value = Math.floor((constituicao.value - 10) / 2) + 10;
+
+    }
     nivel.value = 1;
     xp.value = 0;
     proficiencia.value = 2;
     calcular();
     descansar();
     alert("Certo, agora você pode costumizar seu personagem!\n\nDivirta-se :)");
+}
+
+function calcular() {
+    if (raca.value == 0) {
+        alert("Selecione uma raça antes de calcular seus atributos");
+        return;
+    }
+    if (classe.value == 0) {
+        alert("Selecione uma classe antes de calcular seus atributos");
+        return;
+    }
+    if (marked(ckAcro, acrobacia, destreza)==0) {
+return 0
+    }
+    marked(ckAcro, acrobacia, destreza);
+    marked(ckArca, arcanismo, inteligencia);
+    marked(ckAtle, atletismo, forca);
+    marked(ckAtua, atuacao, carisma);
+    marked(ckBlef, blefar, carisma);
+    marked(ckFurt, furtividade, destreza);
+    marked(ckHist, historia, inteligencia);
+    marked(ckInti, intimidacao, carisma);
+    marked(ckIntu, intuicao, sabedoria);
+    marked(ckInve, investigacao, inteligencia);
+    marked(ckLida, lidar_animais, sabedoria);
+    marked(ckMedi, medicina, sabedoria);
+    marked(ckNatu, natureza, inteligencia);
+    marked(ckPerc, percepcao, sabedoria);
+    marked(ckPers, persuasao, carisma);
+    marked(ckPrest, prest, destreza);
+    marked(ckReli, religiao, inteligencia);
+    marked(ckSobr, sobrevivencia, sabedoria);
+    if (tutorial == 0) {
+        tutorial = 1;
+        statusIniciais();
+    }
+    modForca.value = Math.floor((forca.value - 10) / 2);
+    modDestreza.value = Math.floor((destreza.value - 10) / 2);
+    modCarisma.value = Math.floor((carisma.value - 10) / 2);
+    modConstituicao.value = Math.floor((constituicao.value - 10) / 2);
+    modSabedoria.value = Math.floor((sabedoria.value - 10) / 2);
+    modInteligencia.value = Math.floor((inteligencia.value - 10) / 2);
+}
+
+function marked(checkbox, pericia, atributo) {
+    if (checkbox.checked == true) {
+        if (conta(atributo.value) != 0) {
+            return pericia.value = conta(atributo.value) + Number(proficiencia.value);
+        } else {
+            return 0;
+        }
+    } else {
+        if (conta(atributo.value) != 0) {
+            return pericia.value = conta(atributo.value);
+        } else {
+            return 0;
+        }
+    }
+}
+
+function conta(numero) {
+    if (ckAllAtr() == 0) {
+        return 0;
+    } else {
+        if (isNaN(numero)) {
+            alert("Informe um número");
+            return;
+        }
+        if (numero == "" || numero == null) {
+            alert("Informe um número");
+            return;
+        }
+        if (numero < 3 || numero > 20) {
+            alert("Informe um número entre 3 e 20");
+            return;
+        }
+        return Math.floor((numero - 10) / 2);
+    }
+}
+
+function ckAllAtr() {
+    if (forca.value == "" || forca.value == undefined) {
+        alert("Preencha o seu atributo 'Força' antes de continuar");
+        return 0;
+    }
+    if (destreza.value == "" || destreza.value == undefined) {
+        alert("Preencha o seu atributo 'Destreza' antes de continuar");
+        return 0;
+    }
+    if (inteligencia.value == "" || inteligencia.value == undefined) {
+        alert("Preencha o seu atributo 'Inteligência' antes de continuar");
+        return 0;
+    }
+    if (sabedoria.value == "" || sabedoria.value == undefined) {
+        alert("Preencha o seu atributo 'Sabedoria' antes de continuar");
+        return 0;
+    }
+    if (carisma.value == "" || carisma.value == undefined) {
+        alert("Preencha o seu atributo 'Carisma' antes de continuar");
+        return 0;
+    }
+    if (constituicao.value == "" || constituicao.value == undefined) {
+        alert("Preencha o seu atributo 'Constituição' antes de continuar");
+        return 0;
+    }
+    
 }
 
 function calcVida() {
@@ -267,14 +343,6 @@ function calcVida() {
             }
         }
     } while (result == null);
-}
-
-function marked(checkbox, pericia, atributo) {
-    if (checkbox.checked == true) {
-        return pericia.value = conta(atributo.value) + Number(proficiencia.value);
-    } else {
-        return pericia.value = conta(atributo.value);
-    }
 }
 
 function diminuiMagia1() {
@@ -526,33 +594,6 @@ function restaurarMagias() {
     }
 }
 
-function calcular() {
-    marked(ckAcro, acrobacia, destreza);
-    marked(ckArca, arcanismo, inteligencia);
-    marked(ckAtle, atletismo, forca);
-    marked(ckAtua, atuacao, carisma);
-    marked(ckBlef, blefar, carisma);
-    marked(ckFurt, furtividade, destreza);
-    marked(ckHist, historia, inteligencia);
-    marked(ckInti, intimidacao, carisma);
-    marked(ckIntu, intuicao, sabedoria);
-    marked(ckInve, investigacao, inteligencia);
-    marked(ckLida, lidar_animais, sabedoria);
-    marked(ckMedi, medicina, sabedoria);
-    marked(ckNatu, natureza, inteligencia);
-    marked(ckPerc, percepcao, sabedoria);
-    marked(ckPers, persuasao, carisma);
-    marked(ckPrest, prest, destreza);
-    marked(ckReli, religiao, inteligencia);
-    marked(ckSobr, sobrevivencia, sabedoria);
-    modForca.value = Math.floor((forca.value - 10) / 2);
-    modDestreza.value = Math.floor((destreza.value - 10) / 2);
-    modCarisma.value = Math.floor((carisma.value - 10) / 2);
-    modConstituicao.value = Math.floor((constituicao.value - 10) / 2);
-    modSabedoria.value = Math.floor((sabedoria.value - 10) / 2);
-    modInteligencia.value = Math.floor((inteligencia.value - 10) / 2);
-}
-
 function atualizar() {
     if (Number(nivel.value) == 20) {
         alert("Esse personagem já esta no nível maximo");
@@ -778,6 +819,20 @@ function rmmoedas() {
 function comteste() {
 }
 
+function choice1() {
+    c1 = 1;
+    if (c2 == 1) {
+        iniciaFicha();
+    }
+}
+
+function choice2() {
+    c2 = 1;
+    if (c1 == 1) {
+        iniciaFicha();
+    }
+}
+
 btMaglvl1.addEventListener("click", diminuiMagia1);
 btMaglvl2.addEventListener("click", diminuiMagia2);
 btMaglvl3.addEventListener("click", diminuiMagia3);
@@ -788,7 +843,7 @@ btMaglvl7.addEventListener("click", diminuiMagia7);
 btMaglvl8.addEventListener("click", diminuiMagia8);
 btMaglvl9.addEventListener("click", diminuiMagia9);
 
-btCalcular.addEventListener("click", dinheiro);
+btCalcular.addEventListener("click", calcular);
 btDescansar.addEventListener("click", descansar);
 btLevel.addEventListener("click", atualizar);
 btAddxp.addEventListener("click", addexp);
