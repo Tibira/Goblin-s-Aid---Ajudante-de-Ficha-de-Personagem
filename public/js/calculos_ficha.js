@@ -206,6 +206,7 @@ function statusIniciais() {
         pv_total.value = Math.floor((constituicao.value - 10) / 2) + 10;
 
     }
+    alert("Seus status ficaram assim:\n\nForça: " + forca.value + "\nDestreza: " + destreza.value + "\nInteligência: " + inteligencia.value + "\nSabedoria: " + sabedoria.value + "\nCarisma: " + carisma.value + "\nConstituição: " + constituicao.value);
     nivel.value = 1;
     xp.value = 0;
     proficiencia.value = 2;
@@ -435,39 +436,91 @@ function restaurarMagias() {
     if (classe.value = 2) {
         if (nivel.value == 1) {
             nivel1.value = 2;
+            nivel2.value = 0;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 2) {
             nivel1.value = 3;
+            nivel2.value = 0;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 3) {
             nivel1.value = 4;
             nivel2.value = 2;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 4) {
             nivel1.value = 4;
             nivel2.value = 2;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 5) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 2;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 6) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 3;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 7) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 3;
             nivel4.value = 1;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 8) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 3;
             nivel4.value = 2;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 9) {
             nivel1.value = 4;
@@ -475,6 +528,10 @@ function restaurarMagias() {
             nivel3.value = 3;
             nivel4.value = 3;
             nivel5.value = 1;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 10) {
             nivel1.value = 4;
@@ -482,6 +539,10 @@ function restaurarMagias() {
             nivel3.value = 3;
             nivel4.value = 3;
             nivel5.value = 2;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 11) {
             nivel1.value = 4;
@@ -490,6 +551,9 @@ function restaurarMagias() {
             nivel4.value = 3;
             nivel5.value = 2;
             nivel6.value = 1;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 12) {
             nivel1.value = 4;
@@ -498,6 +562,9 @@ function restaurarMagias() {
             nivel4.value = 3;
             nivel5.value = 2;
             nivel6.value = 1;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 13) {
             nivel1.value = 4;
@@ -507,6 +574,8 @@ function restaurarMagias() {
             nivel5.value = 2;
             nivel6.value = 1;
             nivel7.value = 1;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 14) {
             nivel1.value = 4;
@@ -516,6 +585,8 @@ function restaurarMagias() {
             nivel5.value = 2;
             nivel6.value = 1;
             nivel7.value = 1;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 15) {
             nivel1.value = 4;
@@ -526,6 +597,7 @@ function restaurarMagias() {
             nivel6.value = 1;
             nivel7.value = 1;
             nivel8.value = 1;
+            nivel9.value = 0;
         }
         if (nivel.value == 16) {
             nivel1.value = 4;
@@ -536,6 +608,7 @@ function restaurarMagias() {
             nivel6.value = 1;
             nivel7.value = 1;
             nivel8.value = 1;
+            nivel9.value = 0;
         }
         if (nivel.value == 17) {
             nivel1.value = 4;
@@ -820,16 +893,32 @@ function comteste() {
 }
 
 function choice1() {
-    c1 = 1;
-    if (c2 == 1) {
-        iniciaFicha();
+    if (tutorial == 1) {
+        c1 = 1;
+        if (raca.value == 1) {
+            alert("O anão é robusto, forte, de baixa estatura e de temperamento forte.");
+        }
+        if (raca.value == 2) {
+            alert("O humano é bom em todas as coisas, é a classe mais versátil do jogo.");
+        }
+        if (c2 == 1) {
+            iniciaFicha();
+        }
     }
 }
 
 function choice2() {
-    c2 = 1;
-    if (c1 == 1) {
-        iniciaFicha();
+    if (tutorial == 1) {
+        if (classe.value == 1) {
+            alert("O guerreiro é um lutador forte, robusto e agil que possui um treinamento árduo em combate.");
+        }
+        if (classe.value == 2) {
+            alert("O druida retira seus poderes da natureza para se transformar em animais e trazer o caos para o campo de batalha.");
+        }
+        c2 = 1;
+        if (c1 == 1) {
+            iniciaFicha();
+        }
     }
 }
 
