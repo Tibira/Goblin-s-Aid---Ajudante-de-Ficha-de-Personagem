@@ -119,6 +119,7 @@ var c2;
 var vivo;
 var morto;
 var tutorial;
+var stats;
 
 function calcDano() {
     var dmg = dano.value - pv_atual.value;
@@ -148,7 +149,7 @@ function iniciaFicha() {
     if (c1 == undefined && c2 == undefined) {
         var tutor = confirm("Boas vindas ao Goblin's Aid\n\nPronto para começar?\n\nGostaria de ajuda para completar sua ficha?");
         if (tutor == true) {
-            var tutor = confirm("Certo, vamos começar.\n\nPrimeiro selecione a classe e a raça do seu personagem.");
+            alert("Certo, vamos começar.\n\nPrimeiro selecione a classe e a raça do seu personagem.");
             tutorial = 1;
         } else {
             alert('Ok.\n\nQuando quiser calcular seus status iniciais, clique em "Calcular".');
@@ -165,9 +166,10 @@ function iniciaFicha() {
                     carisma.value = 8;
                     inteligencia.value = 10;
                     destreza.value = 12;
+                    stats = 1;
                 } else {
                     alert('Ok...\n\nCaso queira calcular seus status, clique em "Calcular".');
-                    statusIniciais();
+                    stats = 0;
                 }
             } else {
                 var resultado = confirm("Muito bem, agora defina seus atributos!\n\nPrecione 'OK' para gerar atributos ideais para um Guerreiro ou 'Cancelar' para você completar sozinho.");
@@ -178,9 +180,10 @@ function iniciaFicha() {
                     carisma.value = 8;
                     inteligencia.value = 10;
                     destreza.value = 12;
+                    stats = 1;
                 } else {
                     alert('Certo!\n\nCaso queira calcular seus status, clique em "Calcular".');
-                    statusIniciais();
+                    stats = 0;
                 }
             }
             statusIniciais();
@@ -190,27 +193,59 @@ function iniciaFicha() {
 
 function statusIniciais() {
     if (raca.value == 2) {
-        sabedoria.value = Number(sabedoria.value) + 1;
-        constituicao.value = Number(constituicao.value) + 1;
-        forca.value = Number(forca.value) + 1;
-        carisma.value = Number(carisma.value) + 1;
-        inteligencia.value = Number(inteligencia.value) + 1;
-        destreza.value = Number(destreza.value) + 1;
-        deslocamento.value = 9;
-        pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + 8;
+        if (stats == 1) {
+            sabedoria.value = Number(sabedoria.value) + 1;
+            constituicao.value = Number(constituicao.value) + 1;
+            forca.value = Number(forca.value) + 1;
+            carisma.value = Number(carisma.value) + 1;
+            inteligencia.value = Number(inteligencia.value) + 1;
+            destreza.value = Number(destreza.value) + 1;
+            alert("Seus status ficaram assim:\n\nForça: " + forca.value + "\nDestreza: " + destreza.value + "\nInteligência: " + inteligencia.value + "\nSabedoria: " + sabedoria.value + "\nCarisma: " + carisma.value + "\nConstituição: " + constituicao.value);
+            if (classe.value == 1) {
+                pv_total.value = Math.floor((constituicao.value - 10) / 2) + 10;
+            }
+            if (classe.value == 2) {
+                pv_total.value = Math.floor((constituicao.value - 10) / 2) + 8;
+            }
+            deslocamento.value = 9;
+            nivel.value = 1;
+            xp.value = 0;
+            proficiencia.value = 2;
+            calcular();
+            descansar();
+        } else {
+            deslocamento.value = 9;
+            nivel.value = 1;
+            xp.value = 0;
+            proficiencia.value = 2;
+        }
 
-    } else {
-        forca.value = Number(forca.value) + 2;
-        constituicao.value = Number(constituicao.value) + 2;
-        deslocamento.value = 7.5;
-        pv_total.value = Math.floor((constituicao.value - 10) / 2) + 10;
-
+    } if (raca.value == 1) {
+        if (stats == 1) {
+            forca.value = Number(forca.value) + 2;
+            constituicao.value = Number(constituicao.value) + 2;
+            alert("Seus status ficaram assim:\n\nForça: " + forca.value + "\nDestreza: " + destreza.value + "\nInteligência: " + inteligencia.value + "\nSabedoria: " + sabedoria.value + "\nCarisma: " + carisma.value + "\nConstituição: " + constituicao.value);
+            deslocamento.value = 7.5;
+            nivel.value = 1;
+            xp.value = 0;
+            proficiencia.value = 2;
+            if (classe.value == 1) {
+                pv_total.value = Math.floor((constituicao.value - 10) / 2) + 10;
+                pv_atual.value = Number(pv_total.value);
+            }
+            if (classe.value == 2) {
+                pv_total.value = Math.floor((constituicao.value - 10) / 2) + 8;
+                pv_atual.value = Number(pv_total.value);
+            }
+            calcular();
+            descansar();
+        } else {
+            deslocamento.value = 7.5;
+            nivel.value = 1;
+            xp.value = 0;
+            proficiencia.value = 2;
+        }
     }
-    nivel.value = 1;
-    xp.value = 0;
-    proficiencia.value = 2;
-    calcular();
-    descansar();
     alert("Certo, agora você pode costumizar seu personagem!\n\nDivirta-se :)");
 }
 
@@ -244,9 +279,10 @@ function calcular() {
     marked(ckPrest, prest, destreza);
     marked(ckReli, religiao, inteligencia);
     marked(ckSobr, sobrevivencia, sabedoria);
-    if (tutorial == 0) {
-        tutorial = 1;
+    if (stats == 0) {
+        stats=1;
         statusIniciais();
+        stats = 3;
     }
     modForca.value = Math.floor((forca.value - 10) / 2);
     modDestreza.value = Math.floor((destreza.value - 10) / 2);
@@ -435,39 +471,91 @@ function restaurarMagias() {
     if (classe.value = 2) {
         if (nivel.value == 1) {
             nivel1.value = 2;
+            nivel2.value = 0;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 2) {
             nivel1.value = 3;
+            nivel2.value = 0;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 3) {
             nivel1.value = 4;
             nivel2.value = 2;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 4) {
             nivel1.value = 4;
             nivel2.value = 2;
+            nivel3.value = 0;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 5) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 2;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 6) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 3;
+            nivel4.value = 0;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 7) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 3;
             nivel4.value = 1;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 8) {
             nivel1.value = 4;
             nivel2.value = 3;
             nivel3.value = 3;
             nivel4.value = 2;
+            nivel5.value = 0;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 9) {
             nivel1.value = 4;
@@ -475,6 +563,10 @@ function restaurarMagias() {
             nivel3.value = 3;
             nivel4.value = 3;
             nivel5.value = 1;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 10) {
             nivel1.value = 4;
@@ -482,6 +574,10 @@ function restaurarMagias() {
             nivel3.value = 3;
             nivel4.value = 3;
             nivel5.value = 2;
+            nivel6.value = 0;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 11) {
             nivel1.value = 4;
@@ -490,6 +586,9 @@ function restaurarMagias() {
             nivel4.value = 3;
             nivel5.value = 2;
             nivel6.value = 1;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 12) {
             nivel1.value = 4;
@@ -498,6 +597,9 @@ function restaurarMagias() {
             nivel4.value = 3;
             nivel5.value = 2;
             nivel6.value = 1;
+            nivel7.value = 0;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 13) {
             nivel1.value = 4;
@@ -507,6 +609,8 @@ function restaurarMagias() {
             nivel5.value = 2;
             nivel6.value = 1;
             nivel7.value = 1;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 14) {
             nivel1.value = 4;
@@ -516,6 +620,8 @@ function restaurarMagias() {
             nivel5.value = 2;
             nivel6.value = 1;
             nivel7.value = 1;
+            nivel8.value = 0;
+            nivel9.value = 0;
         }
         if (nivel.value == 15) {
             nivel1.value = 4;
@@ -526,6 +632,7 @@ function restaurarMagias() {
             nivel6.value = 1;
             nivel7.value = 1;
             nivel8.value = 1;
+            nivel9.value = 0;
         }
         if (nivel.value == 16) {
             nivel1.value = 4;
@@ -536,6 +643,7 @@ function restaurarMagias() {
             nivel6.value = 1;
             nivel7.value = 1;
             nivel8.value = 1;
+            nivel9.value = 0;
         }
         if (nivel.value == 17) {
             nivel1.value = 4;
@@ -820,16 +928,32 @@ function comteste() {
 }
 
 function choice1() {
-    c1 = 1;
-    if (c2 == 1) {
-        iniciaFicha();
+    if (tutorial == 1) {
+        c1 = 1;
+        if (raca.value == 1) {
+            alert("O anão é robusto, de baixa estatura e temperamento forte.");
+        }
+        if (raca.value == 2) {
+            alert("O humano é bom em todas as coisas, é a classe mais versátil do jogo.");
+        }
+        if (c2 == 1) {
+            iniciaFicha();
+        }
     }
 }
 
 function choice2() {
-    c2 = 1;
-    if (c1 == 1) {
-        iniciaFicha();
+    if (tutorial == 1) {
+        if (classe.value == 1) {
+            alert("O guerreiro é um lutador forte, robusto e agil que possui um treinamento árduo em combate.");
+        }
+        if (classe.value == 2) {
+            alert("O druida retira seus poderes da natureza para se transformar em animais e trazer o caos para o campo de batalha.");
+        }
+        c2 = 1;
+        if (c1 == 1) {
+            iniciaFicha();
+        }
     }
 }
 
