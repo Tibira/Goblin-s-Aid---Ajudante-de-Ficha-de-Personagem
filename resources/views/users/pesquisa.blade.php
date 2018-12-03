@@ -11,7 +11,7 @@
 
     <div class="col-sm-6">
         <div class="form-group">
-            <label for="pesquisa"> O que procura? </label>
+            <label for="pesquisa"> Palavra-chave: </label>
             <input type="text" id="pesquisa" name="pesquisa" class="form-control">
         </div>
     </div>

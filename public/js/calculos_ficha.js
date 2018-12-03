@@ -279,8 +279,12 @@ function calcular() {
     marked(ckPrest, prest, destreza);
     marked(ckReli, religiao, inteligencia);
     marked(ckSobr, sobrevivencia, sabedoria);
+    if (tutorial == 0) {
+        tutorial = 1;
+        statusIniciais();
+    }
     if (stats == 0) {
-        stats=1;
+        stats = 1;
         statusIniciais();
         stats = 3;
     }
@@ -308,21 +312,33 @@ function marked(checkbox, pericia, atributo) {
     }
 }
 
+function resetAt() {
+    forca.value = Number(0);
+    destreza.value = Number(0);
+    sabedoria.value = Number(0);
+    inteligencia.value = Number(0);
+    carisma.value = Number(0);
+    constituicao.value = Number(0);
+}
+
 function conta(numero) {
     if (ckAllAtr() == 100) {
         return 100;
     } else {
         if (isNaN(numero)) {
             alert("Informe um número");
-            return;
+            resetAt();
+            return 100;
         }
         if (numero == "" || numero == null) {
             alert("Informe um número");
-            return;
+            resetAt();
+            return 100;
         }
         if (numero < 3 || numero > 20) {
             alert("Informe um número entre 3 e 20");
-            return;
+            resetAt();
+            return 100;
         }
         return Math.floor((numero - 10) / 2);
     }
@@ -362,11 +378,11 @@ function calcVida() {
         if (result == true) {
             if (classe.value == 2) {
                 var x = Math.floor(1 + Math.random() * 8);
-                pv_total.value = Number(pv_total.value) + x;
+                pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + x;
                 alert("Foi gerado o número " + x + ", com seu modificador de constituição " + Math.floor((constituicao.value - 10) / 2) + ", seus pontos de vida ficaram " + pv_total.value + ".");
             } else {
                 var x = Math.floor(1 + Math.random() * 10);
-                pv_total.value = Number(pv_total.value) + x;
+                pv_total.value = Number(pv_total.value) + Math.floor((constituicao.value - 10) / 2) + x;
                 alert("Foi gerado o número " + x + ", com seu modificador de constituição " + Math.floor((constituicao.value - 10) / 2) + ", seus pontos de vida ficaram " + pv_total.value + ".");
             }
         } else {
