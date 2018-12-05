@@ -737,6 +737,7 @@ function atualizar() {
     if (lvl == 5) {
         xp.value = 6500;
         proficiencia.value = 3;
+        calcular();
     }
     if (lvl == 6) {
         xp.value = 14000;
@@ -750,6 +751,7 @@ function atualizar() {
     if (lvl == 9) {
         xp.value = 48000;
         proficiencia.value = 4;
+        calcular();
     }
     if (lvl == 10) {
         xp.value = 64000;
@@ -763,6 +765,7 @@ function atualizar() {
     if (lvl == 13) {
         xp.value = 120000;
         proficiencia.value = 5;
+        calcular();
     }
     if (lvl == 14) {
         xp.value = 140000;
@@ -776,6 +779,7 @@ function atualizar() {
     if (lvl == 17) {
         xp.value = 255000;
         proficiencia.value = 6;
+        calcular();
     }
     if (lvl == 18) {
         xp.value = 265000;
