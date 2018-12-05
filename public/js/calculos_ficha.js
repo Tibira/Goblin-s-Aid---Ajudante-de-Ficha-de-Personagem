@@ -258,7 +258,7 @@ function calcular() {
         alert("Selecione uma raça antes de calcular seus atributos");
         return;
     }
-    if (marked(ckAcro, acrobacia, destreza) == 100) {
+    if (marked(ckAcro, acrobacia, constituicao) == 100) {
         return 100
     }
     marked(ckAcro, acrobacia, destreza);
