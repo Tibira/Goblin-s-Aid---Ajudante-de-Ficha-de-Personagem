@@ -24,7 +24,7 @@
     
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="pesquisa"> Procure por uma palavra-chave: </label>
+                <label for="pesquisa"> Pesquise uma palavra-chave: </label>
                 <input type="text" id="pesquisa" name="pesquisa" class="form-control">
             </div>
         </div>
@@ -125,7 +125,7 @@
             </div>
             <div class="col-md-2">
                 <label for="pontos_vida_temporarios">PV atuais:</label>
-                <input disabled type="text" class="form-control" id="pontos_vida_temporarios"
+                <input type="text" class="form-control" id="pontos_vida_temporarios"
                        name="pontos_vida_temporarios"
                        value="{{$ficha->pontos_vida_temporarios or old('pontos_vida_temporarios')}}">
             </div>
@@ -137,19 +137,19 @@
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="+" id="btLevel">
                 <label for="nivel">Nível:</label>
-                <input disabled type="text" class="form-control" id="nivel"
+                <input type="text" class="form-control" id="nivel"
                        name="nivel"
                        value="{{$ficha->nivel or old('nivel')}}">
             </div>
             <div class="col-md-1">
                 <label for="bon_proficiencia">Proficiência:</label>
-                <input disabled type="text" class="form-control" id="bon_proficiencia"
+                <input type="text" class="form-control" id="bon_proficiencia"
                        name="bon_proficiencia"
                        value="{{$ficha->bon_proficiencia or old('bon_proficiencia')}}">
             </div>
             <div class="col-md-2">
                 <label for="experiencia">Experiência:</label>
-                <input disabled type="text" class="form-control" id="experiencia"
+                <input type="text" class="form-control" id="experiencia"
                        name="experiencia"
                        value="{{$ficha->experiencia or old('experiencia')}}">
             </div>
@@ -171,15 +171,14 @@
                 <input type="text" class="form-control" id="forca"
                        name="forca"
                        value="{{$ficha->forca or old('forca')}}">
-
-                       <input type="text" class="form-control" id="modForca"name="modForca">
+                       <input disabled type="text" class="form-control" id="modForca"name="modForca">
             </div>
             <div class="col-md-1">
                 <label for="destreza">Destreza:</label>
                 <input type="text" class="form-control" id="destreza"
                        name="destreza"
                        value="{{$ficha->destreza or old('destreza')}}">
-                       <input type="text" class="form-control" id="modDestreza"
+                       <input disabled type="text" class="form-control" id="modDestreza"
                        name="modDestreza">
             </div>
             <div class="col-md-1">
@@ -187,7 +186,7 @@
                 <input type="text" class="form-control" id="inteligencia"
                        name="inteligencia"
                        value="{{$ficha->inteligencia or old('inteligencia')}}">
-                       <input type="text" class="form-control" id="modInteligencia"
+                       <input disabled type="text" class="form-control" id="modInteligencia"
                        name="modInteligencia">
             </div>
             <div class="col-md-1">
@@ -195,7 +194,7 @@
                 <input type="text" class="form-control" id="sabedoria"
                        name="sabedoria"
                        value="{{$ficha->sabedoria or old('sabedoria')}}">
-                       <input type="text" class="form-control" id="modSabedoria"
+                       <input disabled type="text" class="form-control" id="modSabedoria"
                        name="modSabedoria">
             </div>
             <div class="col-md-1">
@@ -203,7 +202,7 @@
                 <input type="text" class="form-control" id="carisma"
                        name="carisma"
                        value="{{$ficha->carisma or old('carisma')}}">
-                       <input type="text" class="form-control" id="modCarisma"
+                       <input disabled type="text" class="form-control" id="modCarisma"
                        name="modCarisma">
             </div>
             <div class="col-md-1">
@@ -211,7 +210,7 @@
                 <input type="text" class="form-control" id="constituicao"
                        name="constituicao"
                        value="{{$ficha->constituicao or old('constituicao')}}">
-                       <input type="text" class="form-control" id="modConstituicao"
+                       <input disabled type="text" class="form-control" id="modConstituicao"
                        name="modConstituicao">
             </div>
             <!--<div class="col-md-12">
@@ -225,31 +224,31 @@
             </div>
             <div class="col-md-2">
                 <label for="pcobre">Cobre:</label>
-                <input disabled type="text" class="form-control" id="pcobre"
+                <input type="text" class="form-control" id="pcobre"
                        name="pcobre"
                        value="{{$ficha->pcobre or old('pcobre')}}">
             </div>
             <div class="col-md-2">
                 <label for="pprata">Prata:</label>
-                <input disabled type="text" class="form-control" id="pprata"
+                <input type="text" class="form-control" id="pprata"
                        name="pprata"
                        value="{{$ficha->pprata or old('pprata')}}">
             </div>
             <div class="col-md-2">
                 <label for="peletron">Eletron:</label>
-                <input disabled type="text" class="form-control" id="peletron"
+                <input type="text" class="form-control" id="peletron"
                        name="peletron"
                        value="{{$ficha->peletron or old('peletron')}}">
             </div>
             <div class="col-md-2">
                 <label for="pouro">Ouro:</label>
-                <input disabled type="text" class="form-control" id="pouro"
+                <input type="text" class="form-control" id="pouro"
                        name="pouro"
                        value="{{$ficha->pouro or old('pouro')}}">
             </div>
             <div class="col-md-2">
                 <label for="pplatina">Platina:</label>
-                <input disabled type="text" class="form-control" id="pplatina"
+                <input type="text" class="form-control" id="pplatina"
                        name="pplatina"
                        value="{{$ficha->pplatina or old('pplatina')}}">
             </div>
@@ -297,63 +296,63 @@
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl1">
             <label for="nivel1">Nivel 01:</label>
-                <input disabled type="text" class="form-control" id="nivel1"
+                <input type="text" class="form-control" id="nivel1"
                        name="nivel1"
                        value="{{$ficha->nivel1 or old('nivel1')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl2">
                 <label for="nivel2">Nivel 02:</label>
-                <input disabled type="text" class="form-control" id="nivel2"
+                <input type="text" class="form-control" id="nivel2"
                        name="nivel2"
                        value="{{$ficha->nivel2 or old('nivel2')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl3">
                 <label for="nivel3">Nivel 03:</label>
-                <input disabled type="text" class="form-control" id="nivel3"
+                <input type="text" class="form-control" id="nivel3"
                        name="nivel3"
                        value="{{$ficha->nivel3 or old('nivel3')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl4">
                 <label for="nivel4">Nivel 04:</label>
-                <input disabled type="text" class="form-control" id="nivel4"
+                <input type="text" class="form-control" id="nivel4"
                        name="nivel4"
                        value="{{$ficha->nivel4 or old('nivel4')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl5">
                 <label for="nivel5">Nivel 05:</label>
-                <input disabled type="text" class="form-control" id="nivel5"
+                <input type="text" class="form-control" id="nivel5"
                        name="nivel5"
                        value="{{$ficha->nivel5 or old('nivel5')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl6">
                 <label for="nivel6">Nivel 06:</label>
-                <input disabled type="text" class="form-control" id="nivel6"
+                <input type="text" class="form-control" id="nivel6"
                        name="nivel6"
                        value="{{$ficha->nivel6 or old('nivel6')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl7">
                 <label for="nivel7">Nivel 07:</label>
-                <input disabled type="text" class="form-control" id="nivel7"
+                <input type="text" class="form-control" id="nivel7"
                        name="nivel7"
                        value="{{$ficha->nivel7 or old('nivel7')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl8">
                 <label for="nivel8">Nivel 08:</label>
-                <input disabled type="text" class="form-control" id="nivel8"
+                <input type="text" class="form-control" id="nivel8"
                        name="nivel8"
                        value="{{$ficha->nivel8 or old('nivel8')}}">
                        </div>
             <div class="col-md-2">
             <input type="button" class="btn btn-success" value="-" id="btMaglvl9">
                 <label for="nivel9">Nivel 09:</label>
-                <input disabled type="text" class="form-control" id="nivel9"
+                <input type="text" class="form-control" id="nivel9"
                        name="nivel9"
                        value="{{$ficha->nivel9 or old('nivel9')}}">
                        </div>
